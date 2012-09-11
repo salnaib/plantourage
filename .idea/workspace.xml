@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
     </list>
     <ignored path="plantourage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +29,7 @@
       <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="17" selection-start="145" selection-end="145" vertical-scroll-proportion="0.23247863">
+            <state line="34" column="0" selection-start="575" selection-end="575" vertical-scroll-proportion="0.9880342">
               <folding />
             </state>
           </provider>
@@ -306,7 +308,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="145" selection-end="145" vertical-scroll-proportion="0.23247863">
+        <state line="34" column="0" selection-start="575" selection-end="575" vertical-scroll-proportion="0.9880342">
           <folding />
         </state>
       </provider>
