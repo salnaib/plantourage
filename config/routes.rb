@@ -1,4 +1,16 @@
 Plantourage::Application.routes.draw do
+  resources :invites
+
+  resources :suggestions
+
+  resources :points
+
+  resources :users
+
+  resources :venues
+
+  resources :plans
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
