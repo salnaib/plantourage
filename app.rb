@@ -84,7 +84,7 @@ get "/close" do
 end
 
 get "/sign_out" do
-#  session[:access_token] = nil
+  session[:access_token] = nil
   redirect '/'
 end
 
