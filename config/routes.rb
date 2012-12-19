@@ -1,4 +1,5 @@
 Plantourage::Application.routes.draw do
+
   resources :invites
 
   resources :suggestions

@@ -131,7 +131,17 @@
       <% if @user %>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
-            <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
+            <h1>Welcome, <strong><%= @user['name'] %></strong>
+              <p align="right">
+                <a href='/plans'>
+                  Plans
+                </a>
+                <a href='/sign_out' class="fb_button fb_button_medium">
+                   <span class="fb_button_text">Sign out</span>
+                </a>
+              </p>
+            </h1>
+            <br />
             <p class="tagline">
               This is your app
               <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
