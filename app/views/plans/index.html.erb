@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Plandate</th>
+    <th>Plan date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,7 +15,9 @@
     <td><%= plan.plandate %></td>
     <td><%= link_to 'Show', plan %></td>
     <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-    <td><%= link_to 'Destroy', plan, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+      <%= link_to 'Destroy', plan, confirm: 'Are you sure?', method: :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
