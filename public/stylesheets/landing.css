@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+
+#main_text {
+	font-weight: 900;
+	width: 300px;
+	color: #FDD017;
+	position: absolute;
+	left: -450px;
+}
+

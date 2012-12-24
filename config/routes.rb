@@ -1,5 +1,7 @@
 Plantourage::Application.routes.draw do
 
+  #get "static/landing"
+
   resources :invites
 
   resources :suggestions
@@ -12,6 +14,12 @@ Plantourage::Application.routes.draw do
 
   resources :plans
 
+  root :to => 'static#landing'
+
+  match '/auth/facebook' => 'static#fblogin'
+  match '/auth/facebook/callback' => 'static#setsession'
+  match '/close' => 'static#close'
+  match '/sign_out' => 'static#fblogout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

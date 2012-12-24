@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+#header {
+	color: #FDD017;
+	position: absolute;
+	padding-top: 30px;
+}
+
+#header h1 img {
+	position: absolute;
+	bottom: 5px;
+	left: 0px;
+	padding-left: 15px;
+	margin-top: 10px;
+}
+#header h1 {
+	font-family: chunk, serif;
+	font-size: 48px;
+	float: left;
+	margin-top: 0px;
+}
+#header #menu {
+	position: absolute;
+	bottom: 0px;
+	left: 900px;
+}

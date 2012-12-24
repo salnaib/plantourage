@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container {
+	overflow: hidden;
+	margin: 0;
+	padding: 0px;
+}
+
+#container #header {
+	position: absolute;
+	top: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#container #footer {
+	position: absolute;
+	bottom: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	margin: 0px;
+}
+body {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #FDD017;
+	margin: 0px;
+	background-image: url(../Images/BG3.jpg);
+}
+#main {
+	appearance: push-button;
+	font-size: 24px;
+	font-style: oblique;
+	position: absolute;
+	top: 120px;
+	left: 500px;
+}
