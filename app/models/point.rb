@@ -3,6 +3,7 @@ class Point < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :venue
+  belongs_to :plan
 
 ##  belongs_to :plan
 ##  has_one :venue , :through => :plans

@@ -1,10 +1,72 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "custom/styles" %>
 
-<p>
-  <b>Fbid:</b>
-  <%= @user.fbid %>
-</p>
+<div id="container">
+
+<%= render :partial => 'layouts/header' %>
+
+<div id="plans_list">
+  <form id="newplan_form" style="display:none">
+    <body>
+    <h1>New plan</h1>
+
+    <table>
+      <tr>
+        <td>
+          Date:
+        </td>
+        <td>
+          <input id="plan_date" type="date">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Name:
+        </td>
+        <td>
+          <input id="plan_name" type="input">
+        </td>
+      </tr>
+    </table>
+    <br>
+    <input id="submitnewplan" type="button" value="Create">
+
+    <input id="closenewplan" type="button" value="Close">
+
+    </body>
+  </form>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <input id="userid" value="<%= current_user.id %>" hidden=true>
+  <h2>You have <%= pluralize(@upcoming_plans.count, 'plan') %> coming up!</h2>
+  <br>
+  <input id="newplan" type="button" value="Start New Plan">
+  <br>
+
+  <table id="plans_table" border="1" width="100%">
+  <tr>
+    <td><b>Plan Date</b></td>
+    <td><b>Plan Name</b></td>
+    <td><b># of friends</b></td>
+    <td><b>Top Pick</b></td>
+    <td><b>Points left for you to vote</b></td>
+  </tr>
+  <% @upcoming_plans.each do |plan| %>
+  <tr>
+    <td>
+      <%= plan.plandate.strftime("%A") %> <%= plan.plandate.strftime("%b") %> <%= plan.plandate.strftime("%d") %>, <%= plan.plandate.strftime("%Y") %>
+    </td>
+    <td><%= link_to plan.name, plan %></td>
+    <td><%= plan.invites.count - 1 %></td>
+    <td>
+      <% if (!plan.toppick.nil?) %>
+          <img src="<%= plan.toppick.venue.image %>" width="70" height="35">
+          <%= plan.toppick.venue['name'] %>
+      <% end %>
+    </td>
+    <td><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', plan.id, current_user['id']]) %></td>
+  </tr>
+  <% end %>
+</table>
+
+</div>
+</div>

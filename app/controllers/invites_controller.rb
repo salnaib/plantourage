@@ -41,17 +41,28 @@ class InvitesController < ApplicationController
   # POST /invites
   # POST /invites.json
   def create
-    @invite = Invite.new(params[:invite])
+    @user = User.find_by_uid(params[:uid])
 
-    respond_to do |format|
-      if @invite.save
-        format.html { redirect_to @invite, notice: 'Invite was successfully created.' }
-        format.json { render json: @invite, status: :created, location: @invite }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @invite.errors, status: :unprocessable_entity }
-      end
+    if (@user.nil?)
+      @user = User.new
+      @user['uid'] = params[:uid]
+      @user['provider'] = 'facebook'
+      @user['name'] = params[:name]
+
+      @user.save
     end
+
+    if (Invite.find_by_plan_id_and_user_id(params[:plan_id], @user.id).nil?)
+
+      @invite = Invite.new(params[:invite])
+      @invite.plan = Plan.find(params[:plan_id])
+
+      @invite.user = @user
+
+      @invite.save
+
+    end
+
   end
 
   # PUT /invites/1

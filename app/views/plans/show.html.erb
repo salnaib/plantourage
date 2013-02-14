@@ -1,15 +1,137 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "custom/styles" %>
 
-<p>
-  <b>Name:</b>
-  <%= @plan.name %>
-</p>
+<div id="container">
 
-<p>
-  <b>Plandate:</b>
-  <%= @plan.plandate %>
-</p>
+<%= render :partial => 'layouts/header' %>
 
+<div id="plan_details">
+  <div id="fb-root"></div>
+  <form id="addvenue_form" style="display:none">
+    <body>
+    <h2>Listing venues for <%= @plan.name %></h2>
 
-<%= link_to 'Edit', edit_plan_path(@plan) %> |
-<%= link_to 'Back', plans_path %>
+    <input id="submitvenue" type="button" value="Submit">
+
+    <input id="closevenue" type="button" value="Close">
+
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Name</th>
+      </tr>
+
+      <% @venues.each do |venue| %>
+          <% if (Suggestion.find_by_venue_id_and_plan_id(venue.id, @plan.id).nil?) %>
+          <tr id="<%= venue.id %>">
+            <td><input type="checkbox" id="<%= venue.id %>" class="venue_check"></td>
+            <td><img src="<%= venue.image %>" alt=""></td>
+            <td><%= venue.name %></td>
+          </tr>
+          <% end %>
+    <% end %>
+    </table>
+
+    </body>
+  </form>
+  <form id="addfriends_form" style="display:none">
+    <body>
+    <h2>Listing friends for <%= current_user['name'] %></h2>
+
+    <input id="submitinvite" type="button" value="Submit">
+
+    <input id="closeinvite" type="button" value="Close">
+
+    <table>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Name</th>
+      </tr>
+
+      <% @friends.each do |friend| %>
+        <% if (Invite.find_by_facebookid_and_plan_id(friend['id'], @plan.id).nil?) %>
+          <tr id="<%= friend['id'] %>">
+            <td><input type="checkbox" id="<%= friend['id'] %>" class="friend_check" value="<%= friend['name'] %>"></td>
+            <td><img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>"></td>
+            <td><%= friend['name'] %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+
+    </body>
+  </form>
+
+  <table border=none width=100%>
+    <tr>
+      <td><b>Plan Date:</b></td>
+      <td><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></td>
+    </tr>
+    <tr>
+      <td><b>Plan Name:</b></td>
+      <td><%= @plan.name %></td>
+    </tr>
+    <tr>
+      <td><input id="planid" value="<%= @plan.id %>" hidden=true></td>
+    </tr>
+    <tr>
+      <td>
+        <h3>You have <div id="totalpoints" style="display:inline"><%= pluralize(10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, current_user['id']]), 'Point') %> </div> left to vote with</h3>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+  <table border="1" width="100%">
+    <thead>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th span=100%>
+      <input id="addfriend" type="button" value="Add Friends">
+      <br>
+      <b>Friends</b>
+    </th>
+    </thead>
+
+    <thead>
+    <th>
+      <input id="addvenue" type="button" value="Add Venues">
+      <br>
+      <b>Venues</b>
+    </th>
+    <th>Total</th>
+    <th><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
+      <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, current_user['id']]) %> Points </div> Left</th>
+    <% @invites.each do |invite| %>
+        <% if invite.user.id != current_user.id %>
+            <th><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>" width="50" height="50"><br><font size=2><% invite.user.name %>
+              <br> <%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, invite.id]) %> Points Left</font></th>
+        <% end %>
+    <% end %>
+    </thead>
+
+    <tbody>
+    <% @suggestions.each do |suggestion| %>
+    <tr>
+      <td><img src="<%= suggestion.venue.image %>" width="100" height="50"> <font size=2><%= suggestion.venue.name %></font></td>
+      <td><font size=4 id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </font></td>
+      <td>
+        <img src="/images/plus.jpg" class="addpointto" id="<%= suggestion.id %>">
+        <font size=4 id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, current_user['id']]) %> </font>
+        <img src="/images/minus.jpg" class="removepointfrom" id="<%= suggestion.id %>">
+      </td>
+      <% @invites.each do |invite| %>
+        <% if invite.user.id != current_user.id %>
+            <td><font size=4> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) %> </font></td>
+        <% end %>
+    <% end %>
+    </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+
+</div>
+</div>

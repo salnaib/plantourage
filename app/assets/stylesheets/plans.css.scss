@@ -1,3 +1,32 @@
 // Place all the styles related to the Plans controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#addvenue_form {
+  position: absolute;
+  border: 5px solid gray;
+  padding: 10px;
+  background: #E5E4E2;
+  width: 600px;
+  height: 600px;
+  overflow: auto;
+}
+
+#addfriends_form {
+  position: absolute;
+  border: 5px solid gray;
+  padding: 10px;
+  background: #E5E4E2;
+  width: 600px;
+  height: 600px;
+  overflow: auto;
+}
+
+#plans_table {
+  margin: 20px;
+}
+
+#plan_details {
+  position: absolute;
+  margin: 10px;
+}

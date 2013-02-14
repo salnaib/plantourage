@@ -4,7 +4,7 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all
-
+    @plan = Plan.find(session[:planid])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @venues }
@@ -35,7 +35,32 @@ class VenuesController < ApplicationController
 
   # GET /venues/1/edit
   def edit
-    @venue = Venue.find(params[:id])
+
+    @plan = Plan.find(session[:planid])
+    @suggestion = Suggestion.find_by_venue_id(params[:id])
+    if (@suggestion.nil?)
+      @suggestion = Suggestion.create
+      @suggestion.plan = @plan
+      @suggestion.venue = Venue.find(params[:id])
+      @suggestion.save!
+    end
+
+
+    redirect_to @plan
+
+    #respond_to do |format|
+    #  if @suggestion.save
+    #    format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
+    #    format.json { render json: @plan, status: :created, location: @plan }
+    #  else
+    #    format.html { render action: "new" }
+    #    format.json { render json: @plan.errors, status: :unprocessable_entity }
+    #  end
+    #end
+
+
+
+    #@venue = Venue.find(params[:id])
   end
 
   # POST /venues
@@ -81,4 +106,5 @@ class VenuesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

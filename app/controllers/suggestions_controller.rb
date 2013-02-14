@@ -42,16 +42,11 @@ class SuggestionsController < ApplicationController
   # POST /suggestions.json
   def create
     @suggestion = Suggestion.new(params[:suggestion])
+    @suggestion.plan_id = params['plan_id']
+    @suggestion.venue_id = params['venue_id']
 
-    respond_to do |format|
-      if @suggestion.save
-        format.html { redirect_to @suggestion, notice: 'Suggestion was successfully created.' }
-        format.json { render json: @suggestion, status: :created, location: @suggestion }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @suggestion.errors, status: :unprocessable_entity }
-      end
-    end
+    @suggestion.save
+
   end
 
   # PUT /suggestions/1

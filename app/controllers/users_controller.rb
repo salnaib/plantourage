@@ -14,7 +14,18 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    # Get base API Connection
+    @graph  = Koala::Facebook::API.new(session[:access_token])
+
+    # Get public details of current application
+    @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+
     @user = User.find(params[:id])
+    @plans = @user.plans.all
+
+    @upcoming_plans = @user.plans.find(:all, :conditions => ["plandate >= ?", Date.today]).sort_by { |obj| obj.plandate }
+    #@past_plans = @user.plans.find(:all, :conditions => ["plandate < ?", Date.today]).sort_by { |obj| obj.plandate }
 
     respond_to do |format|
       format.html # show.html.erb

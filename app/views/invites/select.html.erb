@@ -1,0 +1,32 @@
+<h2>Listing friends for <%= current_user.name %></h2>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+  </tr>
+
+  <% @friends.each do |friend| %>
+      <li>
+        <a href="#" onclick="window.open('http://www.facebook.com/<%= friend['id']%>')">
+          <img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>">
+
+        </a>
+      </li>
+
+
+      <% @friends.each do |friend| %>
+      <tr>
+        <td>
+          <a href="#" onclick="window.open('http://www.facebook.com/<%= friend['id']%>')">
+            <img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>">
+        </td>
+        <td><%= friend['name'] %></td>
+        <td><%= link_to 'Select', edit_invite_path(friend) %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Venue', new_venue_path %>

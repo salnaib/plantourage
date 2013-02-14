@@ -10,7 +10,9 @@
 	position: absolute;
 	bottom: 0px;
 	margin-top: 10px;
+    width: 100%;
 }
+
 #footer p a {
 	margin: 30px;
 }

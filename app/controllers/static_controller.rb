@@ -55,12 +55,12 @@ class StaticController < ApplicationController
 
     if session[:access_token]
       @user    = @graph.get_object("me")
-      @friends = @graph.get_connections('me', 'friends')
-      @photos  = @graph.get_connections('me', 'photos')
-      @likes   = @graph.get_connections('me', 'likes').first(4)
+      #@friends = @graph.get_connections('me', 'friends')
+      #@photos  = @graph.get_connections('me', 'photos')
+      #@likes   = @graph.get_connections('me', 'likes').first(4)
 
       # for other data you can always run fql
-      @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
+      #@friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
     end
 
   end
@@ -68,13 +68,19 @@ class StaticController < ApplicationController
   def fblogin
 
     session[:access_token] = nil
+    session[:user_id] = nil
     redirect_to authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 
   end
 
   def setsession
-    session[:access_token] = authenticator.get_access_token(params[:code])
-    redirect_to '/plans'
+    #session[:access_token] = authenticator.get_access_token(params[:code])
+
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:access_token] = user.oauth_token
+    session[:user_id] = user.id
+
+    redirect_to current_user
   end
 
   def close
@@ -84,6 +90,7 @@ class StaticController < ApplicationController
   def fblogout
 
     session[:access_token] = nil
+    session[:user_id] = nil
     redirect_to '/'
 
   end

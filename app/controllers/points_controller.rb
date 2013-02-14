@@ -81,4 +81,40 @@ class PointsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def addpoint
+    @point = Point.find_by_suggestion_id_and_invite_id(params[:suggestion_id],current_user['id'])
+    if @point.nil?
+      @point = Point.new
+      @point.suggestion_id = params[:suggestion_id]
+      @point.invite_id = current_user['id']
+      @point.plan_id = Suggestion.find(params[:suggestion_id]).plan_id
+      @point.count = 1
+    else
+      if @point.count < 10
+        @point.count = @point.count + 1
+      end
+    end
+    @point.save!
+
+  end
+
+  def removepoint
+    @point = Point.find_by_suggestion_id_and_invite_id(params[:suggestion_id],current_user['id'])
+    if @point.nil?
+      @point = Point.new
+      @point.suggestion_id = params[:suggestion_id]
+      @point.invite_id = current_user['id']
+      @point.plan_id = Suggestion.find(params[:suggestion_id]).plan_id
+      @point.count = 0
+    else
+      if @point.count > 0
+        @point.count = @point.count - 1
+      end
+    end
+    @point.save!
+
+  end
+
+
 end

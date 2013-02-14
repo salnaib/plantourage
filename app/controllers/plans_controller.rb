@@ -1,5 +1,5 @@
-
 class PlansController < ApplicationController
+
   # GET /plans
   # GET /plans.json
   def index
@@ -15,7 +15,16 @@ class PlansController < ApplicationController
   # GET /plans/1.json
   def show
     @plan = Plan.find(params[:id])
-    @invites = @plan.microposts
+    @invites = @plan.invites.all
+    @suggestions = @plan.suggestions.all.sort_by { |obj| - obj.pointcount }
+
+    @venues = Venue.all.sort_by{ |obj| obj['name'] }
+
+    @graph  = Koala::Facebook::API.new(session[:access_token])
+    # Get public details of current application
+    @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+    @friends = @graph.get_connections('me', 'friends').sort_by { |obj| obj['name'] }
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,17 +51,19 @@ class PlansController < ApplicationController
   # POST /plans
   # POST /plans.json
   def create
-    @plan = Plan.new(params[:plan])
 
-    respond_to do |format|
-      if @plan.save
-        format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
-        format.json { render json: @plan, status: :created, location: @plan }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @plan.errors, status: :unprocessable_entity }
-      end
-    end
+    @plan = Plan.new(params[:plan])
+    @plan['name'] = params[:name]
+    @plan['plandate'] = params[:plandate]
+
+    @plan.save
+
+    @invite = Invite.new
+    @invite.plan = @plan
+    @invite['user_id'] = params[:userid]
+
+    @invite.save
+
   end
 
   # PUT /plans/1
@@ -82,4 +93,5 @@ class PlansController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

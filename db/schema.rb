@@ -11,11 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217075355) do
+ActiveRecord::Schema.define(:version => 20130123170926) do
 
   create_table "invites", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "plan_id"
+    t.string   "user_id"
   end
 
   create_table "plans", :force => true do |t|
@@ -27,19 +29,29 @@ ActiveRecord::Schema.define(:version => 20121217075355) do
 
   create_table "points", :force => true do |t|
     t.integer  "count"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "plan_id"
+    t.string   "suggestion_id"
+    t.string   "invite_id"
   end
 
   create_table "suggestions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "plan_id"
+    t.string   "venue_id"
   end
 
   create_table "users", :force => true do |t|
     t.integer  "fbid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   create_table "venues", :force => true do |t|
