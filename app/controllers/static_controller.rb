@@ -80,7 +80,7 @@ class StaticController < ApplicationController
     session[:access_token] = user.oauth_token
     session[:user_id] = user.id
 
-    redirect_to current_user
+    redirect_to '/'
   end
 
   def close
