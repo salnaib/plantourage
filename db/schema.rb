@@ -11,21 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219153549) do
+ActiveRecord::Schema.define(:version => 20130219162157) do
 
   create_table "invites", :force => true do |t|
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "plan_id",    :limit => 255
-    t.integer  "user_id",    :limit => 255
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "plan_id"
   end
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
-    t.integer  "invite_id",  :limit => 255
-    t.integer  "plan_id",    :limit => 255
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "invite_id"
+    t.integer  "plan_id"
   end
 
   create_table "plans", :force => true do |t|
@@ -37,18 +37,18 @@ ActiveRecord::Schema.define(:version => 20130219153549) do
 
   create_table "points", :force => true do |t|
     t.integer  "count"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.integer  "plan_id",       :limit => 255
-    t.integer  "suggestion_id", :limit => 255
-    t.integer  "invite_id",     :limit => 255
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "suggestion_id"
+    t.integer  "invite_id"
+    t.integer  "plan_id"
   end
 
   create_table "suggestions", :force => true do |t|
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "plan_id",    :limit => 255
-    t.integer  "venue_id",   :limit => 255
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "plan_id"
+    t.integer  "venue_id"
   end
 
   create_table "users", :force => true do |t|
