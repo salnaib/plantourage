@@ -86,6 +86,41 @@
   </table>
 
   <br>
+  <table width="100%">
+    <tr>
+      <td valign="top" align="left">
+        <div id="discussion">
+          <table>
+            <tr><td><h3>Discussion <br> (<%= pluralize(@plan.microposts.count, 'comment') %>)</h3></td></tr>
+            <tr>
+              <td>
+                <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment">
+
+                <input hidden=true id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
+              </td>
+            </tr>
+            <% @microposts.each do |micropost| %>
+                <tr>
+                  <td valign="top" align="left">
+                    <table>
+                      <tr padding="2">
+                        <td valign="top" align="left">
+                          <a href="http://www.facebook.com/<%= micropost.invite.user.uid %>" target="_blank" title="<%= micropost.invite.user.name %>">
+                            <img src="https://graph.facebook.com/<%= micropost.invite.user.uid %>/picture?type=small" alt="<%= micropost.invite.user.name %>" width="28" height="28">
+                          </a>
+                        </td>
+                        <td valign="top" align="left">
+                          <%= micropost.content %>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+    </td>
+    <td>
   <table id="plan_voting_table">
     <thead>
     <th></th>
@@ -99,12 +134,12 @@
     </thead>
 
     <thead>
-    <th>
+    <th width="30%">
       <input id="addvenue" type="button" value="Add Venues">
       <br>
       <b>Venues</b>
     </th>
-    <th>Total</th>
+    <th width="5%">Total</th>
     <td><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
       <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, current_user['id']]) %> Points </div> Left</td>
     <% @invites.each do |invite| %>
@@ -138,6 +173,10 @@
     </tbody>
 
   </table>
+      </td>
+    </tr>
+  </table>
+
 
 </div>
 </div>

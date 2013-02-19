@@ -16,6 +16,7 @@ class PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
     @invites = @plan.invites.all
+    @microposts = @plan.microposts.all
     @suggestions = @plan.suggestions.all.sort_by { |obj| - obj.pointcount }
 
     @venues = Venue.all.sort_by{ |obj| obj['name'] }

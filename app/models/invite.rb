@@ -4,6 +4,7 @@ class Invite < ActiveRecord::Base
   belongs_to :user
   belongs_to :plan
   has_many :points
+  has_many :microposts
 
   def self.find_by_facebookid_and_plan_id(fbid, planid)
 

@@ -5,6 +5,7 @@ class Plan < ActiveRecord::Base
   has_many :venues, :through => :suggestions
   has_many :invites
   has_many :users, :through => :invites
+  has_many :microposts, :through => :invites
   belongs_to :organizer, :polymorphic => true
   has_many :points
 

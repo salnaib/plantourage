@@ -80,6 +80,18 @@ $ ->
     $("#addfriends_form").fadeOut(500);
     (window).location = (window).location;
 
+  $("#add_comment").click ->
+    planid = $("#planid").attr('value');
+    content = $("#new_comment").attr('value');
+    inviteid = $("#invite_id").attr('value');
+    $.ajax
+      url: "/micropost/addcomment"
+      type: "GET"
+      async: false
+      remote: true
+      data: { plan_id: planid, content: content, invite_id: inviteid }
+    (window).location = (window).location;
+
   positionVenuePopup = () ->
     if (!$("#addvenue_form").is(':visible'))
       return;
