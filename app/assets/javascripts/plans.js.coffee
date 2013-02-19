@@ -71,7 +71,6 @@ $ ->
     $("#addvenue_form").fadeOut(500);
     (window).location = (window).location;
 
-
   $("#submitinvite").click ->
     planid = $("#planid").attr('value')
     for element in $(".friend_check")
