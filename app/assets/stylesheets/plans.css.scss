@@ -22,11 +22,36 @@
   overflow: auto;
 }
 
-#plans_table {
-  margin: 20px;
-}
-
 #plan_details {
   position: absolute;
-  margin: 10px;
+  width: 85%;
+}
+
+#plan_details_table td {
+  font-size: 25px;
+  padding: 10px;
+}
+
+#points_left_table h3{
+  font-size: 20px;
+}
+
+#plan_voting_table {
+  background-color: black;
+  width: 100%;
+}
+
+#plan_voting_table thead {
+  font-size: 15px;
+  padding: 10px;
+}
+
+#plan_voting_table th {
+  font-size: 20px;
+  padding: 10px;
+}
+
+#plan_voting_table td {
+  font-size: 15px;
+  padding: 10px;
 }

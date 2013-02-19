@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#plans_list {
-  position: absolute;
-  margin: 10px;
-}
-
 #newplan_form {
   position: absolute;
   border: 5px solid gray;
@@ -15,4 +10,29 @@
   width: 600px;
   height: 300px;
   overflow: auto;
+}
+
+#plans_list {
+  position: absolute;
+  margin: 15px;
+  top: 100px;
+}
+
+#plans_list h2 {
+  font-size: 45px;
+}
+
+#plans_table {
+  background-color: black;
+}
+
+#plans_table thead th {
+  font-size: 20px;
+  border-bottom: 1px solid #E5E4E2;
+  padding: 10px;
+}
+
+#plans_table td {
+  font-size: 17px;
+  padding: 15px;
 }

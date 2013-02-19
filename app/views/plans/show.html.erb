@@ -63,18 +63,21 @@
     </body>
   </form>
 
-  <table border=none width=100%>
+  <table border=none width=70% id="plan_details_table">
     <tr>
-      <td><b>Plan Date:</b></td>
-      <td><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></td>
+      <td align="left"><b>Plan Date:</b></td>
+      <td align="left"><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></td>
     </tr>
     <tr>
-      <td><b>Plan Name:</b></td>
-      <td><%= @plan.name %></td>
+      <td align="left"><b>Plan Name:</b></td>
+      <td align="left"><%= @plan.name %></td>
     </tr>
     <tr>
       <td><input id="planid" value="<%= @plan.id %>" hidden=true></td>
     </tr>
+  </table>
+
+  <table id="points_left_table">
     <tr>
       <td>
         <h3>You have <div id="totalpoints" style="display:inline"><%= pluralize(10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, current_user['id']]), 'Point') %> </div> left to vote with</h3>
@@ -83,7 +86,7 @@
   </table>
 
   <br>
-  <table border="1" width="100%">
+  <table id="plan_voting_table">
     <thead>
     <th></th>
     <th></th>
@@ -102,12 +105,13 @@
       <b>Venues</b>
     </th>
     <th>Total</th>
-    <th><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
-      <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, current_user['id']]) %> Points </div> Left</th>
+    <td><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
+      <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, current_user['id']]) %> Points </div> Left</td>
     <% @invites.each do |invite| %>
         <% if invite.user.id != current_user.id %>
-            <th><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>" width="50" height="50"><br><font size=2><% invite.user.name %>
-              <br> <%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, invite.id]) %> Points Left</font></th>
+            <td>
+              <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>" width="50" height="50"><br><b><%= invite.user.name %></b></a>
+              <br> <%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, invite.id]) %> Points Left</td>
         <% end %>
     <% end %>
     </thead>
@@ -115,16 +119,18 @@
     <tbody>
     <% @suggestions.each do |suggestion| %>
     <tr>
-      <td><img src="<%= suggestion.venue.image %>" width="100" height="50"> <font size=2><%= suggestion.venue.name %></font></td>
-      <td><font size=4 id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </font></td>
+      <td align="left">
+        <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank"><img src="<%= suggestion.venue.image %>" width="140" height="70"><%= suggestion.venue.name %></a>
+      </td>
+      <td><font id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </font></td>
       <td>
         <img src="/images/plus.jpg" class="addpointto" id="<%= suggestion.id %>">
-        <font size=4 id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, current_user['id']]) %> </font>
+        <font id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, current_user['id']]) %> </font>
         <img src="/images/minus.jpg" class="removepointfrom" id="<%= suggestion.id %>">
       </td>
       <% @invites.each do |invite| %>
         <% if invite.user.id != current_user.id %>
-            <td><font size=4> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) %> </font></td>
+            <td><%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) %> </td>
         <% end %>
     <% end %>
     </tr>

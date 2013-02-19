@@ -21,6 +21,10 @@
 	left: 1050px;
 }
 
+#header #menu table tr {
+    vertical-align: bottom;
+}
+
 a:link{
     color:#FDD017;
 }
