@@ -63,6 +63,39 @@
     </body>
   </form>
 
+  <form id="show_comments_form" style="display:none">
+    <body>
+    <table>
+      <tr><td><h3>Showing discussion for <%= @plan['name'] %><br> (<%= pluralize(@plan.microposts.count, 'comment') %>)</h3></td></tr>
+      <tr>
+        <td>
+          <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment"><input id="closecomments" type="button" value="Close">
+
+          <input hidden=true id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
+        </td>
+      </tr>
+      <% @microposts.each do |micropost| %>
+          <tr>
+            <td valign="top" align="left">
+              <table>
+                <tr padding="2">
+                  <td valign="top" align="left">
+                    <a href="http://www.facebook.com/<%= micropost.invite.user.uid %>" target="_blank" title="<%= micropost.invite.user.name %>">
+                      <img src="https://graph.facebook.com/<%= micropost.invite.user.uid %>/picture?type=small" alt="<%= micropost.invite.user.name %>" width="28" height="28">
+                    </a>
+                  </td>
+                  <td valign="top" align="left">
+                    <%= micropost.content %>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+    </body>
+  </form>
+
   <table border=none width=70% id="plan_details_table">
     <tr>
       <td align="left"><b>Plan Date:</b></td>
@@ -86,44 +119,9 @@
   </table>
 
   <br>
-  <table width="100%">
-    <tr>
-      <td valign="top" align="left">
-        <div id="discussion">
-          <table>
-            <tr><td><h3>Discussion <br> (<%= pluralize(@plan.microposts.count, 'comment') %>)</h3></td></tr>
-            <tr>
-              <td>
-                <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment">
-
-                <input hidden=true id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
-              </td>
-            </tr>
-            <% @microposts.each do |micropost| %>
-                <tr>
-                  <td valign="top" align="left">
-                    <table>
-                      <tr padding="2">
-                        <td valign="top" align="left">
-                          <a href="http://www.facebook.com/<%= micropost.invite.user.uid %>" target="_blank" title="<%= micropost.invite.user.name %>">
-                            <img src="https://graph.facebook.com/<%= micropost.invite.user.uid %>/picture?type=small" alt="<%= micropost.invite.user.name %>" width="28" height="28">
-                          </a>
-                        </td>
-                        <td valign="top" align="left">
-                          <%= micropost.content %>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-            <% end %>
-          </table>
-        </div>
-    </td>
-    <td>
   <table id="plan_voting_table">
     <thead>
-    <th></th>
+    <th><input id="showcomments" type="button" value="View Discussion"></th>
     <th></th>
     <th></th>
     <th span=100%>
@@ -173,10 +171,6 @@
     </tbody>
 
   </table>
-      </td>
-    </tr>
-  </table>
-
 
 </div>
 </div>
