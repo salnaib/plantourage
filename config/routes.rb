@@ -6,6 +6,7 @@ Plantourage::Application.routes.draw do
   match '/auth/facebook/callback' => 'static#setsession'
   match '/close' => 'static#close'
   match '/sign_out' => 'static#fblogout'
+  match '/unauthorized' => 'static#unauthorized'
 
   match '/showsuggestionoptions' => 'plans#showsuggestionoptions'
   match 'point/addpoint' => 'points#addpoint'

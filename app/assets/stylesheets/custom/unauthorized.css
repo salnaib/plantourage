@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+
+#unuthorized {
+    appearance: push-button;
+    font-size: 100px;
+    font-style: oblique;
+    position: absolute;
+    top: 120px;
+    left: 500px;
+}
+
+#unuthorized table tr td {
+    font-size: 24px;
+    vertical-align: middle;
+
+
+
+}
+
+

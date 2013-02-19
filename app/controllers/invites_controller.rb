@@ -1,5 +1,7 @@
 
 class InvitesController < ApplicationController
+  before_filter :admin_user, only: [:show, :index, :new, :edit, :update, :destroy ]
+
   # GET /invites
   # GET /invites.json
   def index
@@ -92,4 +94,17 @@ class InvitesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
+  def authorized_user
+    if (session[:user_id].to_s == "")
+      redirect_to '/unauthorized'
+    end
+  end
+
+  def admin_user
+    redirect_to '/unauthorized'
+  end
+
 end

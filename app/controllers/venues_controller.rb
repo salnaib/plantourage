@@ -1,5 +1,8 @@
 
 class VenuesController < ApplicationController
+
+  before_filter :admin_user, only: [:show, :index, :new, :edit, :update, :destroy, :create ]
+
   # GET /venues
   # GET /venues.json
   def index
@@ -105,6 +108,18 @@ class VenuesController < ApplicationController
       format.html { redirect_to venues_url }
       format.json { head :no_content }
     end
+  end
+
+  protected
+
+  def authorized_user
+    if (session[:user_id].to_s == "")
+      redirect_to '/unauthorized'
+    end
+  end
+
+  def admin_user
+    redirect_to '/unauthorized'
   end
 
 end

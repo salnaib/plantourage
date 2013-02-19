@@ -1,5 +1,9 @@
 
 class UsersController < ApplicationController
+  before_filter :authorized_user, only: [:show ]
+  before_filter :admin_user, only: [:index, :new, :edit, :create, :update, :destroy ]
+
+
   # GET /users
   # GET /users.json
   def index
@@ -14,6 +18,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
     # Get base API Connection
     @graph  = Koala::Facebook::API.new(session[:access_token])
 
@@ -92,5 +97,22 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
+  def authorized_user
+    if (session[:user_id].to_s == "")
+      redirect_to '/unauthorized'
+    else
+      if (params[:id].to_s != session[:user_id].to_s)
+        redirect_to '/unauthorized'
+      end
+    end
+  end
+
+  def admin_user
+    redirect_to '/unauthorized'
+  end
+
 
 end

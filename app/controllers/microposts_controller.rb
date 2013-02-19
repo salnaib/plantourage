@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
 
+
   def addcomment
 
     @micropost = Micropost.new(params[:micropost])
@@ -10,5 +11,14 @@ class MicropostsController < ApplicationController
     @micropost.save
 
   end
+
+  protected
+
+  def authorized_user
+    if (session[:user_id].to_s == "")
+      redirect_to '/unauthorized'
+    end
+  end
+
 
 end
