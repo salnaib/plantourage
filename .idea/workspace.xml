@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="" />
+    <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/static_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/static_controller.rb" />
+    </list>
     <ignored path="plantourage.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +27,7 @@
       <file leaf-file-name="static_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/static_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="4" selection-start="1434" selection-end="1434" vertical-scroll-proportion="0.33333334">
+            <state line="14" column="25" selection-start="560" selection-end="560" vertical-scroll-proportion="0.35326087">
               <folding />
             </state>
           </provider>
@@ -138,9 +140,9 @@
         <option value="$PROJECT_DIR$/app/controllers/points_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/plans_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/suggestions_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/static_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/plans/show.html.erb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/static_controller.rb" />
       </list>
     </option>
   </component>
@@ -730,7 +732,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/static_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="4" selection-start="1434" selection-end="1434" vertical-scroll-proportion="0.33333334">
+        <state line="14" column="25" selection-start="560" selection-end="560" vertical-scroll-proportion="0.35326087">
           <folding />
         </state>
       </provider>
