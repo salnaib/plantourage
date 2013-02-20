@@ -52,7 +52,7 @@
       <% @friends.each do |friend| %>
         <% if (Invite.find_by_facebookid_and_plan_id(friend['id'], @plan.id).nil?) %>
           <tr id="<%= friend['id'] %>">
-            <td><input type="checkbox" id="<%= friend['id'] %>" class="friend_check" value="<%= friend['name'] %>"></td>
+            <td><input type="checkbox" id="<%= friend['id'] %>" class="friend_check" value="<%= friend['name'] %>">  </td>
             <td><img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>"></td>
             <td><%= friend['name'] %></td>
           </tr>
