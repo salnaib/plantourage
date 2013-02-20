@@ -52,7 +52,6 @@ class StaticController < ApplicationController
 
     # Get public details of current application
     @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
-    graph = @FBGraph.get_object("#{user.fb_user_id}?fields=id,name,username,picture,link")
 
     if session[:access_token]
       @user    = @graph.get_object("me")
