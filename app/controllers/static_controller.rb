@@ -48,12 +48,13 @@ class StaticController < ApplicationController
   def landing
 
     # Get base API Connection
-    @graph  = Koala::Facebook::API.new(session[:access_token])
+    @graph  = Koala::Facebook::API.new()
 
     # Get public details of current application
     @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
     if session[:access_token]
+      @graph  = Koala::Facebook::API.new(session[:access_token])
       @user    = @graph.get_object("me")
       #@friends = @graph.get_connections('me', 'friends')
       #@photos  = @graph.get_connections('me', 'photos')
