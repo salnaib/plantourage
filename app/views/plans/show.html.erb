@@ -14,19 +14,16 @@
 
     <input id="closevenue" type="button" value="Close">
 
-    <table>
-      <tr>
-        <th></th>
-        <th></th>
-        <th>Name</th>
-      </tr>
-
+    <table bgcolor="black">
+        <tr>
+          <td>Select</td>
+        </tr>
       <% @venues.each do |venue| %>
           <% if (Suggestion.find_by_venue_id_and_plan_id(venue.id, @plan.id).nil?) %>
           <tr id="<%= venue.id %>">
             <td><input type="checkbox" id="<%= venue.id %>" class="venue_check"></td>
-            <td><img src="<%= venue.image %>" alt=""></td>
-            <td><%= venue.name %></td>
+            <td align="left"><a href="<%= venue.website %>" title="<%= venue['name'] %>" target="_blank"><img src="<%= venue.image %>" alt=""></a></td>
+            <td align="left"><a href="<%= venue.website %>" title="<%= venue['address'] %>" target="_blank"><%= venue.name %></a></td>
           </tr>
           <% end %>
     <% end %>
@@ -42,19 +39,17 @@
 
     <input id="closeinvite" type="button" value="Close">
 
-    <table>
+    <table bgcolor="black">
       <tr>
-        <th></th>
-        <th></th>
-        <th>Name</th>
+        <td>Select</td>
       </tr>
 
       <% @friends.each do |friend| %>
         <% if (Invite.find_by_facebookid_and_plan_id(friend['id'], @plan.id).nil?) %>
           <tr id="<%= friend['id'] %>">
             <td><input type="checkbox" id="<%= friend['id'] %>" class="friend_check" value="<%= friend['name'] %>">  </td>
-            <td><img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>"></td>
-            <td><%= friend['name'] %></td>
+            <td align="left"><img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>"></td>
+            <td align="left"><%= friend['name'] %></td>
           </tr>
         <% end %>
       <% end %>
@@ -63,7 +58,7 @@
     </body>
   </form>
 
-  <form id="show_comments_form" style="display:none">
+  <form id="show_comments_form" style="display:none" >
     <body>
     <table>
       <tr><td><h3>Showing discussion for <%= @plan['name'] %><br> (<%= pluralize(@plan.microposts.count, 'comment') %>)</h3></td></tr>
@@ -121,7 +116,7 @@
   <br>
   <table id="plan_voting_table">
     <thead>
-    <th><input id="showcomments" type="button" value="View Discussion"></th>
+    <th><input id="showcomments" type="button" value="View Discussion"><br>(<%= pluralize(@plan.microposts.count, 'comment') %>)</th>
     <th></th>
     <th></th>
     <th span=100%>
@@ -153,7 +148,11 @@
     <% @suggestions.each do |suggestion| %>
     <tr>
       <td align="left">
-        <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank"><img src="<%= suggestion.venue.image %>" width="140" height="70"><%= suggestion.venue.name %></a>
+        <% if (!suggestion.venue.image.blank?) %>
+            <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank"><img src="<%= suggestion.venue.image %>" width="140" height="70"></a> <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['address'] %>" target="_blank"><%= suggestion.venue.name %></a>
+        <% else %>
+            <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['address'] %>" target="_blank"><%= suggestion.venue.name %></a>
+        <% end %>
       </td>
       <td><font id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </font></td>
       <td>

@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "custom/styles" %>
 
+
 <div id="container">
 
 <%= render :partial => 'layouts/header' %>
@@ -59,7 +60,11 @@
     <td align="center"><%= plan.invites.count - 1 %></td>
     <td valign="center">
       <% if (!plan.toppick.nil?) %>
-          <a href="<%= plan.toppick.venue.website %>" title="<%= plan.toppick.venue['name'] %>" target="_blank"><img src="<%= plan.toppick.venue.image %>" width="140" height="70"></a>
+          <% if (!plan.toppick.venue.image.blank?) %>
+            <a href="<%= plan.toppick.venue.website %>" title="<%= plan.toppick.venue['name'] %>" target="_blank"><img src="<%= plan.toppick.venue.image %>" width="140" height="70"></a>
+          <% else %>
+              <a href="<%= plan.toppick.venue.website %>" title="<%= plan.toppick.venue['name'] %>" target="_blank"><%= plan.toppick.venue['name'] %></a>
+          <% end %>
       <% end %>
     </td>
     <td align="center"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', plan.id, current_user['id']]) %></td>
