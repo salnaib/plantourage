@@ -44,11 +44,13 @@ class SuggestionsController < ApplicationController
   # POST /suggestions
   # POST /suggestions.json
   def create
-    @suggestion = Suggestion.new(params[:suggestion])
-    @suggestion.plan_id = params['plan_id']
-    @suggestion.venue_id = params['venue_id']
+    if (Suggestion.find_by_venue_id_and_plan_id(params['venue_id'], params['plan_id']).nil?)
+      @suggestion = Suggestion.new(params[:suggestion])
+      @suggestion.plan_id = params['plan_id']
+      @suggestion.venue_id = params['venue_id']
 
-    @suggestion.save
+      @suggestion.save
+    end
 
   end
 

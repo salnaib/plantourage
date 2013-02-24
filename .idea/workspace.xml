@@ -2,107 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\BG3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\application-08e21ee85b01835e4195142f44d710e4.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\application-08e21ee85b01835e4195142f44d710e4.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\application-b2b00148f0a2a072227054c2768dbf34.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\application-b2b00148f0a2a072227054c2768dbf34.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\application.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\application.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\application.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\application.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\coffee-script-929662a1244e45ad574a319735027383.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\coffee-script-929662a1244e45ad574a319735027383.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\coffee-script.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\coffee-script.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\footer.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\footer.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\header.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\header.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\landing.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\landing.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\newplan.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\newplan.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\plan.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\plan.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\styles.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\styles.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\venues.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\custom\venues.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\facebook.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\facebook.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\invites.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\invites.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\invites.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\invites.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery-ui.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery-ui.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery-ui.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery-ui.min.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery.min.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery_ujs.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\jquery_ujs.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\manifest.yml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\plans-af3cd5f1e357855503f92f3e96bb8dcc.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\plans-af3cd5f1e357855503f92f3e96bb8dcc.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\plans.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\plans.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\plans.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\plans.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\points.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\points.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\points.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\points.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\rails.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\scaffolds.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\scaffolds.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\static.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\static.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\static.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\static.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\suggestions.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\suggestions.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\suggestions.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\suggestions.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\users.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\users.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\users.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\users.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\venues.css" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\venues.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\venues.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Work\Rails_Projects\plantourage\public\assets\venues.js.gz" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/custom/footer-b6b5aec2f449d58729dd88a17c6bea70.css.gz" afterPath="$PROJECT_DIR$/public/assets/custom/footer-b6b5aec2f449d58729dd88a17c6bea70.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/custom/header-88de4495d78703f42edb8af175093cbc.css.gz" afterPath="$PROJECT_DIR$/public/assets/custom/header-88de4495d78703f42edb8af175093cbc.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/custom/landing-8ab777ee46cbee59b1ab7f5644b7d171.css.gz" afterPath="$PROJECT_DIR$/public/assets/custom/landing-8ab777ee46cbee59b1ab7f5644b7d171.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/custom/newplan-1b13569e9620782f423d4cd3ce931750.css.gz" afterPath="$PROJECT_DIR$/public/assets/custom/newplan-1b13569e9620782f423d4cd3ce931750.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/custom/plan-62b44df41b1061ffd6796109e157ba76.css.gz" afterPath="$PROJECT_DIR$/public/assets/custom/plan-62b44df41b1061ffd6796109e157ba76.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/custom/styles-1166fbd8a0059689ffac2b7cfc546461.css.gz" afterPath="$PROJECT_DIR$/public/assets/custom/styles-1166fbd8a0059689ffac2b7cfc546461.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/custom/venues-8e1db24f7c7ff02cdfab9944ea56dcf4.css.gz" afterPath="$PROJECT_DIR$/public/assets/custom/venues-8e1db24f7c7ff02cdfab9944ea56dcf4.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/facebook-ff0c28b6611b1c59afd9d71e2e8b2e97.js.gz" afterPath="$PROJECT_DIR$/public/assets/facebook-ff0c28b6611b1c59afd9d71e2e8b2e97.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/invites-1b13569e9620782f423d4cd3ce931750.css.gz" afterPath="$PROJECT_DIR$/public/assets/invites-1b13569e9620782f423d4cd3ce931750.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/invites-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" afterPath="$PROJECT_DIR$/public/assets/invites-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/jquery-5739b236560a83168e08c84cee525cb8.js.gz" afterPath="$PROJECT_DIR$/public/assets/jquery-5739b236560a83168e08c84cee525cb8.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/jquery-ui-582872f94cee2c9f6df9ff7cf4ffeedc.js.gz" afterPath="$PROJECT_DIR$/public/assets/jquery-ui-582872f94cee2c9f6df9ff7cf4ffeedc.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/jquery-ui.min-6c4954e0b38552840836151c5301d8c1.js.gz" afterPath="$PROJECT_DIR$/public/assets/jquery-ui.min-6c4954e0b38552840836151c5301d8c1.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/jquery.min-4e6726826e7da2946e0059afba982849.js.gz" afterPath="$PROJECT_DIR$/public/assets/jquery.min-4e6726826e7da2946e0059afba982849.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/jquery_ujs-bdd81265ac6a75e11022cd4a01fffad7.js.gz" afterPath="$PROJECT_DIR$/public/assets/jquery_ujs-bdd81265ac6a75e11022cd4a01fffad7.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/plans-d6e4319eff9e66d42d799ea15df045f3.css.gz" afterPath="$PROJECT_DIR$/public/assets/plans-d6e4319eff9e66d42d799ea15df045f3.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/points-1b13569e9620782f423d4cd3ce931750.css.gz" afterPath="$PROJECT_DIR$/public/assets/points-1b13569e9620782f423d4cd3ce931750.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/points-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" afterPath="$PROJECT_DIR$/public/assets/points-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/scaffolds-4e1c83aee4efc6dfda6f86e06a0bab7e.css.gz" afterPath="$PROJECT_DIR$/public/assets/scaffolds-4e1c83aee4efc6dfda6f86e06a0bab7e.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/static-1b13569e9620782f423d4cd3ce931750.css.gz" afterPath="$PROJECT_DIR$/public/assets/static-1b13569e9620782f423d4cd3ce931750.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/static-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" afterPath="$PROJECT_DIR$/public/assets/static-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/suggestions-1b13569e9620782f423d4cd3ce931750.css.gz" afterPath="$PROJECT_DIR$/public/assets/suggestions-1b13569e9620782f423d4cd3ce931750.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/suggestions-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" afterPath="$PROJECT_DIR$/public/assets/suggestions-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/users-9568645187d6ea76fd48a818b1e43f90.css.gz" afterPath="$PROJECT_DIR$/public/assets/users-9568645187d6ea76fd48a818b1e43f90.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/users-b642c7c673a6588a713532c7873a1c3d.js.gz" afterPath="$PROJECT_DIR$/public/assets/users-b642c7c673a6588a713532c7873a1c3d.js.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/venues-1b13569e9620782f423d4cd3ce931750.css.gz" afterPath="$PROJECT_DIR$/public/assets/venues-1b13569e9620782f423d4cd3ce931750.css.gz" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/venues-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" afterPath="$PROJECT_DIR$/public/assets/venues-9d3dfcd9dde5bcffc639a1ec3c40dd8e.js.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/suggestions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/suggestions_controller.rb" />
     </list>
     <ignored path="plantourage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,17 +24,7 @@
     <favorites_list name="plantourage" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="plans.js.coffee" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="0" selection-start="4059" selection-end="4059" vertical-scroll-proportion="3.1503496">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -146,12 +37,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/venues_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/invites_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/microposts_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/points_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/plans_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/suggestions_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130221040322_add_init_venue_data.rb" />
         <option value="$PROJECT_DIR$/app/views/static/landing.html.erb" />
@@ -162,6 +51,8 @@
         <option value="$PROJECT_DIR$/app/views/plans/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/controllers/suggestions_controller.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130224031957_addmissingvenues.rb" />
       </list>
     </option>
   </component>
@@ -228,7 +119,57 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plantourage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plantourage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plantourage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plantourage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plantourage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plantourage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -481,16 +422,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/venues_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="90" selection-start="139" selection-end="139" vertical-scroll-proportion="0.030088495" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="4" selection-start="853" selection-end="853" vertical-scroll-proportion="0.6730769" />
@@ -499,11 +430,6 @@
     <entry file="file://$PROJECT_DIR$/script/rails">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20130221040322_add_init_venue_data.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="48" selection-start="48122" selection-end="48122" vertical-scroll-proportion="0.68356645" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
@@ -548,13 +474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/invites_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="58" selection-start="490" selection-end="490" vertical-scroll-proportion="0.529304">
@@ -579,6 +498,34 @@
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="106" column="0" selection-start="4059" selection-end="4059" vertical-scroll-proportion="3.1503496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/invites_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="42" selection-start="1145" selection-end="1145" vertical-scroll-proportion="0.6683761">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130221040322_add_init_venue_data.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="230" selection-start="62" selection-end="288" vertical-scroll-proportion="0.05944056">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130224031957_addmissingvenues.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="4" selection-start="282" selection-end="282" vertical-scroll-proportion="0.08916084">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/suggestions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="48" selection-start="1209" selection-end="1209" vertical-scroll-proportion="0.5521368">
           <folding />
         </state>
       </provider>
