@@ -22,7 +22,8 @@
               <% if !(@invites.empty?) %>
               exclude_ids: '<% @invites.each do |invite| %><%= invite.user.uid %>,<% end %>',
               <% end %>
-              message: 'Hey! We are going out on <%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>,  <%= @plan.plandate.strftime("%Y") %> for <%= @plan.name %>! Log on to Plantourage and help us decide where to go!'
+              title: 'Log onto Plantourage and help us decide!',
+              message: 'Where should we go on <%= @plan.plandate.strftime("%a") %> <%= @plan.plandate.strftime("%b") %> <%= @plan.plandate.strftime("%d") %> for <%= @plan.name %>?'
           }, requestCallback);
       }
 
