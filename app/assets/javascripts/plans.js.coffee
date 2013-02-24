@@ -40,19 +40,12 @@ $ ->
     $("#addvenue_form").fadeIn(1000);
     positionVenuePopup();
 
-  $("#addfriend").click ->
-    $("#addfriends_form").fadeIn(1000);
-    positionInvitePopup();
-
   $("#showcomments").click ->
     $("#show_comments_form").fadeIn(1000);
     positionCommentsPopup();
 
   $("#closevenue").click ->
     $("#addvenue_form").fadeOut(500);
-
-  $("#closeinvite").click ->
-    $("#addfriends_form").fadeOut(500);
 
   $("#closecomments").click ->
     $("#show_comments_form").fadeOut(500);
@@ -71,20 +64,16 @@ $ ->
     $("#addvenue_form").fadeOut(500);
     (window).location = (window).location;
 
-  $("#submitinvite").click ->
-    planid = $("#planid").attr('value')
-    for element in $(".friend_check")
-      if ($(element).attr('checked') == "checked")
-        userfbid = ($(element).attr('id'));
-        username = ($(element).attr('value'));
-        $.ajax
-          url: "/invites"
-          type: "POST"
-          async: false
-          remote: true
-          data: { uid: userfbid, plan_id: planid, name: username }
-    $("#addfriends_form").fadeOut(500);
-    (window).location = (window).location;
+  $("#invited_user_id").click ->
+    planid = $("#planid").attr('value');
+    userfbid = $(this).attr('value');
+    username = $("#invited_user_name").attr('value');
+    $.ajax
+      url: "/invites"
+      type: "POST"
+      async: false
+      remote: true
+      data: { uid: userfbid, plan_id: planid, name: username }
 
   $("#add_comment").click ->
     planid = $("#planid").attr('value');
@@ -107,15 +96,6 @@ $ ->
       position:'absolute'
     });
 
-  positionInvitePopup = () ->
-    if (!$("#addfriends_form").is(':visible'))
-      return;
-    $("#addfriends_form").css({
-    left: ($(window).width() - $('#addfriends_form').width()) / 2,
-    top: ($(window).width() - $('#addfriends_form').width()) / 7,
-    position:'absolute'
-    });
-
   positionCommentsPopup = () ->
     if (!$("#show_comments_form").is(':visible'))
       return;
@@ -124,27 +104,3 @@ $ ->
     top: ($(window).width() - $('#show_comments_form').width()) / 7,
     position:'absolute'
     });
-
-#    $(".venue_check").click ->
-#      planid = $("#planid").attr('value')
-#      venueid = ($(this).attr('id'));
-#      $.ajax
-#        url: "/suggestions"
-#        type: "POST"
-#        data: { venue_id: venueid, plan_id: planid }
-#        error: (jqXHR, textStatus, errorThrown) ->
-#          alert(jqXHR + textStatus + errorThrown)
-#        success: (data, textStatus, jqXHR) ->
-#          alert("Successful AJAX call: #{data}")
-
-#  $("#submitvenue").click ->
-#    planid = $("#planid").attr('value');
-#    for element in $(".venue_check")
-#      if ($(element).attr('checked') == "checked")
-#        venueid = ($(element).attr('id'));
-#        $.ajax
-#          url: "/suggestions"
-#          type: "POST"
-#          data: { venue_id: venueid, plan_id: planid }
-#    $("#addvenue_form").fadeOut(500);
-#    (window).location.reload();

@@ -6,6 +6,49 @@
 
 <div id="plan_details">
   <div id="fb-root"></div>
+
+  <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+  <script>
+      FB.init({
+          appId  : '<%= ENV["FACEBOOK_APP_ID"] %>',
+          frictionlessRequests: true
+      });
+
+      function sendRequestViaMultiFriendSelector() {
+          FB.ui({method: 'apprequests',
+              display: 'iframe',
+              from: '<%= current_user.uid %>',
+              <% if !(@invites.empty?) %>
+              exclude_ids: '<% @invites.each do |invite| %><%= invite.user.uid %>,<% end %>',
+              <% end %>
+              message: 'Hey! We are going out on <%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>,  <%= @plan.plandate.strftime("%Y") %> for <%= @plan.name %>! Log on to Plantourage and help us decide where to go!'
+          }, requestCallback);
+      }
+
+      function requestCallback(response) {
+          if (response && response.request && response.to) {
+              FB.api('/me/friends/', function(res) {
+                  var planid = document.getElementById('planid').value;
+                  for (var i = 0; i < response.to.length; ++i)
+                  {
+                      //"ids[i]" is what you want.
+                      document.getElementById("invited_user_id").value = response.to[i];
+                      for(var j = 0; j < res.data.length; j++) {
+                          document.getElementById("friend_user_id").value = res.data[j].id;
+                          if (document.getElementById("invited_user_id").value == document.getElementById("friend_user_id").value) {
+                              document.getElementById("invited_user_name").value = res.data[j].name;
+                              document.getElementById("invited_user_id").click();
+                          }
+                      }
+                  }
+                  (window).location = (window).location;
+              });
+          }
+      }
+
+  </script>
+
   <form id="addvenue_form" style="display:none">
     <body>
     <h2>Listing venues for <%= @plan.name %></h2>
@@ -27,32 +70,6 @@
           </tr>
           <% end %>
     <% end %>
-    </table>
-
-    </body>
-  </form>
-  <form id="addfriends_form" style="display:none">
-    <body>
-    <h2>Listing friends for <%= current_user['name'] %></h2>
-
-    <input id="submitinvite" type="button" value="Submit">
-
-    <input id="closeinvite" type="button" value="Close">
-
-    <table bgcolor="black">
-      <tr>
-        <td>Select</td>
-      </tr>
-
-      <% @friends.each do |friend| %>
-        <% if (Invite.find_by_facebookid_and_plan_id(friend['id'], @plan.id).nil?) %>
-          <tr id="<%= friend['id'] %>">
-            <td><input type="checkbox" id="<%= friend['id'] %>" class="friend_check" value="<%= friend['name'] %>">  </td>
-            <td align="left"><img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>"></td>
-            <td align="left"><%= friend['name'] %></td>
-          </tr>
-        <% end %>
-      <% end %>
     </table>
 
     </body>
@@ -120,7 +137,10 @@
     <th></th>
     <th></th>
     <th span=100%>
-      <input id="addfriend" type="button" value="Add Friends">
+      <input id="addfriend" type="button" value="Add Friends" onclick="sendRequestViaMultiFriendSelector(); return false;">
+      <input type="text" hidden=true id="invited_user_id"/>
+      <input type="text" hidden=true id="friend_user_id"/>
+      <input type="text" hidden=true id="invited_user_name"/>
       <br>
       <b>Friends</b>
     </th>
