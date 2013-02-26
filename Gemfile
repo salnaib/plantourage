@@ -27,8 +27,6 @@ group :production do
   gem 'pg', '0.12.2'
 end
 
-source :gemcutter
-
 gem 'sinatra'
 gem 'koala'
 gem 'json'
