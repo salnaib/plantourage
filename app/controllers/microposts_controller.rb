@@ -12,6 +12,14 @@ class MicropostsController < ApplicationController
 
   end
 
+  def deletecomment
+
+    @micropost = Micropost.find(params['comment_id'])
+
+    @micropost.destroy
+
+  end
+
   protected
 
   def authorized_user

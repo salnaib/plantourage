@@ -76,12 +76,12 @@
     </body>
   </form>
 
-  <form id="show_comments_form" style="display:none" >
+  <form id="show_comments_form" style="display:none">
     <body>
-    <table>
-      <tr><td><h3>Showing discussion for <%= @plan['name'] %><br> (<%= pluralize(@plan.microposts.count, 'comment') %>)</h3></td></tr>
+    <table width=100% bgcolor=black >
+      <tr><td align=center><h3>Showing discussion for <%= @plan['name'] %><br> (<%= pluralize(@plan.microposts.count, 'comment') %>)</h3></td></tr>
       <tr>
-        <td>
+        <td align=center>
           <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment"><input id="closecomments" type="button" value="Close">
 
           <input hidden=true id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
@@ -94,12 +94,17 @@
                 <tr padding="2">
                   <td valign="top" align="left">
                     <a href="http://www.facebook.com/<%= micropost.invite.user.uid %>" target="_blank" title="<%= micropost.invite.user.name %>">
-                      <img src="https://graph.facebook.com/<%= micropost.invite.user.uid %>/picture?type=small" alt="<%= micropost.invite.user.name %>" width="28" height="28">
+                      <img src="https://graph.facebook.com/<%= micropost.invite.user.uid %>/picture?type=normal" alt="<%= micropost.invite.user.name %>" width="45" height="45">
                     </a>
                   </td>
-                  <td valign="top" align="left">
+                  <td width="100%" valign="top" align="left">
                     <%= micropost.content %>
                   </td>
+                  <% if (micropost.invite.user.id == current_user.id) %>
+                  <td width="100%" valign="middle" align="right">
+                    <input id="delete_comment" type="button" value="Delete" alt="<%= micropost.id %>">
+                  </td>
+                  <% end %>
                 </tr>
               </table>
             </td>

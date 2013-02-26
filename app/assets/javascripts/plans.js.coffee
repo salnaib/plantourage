@@ -87,6 +87,16 @@ $ ->
       data: { plan_id: planid, content: content, invite_id: inviteid }
     (window).location = (window).location;
 
+  $("#delete_comment").click ->
+    commentid = $(this).attr('alt');
+    $.ajax
+      url: "/micropost/deletecomment"
+      type: "GET"
+      async: false
+      remote: true
+      data: { comment_id: commentid }
+    (window).location = (window).location;
+
   positionVenuePopup = () ->
     if (!$("#addvenue_form").is(':visible'))
       return;
