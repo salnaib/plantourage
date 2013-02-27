@@ -32,12 +32,12 @@ a:visited{
     color:#FDD017;
 }
 a:hover{
-    color:#FDD017;
+    color:purple;
 }
 a:focus{
-    color:#FDD017;
+    color:purple;
 }
 a:active{
-    color:#FDD017;
+    color:purple;
 }
 

@@ -13,6 +13,7 @@ Plantourage::Application.routes.draw do
   match 'point/removepoint' => 'points#removepoint'
   match 'micropost/addcomment' => 'microposts#addcomment'
   match 'micropost/deletecomment' => 'microposts#deletecomment'
+  match 'plans/change' => 'plans#change'
 
   resources :invites
 

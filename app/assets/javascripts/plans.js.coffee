@@ -36,6 +36,18 @@ $ ->
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) + 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) + 1) + " Points");
 
+  $("#updateplan").click ->
+    planid = $("#planid").attr('value');
+    plandate = $("#plan_date").attr('value');
+    planname = $("#plan_name").attr('value');
+    $.ajax
+      url: "/plans/change"
+      type: "GET"
+      async: false
+      remote: true
+      data: { id: planid, plan_name: planname, plan_date: plandate }
+    (window).location = (window).location;
+
   $("#addvenue").click ->
     $("#addvenue_form").fadeIn(1000);
     positionVenuePopup();

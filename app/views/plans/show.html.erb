@@ -117,14 +117,14 @@
   <table border=none width=70% id="plan_details_table">
     <tr>
       <td align="left"><b>Plan Date:</b></td>
-      <td align="left"><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></td>
+      <td align="left"><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %> <input id="plan_date" type="date"></td>
     </tr>
     <tr>
       <td align="left"><b>Plan Name:</b></td>
-      <td align="left"><%= @plan.name %></td>
+      <td align="left"><input id="plan_name" type="input" maxlength="20" value="<%= @plan.name %>"></td>
     </tr>
     <tr>
-      <td><input id="planid" value="<%= @plan.id %>" hidden=true></td>
+      <td align="left" valign="top"><input id="updateplan" type="button" value="Save"><input id="planid" value="<%= @plan.id %>" hidden=true></td>
     </tr>
   </table>
 

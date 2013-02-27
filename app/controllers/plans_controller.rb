@@ -59,7 +59,11 @@ class PlansController < ApplicationController
 
     @plan = Plan.new(params[:plan])
     @plan['name'] = params[:name]
-    @plan['plandate'] = params[:plandate]
+    if (params[:plandate].blank?)
+      @plan['plandate'] = Date.today
+    else
+      @plan['plandate'] = params[:plandate]
+    end
 
     @plan.save
 
@@ -85,6 +89,18 @@ class PlansController < ApplicationController
         format.json { render json: @plan.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def change
+    @plan = Plan.find(params[:id])
+
+    @plan['name'] = params[:plan_name]
+    if !(params[:plan_date].blank?)
+      @plan['plandate'] = params[:plan_date]
+    end
+
+    @plan.save
+
   end
 
   # DELETE /plans/1
