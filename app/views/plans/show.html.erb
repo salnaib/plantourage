@@ -173,7 +173,7 @@
     <tbody>
     <% @suggestions.each do |suggestion| %>
     <tr>
-      <td align="left">
+      <td align="left" valign="top">
         <% if (!suggestion.venue.image.blank?) %>
             <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank"><img src="<%= suggestion.venue.image %>" width="140" height="70"></a> <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['address'] %>" target="_blank"><%= suggestion.venue.name %></a>
         <% else %>
