@@ -48,6 +48,13 @@ $ ->
       data: { id: planid, plan_name: planname, plan_date: plandate }
     (window).location = (window).location;
 
+  $("#plan_date").change ->
+    today = new Date();
+    newdate = new Date($("#plan_date").attr('value').split("-")[0], $("#plan_date").attr('value').split("-")[1] - 1, $("#plan_date").attr('value').split("-")[2]);
+    if (newdate < today)
+      alert("Date cannot be earlier than today");
+      $("#plan_date").val("");
+
   $("#addvenue").click ->
     $("#addvenue_form").fadeIn(1000);
     positionVenuePopup();

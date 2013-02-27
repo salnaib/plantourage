@@ -20,6 +20,13 @@ $ ->
     $("#newplan_form").fadeOut(500);
     (window).location = (window).location;
 
+  $("#plan_date").change ->
+    today = new Date();
+    newdate = new Date($("#plan_date").attr('value').split("-")[0], $("#plan_date").attr('value').split("-")[1] - 1, $("#plan_date").attr('value').split("-")[2]);
+    if (newdate < today)
+      alert("Date cannot be earlier than today");
+      $("#plan_date").val("");
+
   positionNewPlanPopup = () ->
     if (!$("#newplan_form").is(':visible'))
       return;

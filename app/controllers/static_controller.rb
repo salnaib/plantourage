@@ -48,11 +48,7 @@ class StaticController < ApplicationController
   def landing
 
     # Get base API Connection
-    if (session[:access_token].blank?)
-      @graph  = Koala::Facebook::API.new
-    else
-      @graph  = Koala::Facebook::API.new(session[:access_token])
-    end
+    @graph  = Koala::Facebook::API.new(session[:access_token])
 
     # Get public details of current application
     @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
@@ -65,6 +61,8 @@ class StaticController < ApplicationController
 
       # for other data you can always run fql
       #@friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
+    else
+      redirect '/auth/facebook'
     end
 
   end
