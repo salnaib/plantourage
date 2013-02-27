@@ -27,7 +27,7 @@ class PlansController < ApplicationController
 
     @graph  = Koala::Facebook::API.new(session[:access_token])
     # Get public details of current application
-    @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+    #@app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
     @friends = @graph.get_connections('me', 'friends').sort_by { |obj| obj['name'] }
 

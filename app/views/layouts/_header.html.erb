@@ -4,20 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
 
-  <title><%= @app['name'] %></title>
+  <title>Plantourage</title>
 
   <!-- These are Open Graph tags.  They add meta data to your  -->
   <!-- site that facebook uses when your content is shared     -->
   <!-- over facebook.  You should fill these tags in with      -->
   <!-- your data.  To learn more about Open Graph, visit       -->
   <!-- 'https://developers.facebook.com/docs/opengraph/'       -->
-  <meta property="og:title" content="<%= @app['name'] %>" />
+  <meta property="og:title" content="Plantourage" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="<%= url %>" />
   <meta property="og:image" content="<%= url('images/LOGOOO.png') %>" />
-  <meta property="og:site_name" content="<%= @app['name'] %>" />
+  <meta property="og:site_name" content="Plantourage" />
   <meta property="og:description" content="" />
-  <meta property="fb:app_id" content="<%= @app['name'] %>" />
+  <meta property="fb:app_id" content="Plantourage" />
 
   <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
 
@@ -121,7 +121,7 @@
   <script type="text/javascript">
       window.fbAsyncInit = function() {
           FB.init({
-              appId      : "<%= @app['id'] %>",                     // App ID
+              appId      : "<%= ENV["FACEBOOK_APP_ID"] %>",                     // App ID
               channelUrl : "<%= url_no_scheme('/channel.html') %>", // Channel File
               status     : true,                                    // check login status
               cookie     : true,                                    // enable cookies to allow the server to access the session
