@@ -37,15 +37,15 @@
   </form>
 
 
-  <input id="userid" value="<%= current_user.id %>" hidden=true>
-  <h2>You have <%= pluralize(@upcoming_plans.count, 'plan') %> coming up!</h2>
+  <input id="userid" value="<%= current_user.id %>" type="hidden">
+  <h2>You have <div id="plans_count" style="display: inline;"><%= pluralize(@upcoming_plans.count, 'plan') %></div> coming up!</h2>
   <br>
   <input id="newplan" type="button" value="Start New Plan">
   <br>
 
   <table id="plans_table" >
   <thead>
-    <td><b><font color="purple">Plan Date</font></b></td>
+    <td><b>Plan Date</b></td>
     <td><b>Plan Name</b></td>
     <td><b># of friends</b></td>
     <td><b>Top Pick</b></td>

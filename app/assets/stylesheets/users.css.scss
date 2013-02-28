@@ -6,9 +6,9 @@
   position: absolute;
   border: 5px solid gray;
   padding: 10px;
-  background: #E5E4E2;
+  background: black;
   width: 600px;
-  height: 300px;
+  height: 225px;
   overflow: auto;
 }
 
@@ -24,15 +24,23 @@
 
 #plans_table {
   background-color: black;
+  border-collapse:collapse;
+  width:100%;
 }
 
-#plans_table thead th {
-  font-size: 20px;
-  border-bottom: 1px solid #E5E4E2;
-  padding: 10px;
+#plans_table thead {
+  background-color: purple;
 }
 
-#plans_table td {
+#plans_table thead td {
   font-size: 17px;
   padding: 15px;
+  border: 1px solid purple;
+}
+
+#plans_table tr td {
+  font-size: 17px;
+  padding: 15px;
+  border: 1px solid purple;
+
 }

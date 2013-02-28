@@ -17,6 +17,8 @@ $ ->
       else
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) - 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) - 1) + " Points");
+    else
+      alert('You have no more points to vote with. Remove points from another venue to be able to add to this venue');
 
   $(".removepointfrom").click ->
     suggestionid = ($(this).attr('id'));
@@ -35,6 +37,15 @@ $ ->
       else
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) + 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) + 1) + " Points");
+    else
+      alert('You have no points to remove from this venue.');
+
+  $("#changeplan").click ->
+    $("#updateplan_form").fadeIn(1000);
+    positionUpdatePlanPopup();
+
+  $("#closeupdateplan").click ->
+    $("#updateplan_form").fadeOut(500);
 
   $("#updateplan").click ->
     planid = $("#planid").attr('value');
@@ -121,7 +132,7 @@ $ ->
       return;
     $("#addvenue_form").css({
       left: ($(window).width() - $('#addvenue_form').width()) / 2,
-      top: ($(window).width() - $('#addvenue_form').width()) / 7,
+      top: ($(window).width() - $('#addvenue_form').width()) / 15,
       position:'absolute'
     });
 
@@ -130,6 +141,16 @@ $ ->
       return;
     $("#show_comments_form").css({
     left: ($(window).width() - $('#show_comments_form').width()) / 2,
-    top: ($(window).width() - $('#show_comments_form').width()) / 7,
+    top: ($(window).width() - $('#show_comments_form').width()) / 15,
     position:'absolute'
     });
+
+  positionUpdatePlanPopup = () ->
+    if (!$("#updateplan_form").is(':visible'))
+      return;
+    $("#updateplan_form").css({
+    left: ($(window).width() - $('#updateplan_form').width()) / 2,
+    top: ($(window).width() - $('#updateplan_form').width()) / 7,
+    position:'absolute'
+    });
+

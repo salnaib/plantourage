@@ -18,4 +18,10 @@
     left: 420px;
 }
 
+#container body {
+    background-image: url('/images/BG3.jpg');
+    background-size: 100%;
+
+}
+
 

@@ -52,12 +52,12 @@
 
   <form id="addvenue_form" style="display:none">
     <body>
+    <div id="addvenue_form_head">
     <h2>Listing venues for <%= @plan.name %></h2>
-
     <input id="submitvenue" type="button" value="Submit">
-
     <input id="closevenue" type="button" value="Close">
-
+    </div>
+    <div id="addvenue_form_content">
     <table bgcolor="black">
         <tr>
           <td>Select</td>
@@ -66,27 +66,36 @@
           <% if (Suggestion.find_by_venue_id_and_plan_id(venue.id, @plan.id).nil?) %>
           <tr id="<%= venue.id %>">
             <td><input type="checkbox" id="<%= venue.id %>" class="venue_check"></td>
-            <td align="left"><a href="<%= venue.website %>" title="<%= venue['name'] %>" target="_blank"><img src="<%= venue.image %>" alt=""></a></td>
+            <% if !(venue.image.blank?) %>
+            <td align="left"><a href="<%= venue.website %>" title="<%= venue['name'] %>" target="_blank"><img src="<%= venue.image %>" alt="" height="50" width="150"></a></td>
+            <% else %>
+            <td align="left"></td>
+            <% end %>
             <td align="left"><a href="<%= venue.website %>" title="<%= venue['address'] %>" target="_blank"><%= venue.name %></a></td>
           </tr>
           <% end %>
     <% end %>
     </table>
 
+    </div>
     </body>
   </form>
 
   <form id="show_comments_form" style="display:none">
     <body>
-    <table width=100% bgcolor=black >
+    <div id="show_comments_form_head">
+    <table>
       <tr><td align=center><h3>Showing discussion for <%= @plan['name'] %><br> (<%= pluralize(@plan.microposts.count, 'comment') %>)</h3></td></tr>
       <tr>
         <td align=center>
           <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment"><input id="closecomments" type="button" value="Close">
-
-          <input hidden=true id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
+          <input type="hidden" id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
         </td>
       </tr>
+      </table>
+      </div>
+    <div id="show_comments_form_content">
+      <table>
       <% @microposts.each do |micropost| %>
           <tr>
             <td valign="top" align="left">
@@ -111,20 +120,50 @@
           </tr>
       <% end %>
     </table>
+    </div>
+    </body>
+  </form>
+
+  <form id="updateplan_form" style="display:none">
+    <body>
+    <h1>Update plan</h1>
+
+    <table>
+      <tr>
+        <td>
+          Date:
+        </td>
+        <td>
+          <input id="plan_date" type="date" value="<%= @plan.plandate %>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Name:
+        </td>
+        <td>
+          <input id="plan_name" type="input" maxlength="20" value="<%= @plan.name %>">
+        </td>
+      </tr>
+    </table>
+    <br>
+    <input id="updateplan" type="button" value="Save">
+    <input id="closeupdateplan" type="button" value="Close">
+
     </body>
   </form>
 
   <table border=none width=70% id="plan_details_table">
     <tr>
-      <td align="left"><b>Plan Date:</b></td>
-      <td align="left"><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %> <input id="plan_date" type="date" value="<%= @plan.plandate %>"></td>
+      <td align="left" class="h_text"><b>Plan Date:</b></td>
+      <td align="left"><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %> </td>
     </tr>
     <tr>
-      <td align="left"><b>Plan Name:</b></td>
-      <td align="left"><input id="plan_name" type="input" maxlength="20" value="<%= @plan.name %>"></td>
+      <td align="left" class="h_text"><b>Plan Name:</b></td>
+      <td align="left"><%= @plan.name %></td>
     </tr>
     <tr>
-      <td align="left" valign="top"><input id="updateplan" type="button" value="Save"><input id="planid" value="<%= @plan.id %>" hidden=true><input id="plandate" value="<%= @plan.plandate %>" hidden=true></td>
+      <td align="left" valign="top"><input id="changeplan" type="button" value="Change Details"><input type="hidden" id="planid" value="<%= @plan.id %>"><input id="plandate" value="<%= @plan.plandate %>" type="hidden"></td>
     </tr>
   </table>
 
@@ -142,28 +181,28 @@
     <th><input id="showcomments" type="button" value="View Discussion"><br>(<%= pluralize(@plan.microposts.count, 'comment') %>)</th>
     <th></th>
     <th></th>
-    <th span=100%>
+    <th span=100% align="left">
       <input id="addfriend" type="button" value="Add Friends" onclick="sendRequestViaMultiFriendSelector(); return false;">
-      <input type="text" hidden=true id="invited_user_id"/>
-      <input type="text" hidden=true id="friend_user_id"/>
-      <input type="text" hidden=true id="invited_user_name"/>
+      <input type="hidden" id="invited_user_id"/>
+      <input type="hidden" id="friend_user_id"/>
+      <input type="hidden" id="invited_user_name"/>
       <br>
       <b>Friends</b>
     </th>
     </thead>
 
     <thead>
-    <th width="30%">
+    <th width="450">
       <input id="addvenue" type="button" value="Add Venues">
       <br>
       <b>Venues</b>
     </th>
-    <th width="5%">Total</th>
-    <td><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
+    <th width="40">Total</th>
+    <td width="60"><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
       <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, current_user['id']]) %> Points </div> Left</td>
     <% @invites.each do |invite| %>
         <% if invite.user.id != current_user.id %>
-            <td>
+            <td width="100">
               <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>" width="50" height="50"><br><b><%= invite.user.name %></b></a>
               <br> <%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, invite.id]) %> Points Left</td>
         <% end %>
@@ -180,7 +219,7 @@
             <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['address'] %>" target="_blank"><%= suggestion.venue.name %></a>
         <% end %>
       </td>
-      <td><font id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </font></td>
+      <td class="sugg_totpointcount"><font id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </font></td>
       <td>
         <img src="/images/plus.jpg" class="addpointto" id="<%= suggestion.id %>">
         <font id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, current_user['id']]) %> </font>

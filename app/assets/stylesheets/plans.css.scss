@@ -6,19 +6,31 @@
   position: absolute;
   border: 5px solid gray;
   padding: 10px;
-  background: #E5E4E2;
+  background: black;
   width: 600px;
-  height: 450px;
-  overflow: auto;
+  height: 420px;
 }
 
-#addfriends_form {
+#addvenue_form body {
+  margin: 0px;
+  padding: 100px 0px 0px 0px;
+  overflow: hidden;
+}
+
+#addvenue_form_head {
   position: absolute;
-  border: 5px solid gray;
-  padding: 10px;
-  background: #E5E4E2;
-  width: 600px;
-  height: 450px;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 80px;
+  background-color: purple;
+  overflow: hidden;
+}
+
+#addvenue_form_content {
+  position: absolute;
+  top: 85px;
+  height: 330px;
   overflow: auto;
 }
 
@@ -26,9 +38,50 @@
   position: absolute;
   border: 5px solid gray;
   padding: 10px;
-  background: #E5E4E2;
+  background: #000000;
   width: 600px;
-  height: 450px;
+  height: 420px;
+}
+
+#show_comments_form body {
+  margin: 0px;
+  padding: 100px 0px 0px 0px;
+  overflow: hidden;
+}
+
+#show_comments_form_head {
+  position: absolute;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 200px;
+  background-color: purple;
+  overflow: hidden;
+}
+
+#show_comments_form_head table {
+  width: 500px;
+}
+
+#show_comments_form_content {
+  position: absolute;
+  top: 205px;
+  height: 210px;
+  width: 97%;
+  overflow: auto;
+}
+
+#show_comments_form_content table {
+  width: 500px;
+}
+
+#updateplan_form {
+  position: absolute;
+  border: 5px solid gray;
+  padding: 10px;
+  background: black;
+  width: 600px;
+  height: 225px;
   overflow: auto;
 }
 
@@ -44,26 +97,52 @@
 
 #points_left_table h3{
   font-size: 20px;
+  color: purple;
+}
+
+#totalpoints {
+  color: #FDD017;
 }
 
 #plan_voting_table {
   background-color: black;
-  width: 100%;
+  border-collapse:collapse;
+  width:100%;
 }
 
 #plan_voting_table thead {
+  background-color: purple;
   font-size: 15px;
   padding: 10px;
 }
 
 #plan_voting_table th {
-  font-size: 20px;
-  padding: 10px;
+  font-size: 17px;
+  padding: 15px;
+  border: 1px solid black;
+}
+
+.sugg_totpointcount {
+  background-color: purple;
+  border: 1px solid black;
 }
 
 #plan_voting_table td {
-  font-size: 15px;
-  padding: 10px;
+  font-size: 17px;
+  padding: 15px;
+  border: 1px solid purple;
+}
+
+.h_text {
+  color: purple;
+}
+
+#plans_list h2 {
+  color: purple;
+}
+
+#plans_count {
+  color: #FDD017;
 }
 
 #discussion table {
