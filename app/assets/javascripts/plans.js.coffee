@@ -18,7 +18,7 @@ $ ->
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) - 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) - 1) + " Points");
     else
-      alert('You have no more points to vote with. Remove points from another venue to be able to add to this venue');
+      errorPopup('You have no more points to vote with. Remove points from another venue to be able to add to this venue');
 
   $(".removepointfrom").click ->
     suggestionid = ($(this).attr('id'));
@@ -38,7 +38,7 @@ $ ->
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) + 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) + 1) + " Points");
     else
-      alert('You have no points to remove from this venue.');
+      errorPopup('You have no points to remove from this venue.');
 
   $("#changeplan").click ->
     $("#updateplan_form").fadeIn(1000);
@@ -63,7 +63,7 @@ $ ->
     today = new Date();
     newdate = new Date($("#plan_date").attr('value').split("-")[0], $("#plan_date").attr('value').split("-")[1] - 1, $("#plan_date").attr('value').split("-")[2]);
     if (newdate < today)
-      alert("Date cannot be earlier than today");
+      errorPopup('Date cannot be earlier than today.');
       $("#plan_date").val("");
 
   $("#addvenue").click ->
@@ -76,6 +76,9 @@ $ ->
 
   $("#closevenue").click ->
     $("#addvenue_form").fadeOut(500);
+
+  $("#closeError").click ->
+    $("#errPopup_form").fadeOut(500);
 
   $("#closecomments").click ->
     $("#show_comments_form").fadeOut(500);
@@ -145,12 +148,13 @@ $ ->
     position:'absolute'
     });
 
-  positionUpdatePlanPopup = () ->
-    if (!$("#updateplan_form").is(':visible'))
-      return;
-    $("#updateplan_form").css({
-    left: ($(window).width() - $('#updateplan_form').width()) / 2,
-    top: ($(window).width() - $('#updateplan_form').width()) / 7,
+  errorPopup = (errorText) ->
+    $("#errPopup_form").fadeIn(1000);
+    $("#errPopup_form").css({
+    left: ($(window).width() - $('#errPopup_form').width()) / 1.5,
+    top: ($(window).width() - $('#errPopup_form').width()) / 7,
     position:'absolute'
     });
+    $("#error_text").text(errorText);
+
 

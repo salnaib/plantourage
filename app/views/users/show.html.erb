@@ -6,6 +6,16 @@
 <%= render :partial => 'layouts/header' %>
 
 <div id="plans_list">
+
+  <form id="errPopup_form" style="display:none">
+    <body>
+    <div id="errPopup_form_head">
+      <input id="closeError" type="button" value="Close">
+    </div>
+    <div id="error_text"></div>
+    </body>
+  </form>
+
   <form id="newplan_form" style="display:none">
     <body>
     <h1>New plan</h1>

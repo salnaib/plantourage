@@ -24,14 +24,23 @@ $ ->
     today = new Date();
     newdate = new Date($("#plan_date").attr('value').split("-")[0], $("#plan_date").attr('value').split("-")[1] - 1, $("#plan_date").attr('value').split("-")[2]);
     if (newdate < today)
-      alert("Date cannot be earlier than today");
+      errorPopup('Date cannot be earlier than today.');
       $("#plan_date").val("");
 
   positionNewPlanPopup = () ->
     if (!$("#newplan_form").is(':visible'))
       return;
     $("#newplan_form").css({
-    left: ($(window).width() - $('#newplan_form').width()) / 2,
-    top: ($(window).width() - $('#newplan_form').width()) / 7,
+    left: ($(window).width() - $('#newplan_form').width()) / 6,
+    top: ($(window).width() - $('#newplan_form').width()) / 10,
     position:'absolute'
     });
+
+  errorPopup = (errorText) ->
+    $("#errPopup_form").fadeIn(1000);
+    $("#errPopup_form").css({
+    left: ($(window).width() - $('#errPopup_form').width()) / 1.5,
+    top: ($(window).width() - $('#errPopup_form').width()) / 4,
+    position:'absolute'
+    });
+    $("#error_text").text(errorText);
