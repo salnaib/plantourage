@@ -86,12 +86,15 @@ class PointsController < ApplicationController
   end
 
   def addpoint
-    @point = Point.find_by_suggestion_id_and_invite_id(params[:suggestion_id],current_user['id'])
+    @suggestion = Suggestion.find(params[:suggestion_id])
+    @plan = @suggestion.plan
+    @invite = @plan.invites.find_by_user_id(current_user['id'])
+    @point = Point.find_by_suggestion_id_and_invite_id(params[:suggestion_id],@invite.id)
     if @point.nil?
       @point = Point.new
       @point.suggestion_id = params[:suggestion_id]
-      @point.invite_id = current_user['id']
-      @point.plan_id = Suggestion.find(params[:suggestion_id]).plan_id
+      @point.invite_id = @invite.id
+      @point.plan_id = @plan.id
       @point.count = 1
     else
       if @point.count < 10
@@ -103,12 +106,15 @@ class PointsController < ApplicationController
   end
 
   def removepoint
-    @point = Point.find_by_suggestion_id_and_invite_id(params[:suggestion_id],current_user['id'])
+    @suggestion = Suggestion.find(params[:suggestion_id])
+    @plan = @suggestion.plan
+    @invite = @plan.invites.find_by_user_id(current_user['id'])
+    @point = Point.find_by_suggestion_id_and_invite_id(params[:suggestion_id],@invite.id)
     if @point.nil?
       @point = Point.new
       @point.suggestion_id = params[:suggestion_id]
-      @point.invite_id = current_user['id']
-      @point.plan_id = Suggestion.find(params[:suggestion_id]).plan_id
+      @point.invite_id = @invite.id
+      @point.plan_id = @plan.id
       @point.count = 0
     else
       if @point.count > 0
