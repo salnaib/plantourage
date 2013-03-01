@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
     </list>
     <ignored path="plantourage.iws" />
@@ -27,7 +28,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="4" selection-start="1471" selection-end="1471" vertical-scroll-proportion="0.8060837">
+            <state line="39" column="143" selection-start="1610" selection-end="1610" vertical-scroll-proportion="0.032319393">
               <folding />
             </state>
           </provider>
@@ -36,7 +37,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/plans/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="167" selection-start="6046" selection-end="6200" vertical-scroll-proportion="-1.9230769">
+            <state line="129" column="6" selection-start="6039" selection-end="6039" vertical-scroll-proportion="-7.8076925">
               <folding />
             </state>
           </provider>
@@ -139,11 +140,11 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/static.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/landing.css" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/plans/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/static/landing.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_header.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/plans/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
       </list>
     </option>
@@ -809,14 +810,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/plans/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="167" selection-start="6046" selection-end="6200" vertical-scroll-proportion="-1.9230769">
+        <state line="129" column="6" selection-start="6039" selection-end="6039" vertical-scroll-proportion="-7.8076925">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="4" selection-start="1471" selection-end="1471" vertical-scroll-proportion="0.8060837">
+        <state line="39" column="143" selection-start="1610" selection-end="1610" vertical-scroll-proportion="0.032319393">
           <folding />
         </state>
       </provider>
