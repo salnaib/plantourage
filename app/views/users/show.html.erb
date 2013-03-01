@@ -7,46 +7,6 @@
 
 <div id="plans_list">
 
-  <form id="errPopup_form" style="display:none">
-    <body>
-    <div id="errPopup_form_head">
-      <input id="closeError" type="button" value="Close">
-    </div>
-    <div id="error_text"></div>
-    </body>
-  </form>
-
-  <form id="newplan_form" style="display:none">
-    <body>
-    <h1>New plan</h1>
-
-    <table>
-      <tr>
-        <td>
-          Date:
-        </td>
-        <td>
-          <input id="plan_date" type="date" value="<%= Date.today %>">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Name:
-        </td>
-        <td>
-          <input id="plan_name" type="input" maxlength="20">
-        </td>
-      </tr>
-    </table>
-    <br>
-    <input id="submitnewplan" type="button" value="Create">
-
-    <input id="closenewplan" type="button" value="Close">
-
-    </body>
-  </form>
-
-
   <input id="userid" value="<%= current_user.id %>" type="hidden">
   <h2>You have <div id="plans_count" style="display: inline;"><%= pluralize(@upcoming_plans.count, 'plan') %></div> coming up!</h2>
   <br>
@@ -81,6 +41,45 @@
   </tr>
   <% end %>
 </table>
+
+  <form id="newplan_form" style="display:none">
+    <body>
+    <h1>New plan</h1>
+
+    <table>
+      <tr>
+        <td>
+          Date:
+        </td>
+        <td>
+          <input id="plan_date" type="date" value="<%= Date.today %>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Name:
+        </td>
+        <td>
+          <input id="plan_name" type="input" maxlength="20">
+        </td>
+      </tr>
+    </table>
+    <br>
+    <input id="submitnewplan" type="button" value="Create">
+
+    <input id="closenewplan" type="button" value="Close">
+
+    </body>
+  </form>
+
+  <form id="errPopup_form" style="display:none">
+    <body>
+    <div id="errPopup_form_head">
+      <input id="closeError" type="button" value="Close">
+    </div>
+    <div id="error_text"></div>
+    </body>
+  </form>
 
 </div>
 </div>

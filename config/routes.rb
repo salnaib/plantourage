@@ -14,6 +14,7 @@ Plantourage::Application.routes.draw do
   match 'micropost/addcomment' => 'microposts#addcomment'
   match 'micropost/deletecomment' => 'microposts#deletecomment'
   match 'plans/change' => 'plans#change'
+  match 'plans/createfbevent' => 'plans#createEvent'
 
   resources :invites
 

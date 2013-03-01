@@ -2,11 +2,23 @@
 /* CSS Document */
 
 #main_text {
-	font-weight: 900;
 	width: 600px;
-	color: #FDD017;
 	position: absolute;
 	left: -420px;
+}
+
+#about_us_image {
+    width: 125px;
+    position: absolute;
+    left: -310px;
+    top: -100px;
+}
+
+#how_we_work_image {
+    width: 125px;
+    position: absolute;
+    left: -150px;
+    top: -90px;
 }
 
 #main {
@@ -14,7 +26,7 @@
     font-size: 24px;
     font-style: oblique;
     position: absolute;
-    top: 120px;
+    top: 160px;
     left: 420px;
 }
 
@@ -24,4 +36,22 @@
 
 }
 
+#howwework_form {
+    position: absolute;
+    border: 5px solid gray;
+    padding: 10px;
+    background: black;
+    width: 300px;
+    height: 470px;
+    display: inline-block;
+}
+
+#aboutus_form {
+    position: absolute;
+    border: 5px solid gray;
+    padding: 10px;
+    background: black;
+    width: 300px;
+    height: 180px;
+}
 

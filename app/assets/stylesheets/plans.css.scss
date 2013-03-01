@@ -106,7 +106,7 @@
 
 #points_left_table h3{
   font-size: 20px;
-  color: purple;
+  color: #b7b7b7;
 }
 
 #totalpoints {
@@ -114,13 +114,12 @@
 }
 
 #plan_voting_table {
-  background-color: black;
-  border-collapse:collapse;
+  background-color: #b7b7b7;
   width:100%;
 }
 
 #plan_voting_table thead {
-  background-color: purple;
+  background-color: #2f1d39;
   font-size: 15px;
   padding: 10px;
 }
@@ -132,22 +131,22 @@
 }
 
 .sugg_totpointcount {
-  background-color: purple;
+  background-color: #2f1d39;
   border: 1px solid black;
 }
 
 #plan_voting_table td {
-  font-size: 17px;
+  font-size: 20px;
   padding: 15px;
   border: 1px solid purple;
 }
 
 .h_text {
-  color: purple;
+  color: #b7b7b7;
 }
 
 #plans_list h2 {
-  color: purple;
+  color: #b7b7b7;
 }
 
 #plans_count {

@@ -75,6 +75,24 @@ class PlansController < ApplicationController
 
   end
 
+  def createEvent
+    @plan = @plan = Plan.find(params[:id])
+    @graph  = Koala::Facebook::API.new(session[:access_token])
+
+    params = {
+        :name => @plan.name,
+        :description => '',
+        :friends => '',
+        :private => true,
+        :start_time => @plan.plandate,
+        :end_time => @plan.plandate + 1
+    }
+
+    @plan['FbEvent_id'] = graph.put_object('me', 'events', params )
+    @plan.save
+
+  end
+
   # PUT /plans/1
   # PUT /plans/1.json
   def update

@@ -2,7 +2,7 @@ $ ->
 
   $("#newplan").click ->
     $("#newplan_form").fadeIn(1000);
-    positionNewPlanPopup();
+    positionNewPlanPopup($(this).offset());
 
   $("#closenewplan").click ->
     $("#newplan_form").fadeOut(500);
@@ -24,23 +24,23 @@ $ ->
     today = new Date();
     newdate = new Date($("#plan_date").attr('value').split("-")[0], $("#plan_date").attr('value').split("-")[1] - 1, $("#plan_date").attr('value').split("-")[2]);
     if (newdate < today)
-      errorPopup('Date cannot be earlier than today.');
+      errorPopup($(this).offset(), 'Date cannot be earlier than today.');
       $("#plan_date").val("");
 
-  positionNewPlanPopup = () ->
+  positionNewPlanPopup = (offset) ->
     if (!$("#newplan_form").is(':visible'))
       return;
     $("#newplan_form").css({
-    left: ($(window).width() - $('#newplan_form').width()) / 6,
-    top: ($(window).width() - $('#newplan_form').width()) / 10,
+    left: offset.left,
+    top: offset.top - 225,
     position:'absolute'
     });
 
-  errorPopup = (errorText) ->
+  errorPopup = (offset, errorText) ->
     $("#errPopup_form").fadeIn(1000);
     $("#errPopup_form").css({
-    left: ($(window).width() - $('#errPopup_form').width()) / 1.5,
-    top: ($(window).width() - $('#errPopup_form').width()) / 4,
+    left: offset.left,
+    top: offset.top - 225,
     position:'absolute'
     });
     $("#error_text").text(errorText);

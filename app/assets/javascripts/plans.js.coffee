@@ -18,7 +18,7 @@ $ ->
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) - 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) - 1) + " Points");
     else
-      errorPopup('You have no more points to vote with. Remove points from another venue to be able to add to this venue');
+      errorPopup($(this).offset(), 'You have no more points to vote with. Remove points from another venue to be able to add to this venue');
 
   $(".removepointfrom").click ->
     suggestionid = ($(this).attr('id'));
@@ -38,11 +38,11 @@ $ ->
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) + 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) + 1) + " Points");
     else
-      errorPopup('You have no points to remove from this venue.');
+      errorPopup($(this).offset(), 'You have no points to remove from this venue.');
 
   $("#changeplan").click ->
     $("#updateplan_form").fadeIn(1000);
-    positionUpdatePlanPopup();
+    positionUpdatePlanPopup($(this).offset());
 
   $("#closeupdateplan").click ->
     $("#updateplan_form").fadeOut(500);
@@ -59,20 +59,30 @@ $ ->
       data: { id: planid, plan_name: planname, plan_date: plandate }
     (window).location = (window).location;
 
+  $("#createfbevent").click ->
+    planid = $("#planid").attr('value');
+    $.ajax
+      url: "/plans/createfbevent"
+      type: "GET"
+      async: false
+      remote: true
+      data: { id: planid }
+    (window).location = (window).location;
+
   $("#plan_date").change ->
     today = new Date();
     newdate = new Date($("#plan_date").attr('value').split("-")[0], $("#plan_date").attr('value').split("-")[1] - 1, $("#plan_date").attr('value').split("-")[2]);
     if (newdate < today)
-      errorPopup('Date cannot be earlier than today.');
+      errorPopup($(this).offset(), 'Date cannot be earlier than today.');
       $("#plan_date").val("");
 
   $("#addvenue").click ->
     $("#addvenue_form").fadeIn(1000);
-    positionVenuePopup();
+    positionVenuePopup($(this).offset());
 
   $("#showcomments").click ->
     $("#show_comments_form").fadeIn(1000);
-    positionCommentsPopup();
+    positionCommentsPopup($(this).offset());
 
   $("#closevenue").click ->
     $("#addvenue_form").fadeOut(500);
@@ -130,29 +140,38 @@ $ ->
       data: { comment_id: commentid }
     (window).location = (window).location;
 
-  positionVenuePopup = () ->
+  positionVenuePopup = (offset) ->
     if (!$("#addvenue_form").is(':visible'))
       return;
     $("#addvenue_form").css({
-      left: ($(window).width() - $('#addvenue_form').width()) / 2,
-      top: ($(window).width() - $('#addvenue_form').width()) / 15,
-      position:'absolute'
-    });
-
-  positionCommentsPopup = () ->
-    if (!$("#show_comments_form").is(':visible'))
-      return;
-    $("#show_comments_form").css({
-    left: ($(window).width() - $('#show_comments_form').width()) / 2,
-    top: ($(window).width() - $('#show_comments_form').width()) / 15,
+    left: offset.left,
+    top: offset.top - 225,
     position:'absolute'
     });
 
-  errorPopup = (errorText) ->
+  positionCommentsPopup = (offset) ->
+    if (!$("#show_comments_form").is(':visible'))
+      return;
+    $("#show_comments_form").css({
+    left: offset.left,
+    top: offset.top - 225,
+    position:'absolute'
+    });
+
+  positionUpdatePlanPopup = (offset) ->
+    if (!$("#updateplan_form").is(':visible'))
+      return;
+    $("#updateplan_form").css({
+    left: offset.left,
+    top: offset.top - 225,
+    position:'absolute'
+    });
+
+  errorPopup = (offset, errorText) ->
     $("#errPopup_form").fadeIn(1000);
     $("#errPopup_form").css({
-    left: ($(window).width() - $('#errPopup_form').width()) / 1.5,
-    top: ($(window).width() - $('#errPopup_form').width()) / 7,
+    left: offset.left,
+    top: offset.top - 225,
     position:'absolute'
     });
     $("#error_text").text(errorText);

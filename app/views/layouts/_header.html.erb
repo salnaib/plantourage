@@ -87,17 +87,19 @@
 
 <header>
     <div id="header">
-        <h1><a href="/"><img src="/images/LOGOOO.png"></a></h1>
+        <h1><a href="/"><img src="/images/plantourage_logo.png"></a></h1>
         <div id="menu">
             <% if current_user %>
               <table>
                 <tr>
                   <td>
                     <img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>"><br margin="0px">
-                    <%= link_to "My Plans", current_user %>
                   </td>
                   <td>
-                    <a href='/sign_out' class="fb_button fb_button_medium">
+                    <%= link_to image_tag("/images/myplans3.png", :height => 40, :width => 100), current_user %>
+                  </td>
+                  <td>
+                    <a href='/sign_out' class="fb_button fb_button_large">
                       <span class="fb_button_text">Sign out</span>
                     </a>
                   </td>
@@ -107,8 +109,13 @@
                   <table>
                     <tr>
                       <td>
+                        <!--
                         <a href='/auth/facebook' class="fb_button fb_button_medium">
                           <span class="fb_button_text">Log in</span>
+                        </a>
+                        -->
+                        <a href='/auth/facebook'>
+                          <img src="/images/FB.jpg" height="60" width="220">
                         </a>
                       </td>
                     </tr>

@@ -9,11 +9,41 @@
 body {
 /*    background-image: url('/images/BG3.jpg');
     background-size: 150%; */
-    background-color: #000000;
+    background-color: #2d2d6b;
     color: #FDD017;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     padding-top: 60px;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     padding-top: 60px;
     margin: 0px;
+}
+
+a:link{
+    color:#FDD017;
+    text-decoration:none;
+    background-color: transparent;
+}
+
+a:visited{
+    color:#FDD017;
+    text-decoration:none;
+    background-color: transparent;
+}
+
+a:hover{
+    color:purple;
+    text-decoration:none;
+    background-color: transparent;
+}
+
+a:focus{
+    color:purple;
+    text-decoration:none;
+    background-color: transparent;
+}
+
+a:active{
+    color:purple;
+    text-decoration:none;
+    background-color: transparent;
 }

@@ -29,27 +29,28 @@
 
 #plans_list h2 {
   font-size: 45px;
+  color: #b7b7b7;
 }
 
 #plans_table {
-  background-color: black;
-  border-collapse:collapse;
+  background-color: #b7b7b7;
   width:100%;
+  color: purple;
 }
 
 #plans_table thead {
-  background-color: purple;
+  background-color: #2f1d39;
 }
 
 #plans_table thead td {
-  font-size: 17px;
+  font-size: 22px;
   padding: 15px;
   border: 1px solid purple;
+  color: #FDD017;
 }
 
 #plans_table tr td {
-  font-size: 17px;
+  font-size: 20px;
   padding: 15px;
   border: 1px solid purple;
-
 }
