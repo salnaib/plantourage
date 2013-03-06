@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/custom/header.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/custom/header.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/custom/landing.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/custom/landing.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/plans_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/plans_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/static_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/static_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_header.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_header.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/plans/show.html.erb" afterPath="$PROJECT_DIR$/app/views/plans/show.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static/landing.html.erb" afterPath="$PROJECT_DIR$/app/views/static/landing.html.erb" />
     </list>
     <ignored path="plantourage.iws" />
@@ -43,10 +33,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/plans/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="0" selection-start="4681" selection-end="4681" vertical-scroll-proportion="0.0970696">
+            <state line="106" column="0" selection-start="4681" selection-end="4681" vertical-scroll-proportion="-2.0384614">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="landing.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/static/landing.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="4" selection-start="1844" selection-end="1844" vertical-scroll-proportion="0.33516484">
               <folding />
             </state>
           </provider>
@@ -94,11 +93,11 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/header.css" />
         <option value="$PROJECT_DIR$/app/views/layouts/_header.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/static/landing.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/landing.css" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" />
         <option value="$PROJECT_DIR$/app/views/plans/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/static/landing.html.erb" />
       </list>
     </option>
   </component>
@@ -697,13 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/static/landing.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="25" selection-start="2672" selection-end="2684" vertical-scroll-proportion="0.4676806">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="58" selection-start="1540" selection-end="1540" vertical-scroll-proportion="1.2106194">
@@ -762,7 +754,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/plans/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="4681" selection-end="4681" vertical-scroll-proportion="0.0970696">
+        <state line="106" column="0" selection-start="4681" selection-end="4681" vertical-scroll-proportion="-2.0384614">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/static/landing.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="4" selection-start="1844" selection-end="1844" vertical-scroll-proportion="0.33516484">
           <folding />
         </state>
       </provider>
