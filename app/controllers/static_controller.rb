@@ -12,7 +12,7 @@ class StaticController < ApplicationController
 # permissions your app needs.
 # See https://developers.facebook.com/docs/reference/api/permissions/
 # for a full list of permissions
-  FACEBOOK_SCOPE = 'email'
+  FACEBOOK_SCOPE = 'email, create_event'
 
   unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
     abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")

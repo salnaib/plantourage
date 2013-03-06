@@ -96,17 +96,30 @@
 
 #plan_details {
   position: absolute;
-  width: 85%;
+  width: 98%;
+}
+
+#plan_details_table {
+  padding: 0px;
 }
 
 #plan_details_table td {
   font-size: 25px;
-  padding: 10px;
 }
 
-#points_left_table h3{
-  font-size: 20px;
+#points_left_table {
+  width: 99%;
+}
+
+#points_left_table tr {
+  align: center;
+}
+
+#points_left_table td {
+  align: center;
+  font-size: 38px;
   color: #b7b7b7;
+  padding-top: 10px;
 }
 
 #totalpoints {
@@ -115,30 +128,64 @@
 
 #plan_voting_table {
   background-color: #b7b7b7;
-  width:100%;
+  width: 100%;
+/**-moz-border-radius: 23px;
+-webkit-border-radius: 23px;
+-khtml-border-radius: 23px;
+border-radius: 23px; */
 }
 
 #plan_voting_table thead {
   background-color: #2f1d39;
-  font-size: 15px;
-  padding: 10px;
 }
 
-#plan_voting_table th {
+#plan_voting_table thead th {
+  font-size: 18px;
+  padding: 5px;
+}
+
+#plan_voting_table thead td {
+  font-size: 18px;
+  padding: 5px;
+}
+
+#plan_voting_table tbody th {
+  font-size: 15px;
+  padding: 0px;
+  border: 1px solid purple;
+  width: 550px;
+}
+
+#plan_voting_table tbody th table td {
+  padding: 3px;
+  vertical-align: top;
+  text-align: left;
+  border: none;
   font-size: 17px;
-  padding: 15px;
-  border: 1px solid black;
+}
+
+#description {
+  font-size: 13px;
+  font-style: normal;
+  text-indent: 20px;
+  color: white;
+  background-color: #add8e6;
+}
+
+#plan_voting_table tbody td {
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid purple;
 }
 
 .sugg_totpointcount {
   background-color: #2f1d39;
   border: 1px solid black;
+  width: 50px;
 }
 
-#plan_voting_table td {
-  font-size: 20px;
-  padding: 15px;
-  border: 1px solid purple;
+.sugg_userpointcount {
+  width: 100px;
 }
 
 .h_text {
@@ -156,4 +203,63 @@
 #discussion table {
   background-color: black;
   width: 150px;
+}
+
+#changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom {
+  border-top: 1px solid #fdcf17;
+  background: #fdcf17;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
+  background: -webkit-linear-gradient(top, #fdcf17, #fdcf17);
+  background: -moz-linear-gradient(top, #fdcf17, #fdcf17);
+  background: -ms-linear-gradient(top, #fdcf17, #fdcf17);
+  background: -o-linear-gradient(top, #fdcf17, #fdcf17);
+  padding: 5px 10px;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: #2d2d6b;
+  font-size: 14px;
+  font-family: Georgia, Serif;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.addpointto, .removepointfrom {
+  border-top: 1px solid #fdcf17;
+  background: #fdcf17;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
+  background: -webkit-linear-gradient(top, #fdcf17, #fdcf17);
+  background: -moz-linear-gradient(top, #fdcf17, #fdcf17);
+  background: -ms-linear-gradient(top, #fdcf17, #fdcf17);
+  background: -o-linear-gradient(top, #fdcf17, #fdcf17);
+  padding: 2px 5px;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: #2d2d6b;
+  font-size: 18px;
+  font-family: Georgia, Serif;
+  text-decoration: none;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+}
+
+#changeplan:hover, #showcomments:hover, #addfriend:hover, #addvenue:hover, #submitvenue:hover, #closevenue:hover, #add_comment:hover, #closecomments:hover, #delete_comment:hover, #updateplan:hover, #closeupdateplan:hover, #closeError:hover, .addpointto:hover, .removepointfrom:hover {
+  border-top-color: #fdcf17;
+  background: #fdcf17;
+  color: #2d2d6b;
+}
+
+#changeplan:active, #showcomments:active, #addfriend:active, #addvenue:active, #submitvenue:active, #closevenue:active, #add_comment:active, #closecomments:active, #delete_comment:active, #updateplan:active, #closeupdateplan:active, #closeError:active, .addpointto:active, .removepointfrom:active {
+  border-top-color: #fdcf17;
+  background: #fdcf17;
 }

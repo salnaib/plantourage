@@ -175,5 +175,3 @@ $ ->
     position:'absolute'
     });
     $("#error_text").text(errorText);
-
-

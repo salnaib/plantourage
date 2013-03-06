@@ -42,7 +42,7 @@
     padding: 10px;
     background: black;
     width: 300px;
-    height: 470px;
+    height: 500px;
     display: inline-block;
 }
 
@@ -55,3 +55,34 @@
     height: 205px;
 }
 
+#closehowwework, #closeaboutus {
+    border-top: 1px solid #fdcf17;
+    background: #fdcf17;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
+    background: -webkit-linear-gradient(top, #fdcf17, #fdcf17);
+    background: -moz-linear-gradient(top, #fdcf17, #fdcf17);
+    background: -ms-linear-gradient(top, #fdcf17, #fdcf17);
+    background: -o-linear-gradient(top, #fdcf17, #fdcf17);
+    padding: 5px 10px;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 23px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: #2d2d6b;
+    font-size: 14px;
+    font-family: Georgia, Serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+#closehowwework:hover, #closeaboutus:hover {
+    border-top-color: #fdcf17;
+    background: #fdcf17;
+    color: #2d2d6b;
+}
+#closehowwework:active, #closeaboutus:active {
+    border-top-color: #fdcf17;
+    background: #fdcf17;
+}

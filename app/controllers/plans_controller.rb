@@ -79,17 +79,22 @@ class PlansController < ApplicationController
     @plan = @plan = Plan.find(params[:id])
     @graph  = Koala::Facebook::API.new(session[:access_token])
 
+    @plan.invites.each do |invite|
+      users = users + invite.user.uid + ','
+    end
+
     params = {
         :name => @plan.name,
-        :description => '',
-        :friends => '',
-        :private => true,
-        :start_time => @plan.plandate,
-        :end_time => @plan.plandate + 1
+        #:start_time => @plan.plandate,
+        :end_time => @plan.plandate + 1,
+        #:location => 'TBD on <a href = "plantourage.herokuapp.com/"' +@plan.fbevent_id+'">Plantourage</a>',
+        #:privacy_type => 'SECRET'
     }
 
-    @plan['FbEvent_id'] = graph.put_object('me', 'events', params )
+    @plan['FbEvent_id'] = @graph.put_object('me', 'events', params )
     @plan.save
+
+
 
   end
 
