@@ -11,13 +11,20 @@
   height: 100px;
 }
 
-#addvenue_form {
+#addvenue_form, #mapCanvas_form {
   position: absolute;
   border: 5px solid gray;
   padding: 10px;
   background: black;
   width: 600px;
   height: 420px;
+}
+
+#map_canvas {
+  height: 300px;
+  width: 600px;
+  border: 1px solid #333;
+  margin-top: 0.6em;
 }
 
 #addvenue_form body {
@@ -205,7 +212,7 @@ border-radius: 23px; */
   width: 150px;
 }
 
-#changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom {
+#changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
   border-top: 1px solid #fdcf17;
   background: #fdcf17;
   background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
@@ -253,13 +260,13 @@ border-radius: 23px; */
   height: 30px;
 }
 
-#changeplan:hover, #showcomments:hover, #addfriend:hover, #addvenue:hover, #submitvenue:hover, #closevenue:hover, #add_comment:hover, #closecomments:hover, #delete_comment:hover, #updateplan:hover, #closeupdateplan:hover, #closeError:hover, .addpointto:hover, .removepointfrom:hover {
+#changeplan:hover, #showcomments:hover, #addfriend:hover, #addvenue:hover, #submitvenue:hover, #closevenue:hover, #add_comment:hover, #closecomments:hover, #delete_comment:hover, #updateplan:hover, #closeupdateplan:hover, #closeError:hover, .addpointto:hover, .removepointfrom:hover, #selectvenue:hover, #closemapcanvas:hover {
   border-top-color: #fdcf17;
   background: #fdcf17;
   color: #2d2d6b;
 }
 
-#changeplan:active, #showcomments:active, #addfriend:active, #addvenue:active, #submitvenue:active, #closevenue:active, #add_comment:active, #closecomments:active, #delete_comment:active, #updateplan:active, #closeupdateplan:active, #closeError:active, .addpointto:active, .removepointfrom:active {
+#changeplan:active, #showcomments:active, #addfriend:active, #addvenue:active, #submitvenue:active, #closevenue:active, #add_comment:active, #closecomments:active, #delete_comment:active, #updateplan:active, #closeupdateplan:active, #closeError:active, .addpointto:active, .removepointfrom:active, #selectvenue:active, #closemapcanvas:hover {
   border-top-color: #fdcf17;
   background: #fdcf17;
 }

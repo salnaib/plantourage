@@ -44,10 +44,30 @@ class SuggestionsController < ApplicationController
   # POST /suggestions
   # POST /suggestions.json
   def create
-    if (Suggestion.find_by_venue_id_and_plan_id(params['venue_id'], params['plan_id']).nil?)
+    @venue = Venue.find_by_google_id(params['venuegoogleid'])
+    if (@venue.nil?)
+      @venue = Venue.new
+
+      @venue.google_id = params['venuegoogleid']
+      @venue.name = params['venuename']
+      @venue.address = params['venueaddress']
+      @venue.city = params['venuecity']
+      @venue.state = params['venuestate']
+      @venue.country = params['venuecountry']
+      @venue.postal = params['venuepostal']
+      @venue.phone = params['venuephone']
+      @venue.googleurl = params['venuegoogleurl']
+      @venue.website = params['venuewebsite']
+      @venue.geolocation = params['venuegeolocation']
+      @venue.venue_type = params['venuetypes']
+
+      @venue.save
+    end
+
+    if (Suggestion.find_by_venue_id_and_plan_id(@venue.id, params['plan_id']).nil?)
       @suggestion = Suggestion.new(params[:suggestion])
       @suggestion.plan_id = params['plan_id']
-      @suggestion.venue_id = params['venue_id']
+      @suggestion.venue_id = @venue.id
 
       @suggestion.save
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301011240) do
+ActiveRecord::Schema.define(:version => 20130308072808) do
 
   create_table "invites", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -69,8 +69,17 @@ ActiveRecord::Schema.define(:version => 20130301011240) do
     t.string   "website"
     t.text     "address"
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "google_id"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "postal"
+    t.string   "phone"
+    t.string   "googleurl"
+    t.string   "geolocation"
+    t.string   "venue_type"
   end
 
 end

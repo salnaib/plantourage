@@ -6,7 +6,7 @@
   position: absolute;
   border: 5px solid gray;
   padding: 10px;
-  background: black;
+  background: #2d2d6b;
   width: 300px;
   height: 100px;
 }
@@ -15,7 +15,7 @@
   position: absolute;
   border: 5px solid gray;
   padding: 10px;
-  background: black;
+  background: #2d2d6b;
   width: 300px;
   height: 200px;
   overflow: auto;
@@ -35,7 +35,7 @@
 #plans_table {
   background-color: #b7b7b7;
   width:100%;
-  color: purple;
+  color: #2d2d6b;
 }
 
 #plans_table thead {
@@ -45,14 +45,14 @@
 #plans_table thead td {
   font-size: 22px;
   padding: 15px;
-  border: 1px solid purple;
+  border: 1px solid #2d2d6b;
   color: #FDD017;
 }
 
 #plans_table tr td {
   font-size: 20px;
   padding: 15px;
-  border: 1px solid purple;
+  border: 1px solid #2d2d6b;
 }
 
 #newplan, #submitnewplan, #closenewplan {

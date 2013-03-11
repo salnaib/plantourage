@@ -77,8 +77,11 @@ $ ->
       $("#plan_date").val("");
 
   $("#addvenue").click ->
-    $("#addvenue_form").fadeIn(1000);
-    positionVenuePopup($(this).offset());
+    $("#mapCanvas_form").fadeIn(1000);
+    positionMapCanvasPopup($(this).offset());
+
+  $("#closemapcanvas").click ->
+    $("#mapCanvas_form").fadeOut(500);
 
   $("#showcomments").click ->
     $("#show_comments_form").fadeIn(1000);
@@ -93,19 +96,28 @@ $ ->
   $("#closecomments").click ->
     $("#show_comments_form").fadeOut(500);
 
-  $("#submitvenue").click ->
+  $("#selectvenue").live( "click", ->
     planid = $("#planid").attr('value');
-    for element in $(".venue_check")
-      if ($(element).attr('checked') == "checked")
-        venueid = ($(element).attr('id'));
-        $.ajax
-          url: "/suggestions"
-          type: "POST"
-          async: false
-          remote: true
-          data: { venue_id: venueid, plan_id: planid }
-    $("#addvenue_form").fadeOut(500);
+    venuegoogleid = $("#venuegoogleid").attr('value');
+    venuename = $("#venuename").attr('value');
+    venueaddress = $("#venueaddress").attr('value');
+    venuecity = $("#venuecity").attr('value');
+    venuestate = $("#venuestate").attr('value');
+    venuecountry = $("#venuecountry").attr('value');
+    venuepostal = $("#venuepostal").attr('value');
+    venuephone = $("#venuephone").attr('value');
+    venuegoogleurl = $("#venuegoogleurl").attr('value');
+    venuewebsite = $("#venuewebsite").attr('value');
+    venuegeolocation = $("#venuegeolocation").attr('value');
+    venuetypes = $("#venuetypes").attr('value');
+    $.ajax
+      url: "/suggestions"
+      type: "POST"
+      async: false
+      remote: true
+      data: { plan_id: planid, venuegoogleid: venuegoogleid, venuename: venuename, venueaddress: venueaddress, venuecity: venuecity, venuestate: venuestate, venuecountry: venuecountry, venuepostal: venuepostal, venuephone: venuephone, venuegoogleurl: venuegoogleurl, venuewebsite: venuewebsite, venuegeolocation: venuegeolocation, venuetypes: venuetypes }
     (window).location = (window).location;
+    )
 
   $("#invited_user_id").click ->
     planid = $("#planid").attr('value');
@@ -140,10 +152,10 @@ $ ->
       data: { comment_id: commentid }
     (window).location = (window).location;
 
-  positionVenuePopup = (offset) ->
-    if (!$("#addvenue_form").is(':visible'))
+  positionMapCanvasPopup = (offset) ->
+    if (!$("#mapCanvas_form").is(':visible'))
       return;
-    $("#addvenue_form").css({
+    $("#mapCanvas_form").css({
     left: offset.left,
     top: offset.top - 225,
     position:'absolute'

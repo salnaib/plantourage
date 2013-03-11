@@ -40,7 +40,7 @@
     position: absolute;
     border: 5px solid gray;
     padding: 10px;
-    background: black;
+    background: #2d2d6b;
     width: 300px;
     height: 500px;
     display: inline-block;
@@ -50,7 +50,7 @@
     position: absolute;
     border: 5px solid gray;
     padding: 10px;
-    background: black;
+    background: #2d2d6b;
     width: 300px;
     height: 205px;
 }

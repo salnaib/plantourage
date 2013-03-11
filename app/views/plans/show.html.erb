@@ -49,6 +49,157 @@
       }
 
   </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+  <script>
+      function initialize() {
+          var mapOptions = {
+              center: new google.maps.LatLng(43.6481, -79.4042),
+              zoom: 13,
+              disableDefaultUI: true,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          var map = new google.maps.Map(document.getElementById('map_canvas'),
+                  mapOptions);
+
+          $(document.getElementById('mapCanvas_form')).fadeIn(function () {
+              google.maps.event.trigger(map, 'resize');
+          });
+
+          var input = document.getElementById('searchTextField');
+          var autocomplete = new google.maps.places.Autocomplete(input);
+
+          autocomplete.bindTo('bounds', map);
+
+          var infowindow = new google.maps.InfoWindow();
+          var marker = new google.maps.Marker({
+              map: map
+          });
+
+          google.maps.event.addListener(autocomplete, 'place_changed', function() {
+              infowindow.close();
+              marker.setVisible(false);
+              input.className = '';
+              var place = autocomplete.getPlace();
+              if (!place.geometry) {
+                  // Inform the user that the place was not found and return.
+                  input.className = 'notfound';
+                  return;
+              }
+
+              // If the place has a geometry, then present it on a map.
+              if (place.geometry.viewport) {
+                  map.fitBounds(place.geometry.viewport);
+              } else {
+                  map.setCenter(place.geometry.location);
+                  map.setZoom(17);  // Why 17? Because it looks good.
+              }
+              var image = {
+                  url: place.icon,
+                  size: new google.maps.Size(71, 71),
+                  origin: new google.maps.Point(0, 0),
+                  anchor: new google.maps.Point(17, 34),
+                  scaledSize: new google.maps.Size(35, 35)
+              };
+              marker.setIcon(image);
+              marker.setPosition(place.geometry.location);
+              marker.setVisible(true);
+
+              var address = '';
+              if (place.address_components) {
+                  address = [
+                      (place.address_components[0] && place.address_components[0].short_name || ''),
+                      (place.address_components[1] && place.address_components[1].short_name || ''),
+                      (place.address_components[2] && place.address_components[2].short_name || '')
+                  ].join(' ');
+              }
+
+              var content = '<div>';
+              if (place.website) {
+                  content = content + "<b><u><a href='" + place.website + "' target='_blank'>" + place.name + "</b></u></a>";
+              } else {
+                  content = content + "<b>" + place.name + "</b>";
+              }
+              if (place.icon) {
+                  content = content + " <img height='15' width='15' src='" + place.icon + "'>";
+              }
+              content = content + " - <i>" + address + "</i>";
+              content = content + '<br><input id="selectvenue" type="button" value="Add to Plan" >';
+
+              content = content + '</div>';
+
+              infowindow.setContent(content);
+
+              document.getElementById("venuegoogleid").value = place.id;
+              document.getElementById("venuename").value = place.name;
+              document.getElementById("venueaddress").value = place.formatted_address // [(place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || '')].join(' ');
+
+              document.getElementById("venuecity").value = extractFromAddress(place.address_components, "locality");
+              document.getElementById("venuestate").value = extractFromAddress(place.address_components, "administrative_area_level_1");
+              document.getElementById("venuecountry").value = extractFromAddress(place.address_components, "country");
+              document.getElementById("venuepostal").value = extractFromAddress(place.address_components, "postal_code");
+
+              document.getElementById("venuephone").value = place.formatted_phone_number;
+              document.getElementById("venuegoogleurl").value = place.url;
+              document.getElementById("venuewebsite").value = place.website;
+              document.getElementById("venuegeolocation").value = place.geometry.location;
+              document.getElementById("venuetypes").value = place.types;
+
+              infowindow.open(map, marker);
+
+              google.maps.event.addListener(marker, 'click', function() {
+                  document.getElementById("venuegoogleid").value = place.id;
+                  document.getElementById("venuename").value = place.name;
+                  document.getElementById("venueaddress").value = place.formatted_address // [(place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || '')].join(' ');
+
+                  document.getElementById("venuecity").value = extractFromAddress(place.address_components, "locality");
+                  document.getElementById("venuestate").value = extractFromAddress(place.address_components, "administrative_area_level_1");
+                  document.getElementById("venuecountry").value = extractFromAddress(place.address_components, "country");
+                  document.getElementById("venuepostal").value = extractFromAddress(place.address_components, "postal_code");
+
+                  document.getElementById("venuephone").value = place.formatted_phone_number;
+                  document.getElementById("venuegoogleurl").value = place.url;
+                  document.getElementById("venuewebsite").value = place.website;
+                  document.getElementById("venuegeolocation").value = place.geometry.location;
+                  document.getElementById("venuetypes").value = place.types;
+
+                  infowindow.open(map, marker);
+              });
+
+              google.maps.event.addListener(infowindow, 'closeclick', function() {
+                  document.getElementById("venuegoogleid").value = "";
+                  document.getElementById("venuename").value = "";
+                  document.getElementById("venueaddress").value = "";
+
+                  document.getElementById("venuecity").value = "";
+                  document.getElementById("venuestate").value = "";
+                  document.getElementById("venuecountry").value = "";
+                  document.getElementById("venuepostal").value = "";
+
+                  document.getElementById("venuephone").value = "";
+                  document.getElementById("venuegoogleurl").value = "";
+                  document.getElementById("venuewebsite").value = "";
+                  document.getElementById("venuegeolocation").value = "";
+                  document.getElementById("venuetypes").value = "";
+
+              });
+
+          });
+
+      }
+
+      function extractFromAddress(components, type){
+          for (var i=0; i<components.length; i++)
+              for (var j=0; j<components[i].types.length; j++)
+                  if (components[i].types[j]==type) return components[i].long_name;
+          return "";
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
+
   <table id="plan_details_table">
 <!--    <tr>
       <td>
@@ -90,11 +241,12 @@
           <input type="hidden" id="friend_user_id"/>
           <input type="hidden" id="invited_user_name"/>
           <br>
-          <b>Friends (<%= @invites.count -1 %>)</b>
+          <b>Friends (<%= @invites.count - 1 %>)</b>
         </th>
     </thead>
     <thead>
     <th>
+      <br>
       <input id="addvenue" type="button" value="Add Venues">
       <br>
       <b>Venues</b>
@@ -123,8 +275,13 @@
           <% if (!suggestion.venue.image.blank?) %>
                 <td><a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank"><img src="<%= suggestion.venue.image %>" width="140" height="70"></a></td>
           <% end %>
-            <td><a href="<%= suggestion.venue.website %>" target="_blank"><%= suggestion.venue.name %></a><br>
-              <div id="description"><%= suggestion.venue['address'] %></div>
+            <td>
+            <% if (!suggestion.venue.website.blank?) %>
+                  <a href="<%= suggestion.venue.website %>" target="_blank"><%= suggestion.venue.name %></a>
+            <% else %>
+                  <%= suggestion.venue.name %>
+            <% end %>
+              <br><div id="description"><u><a href="<%= suggestion.venue.googleurl %>" target="_blank"><%= suggestion.venue['address'] %></a></u></div>
             </td>
             </tr>
         </table>
@@ -155,38 +312,7 @@
 
   </table>
 
-  <form id="addvenue_form" style="display:none">
-    <body>
-    <div id="addvenue_form_head">
-      <h2>Listing venues for <%= @plan.name %></h2>
-      <input id="submitvenue" type="button" value="Submit">
-      <input id="closevenue" type="button" value="Close">
-    </div>
-    <div id="addvenue_form_content">
-      <table bgcolor="black">
-        <tr>
-          <td>Select</td>
-        </tr>
-        <% @venues.each do |venue| %>
-            <% if (Suggestion.find_by_venue_id_and_plan_id(venue.id, @plan.id).nil?) %>
-                <tr id="<%= venue.id %>">
-                  <td><input type="checkbox" id="<%= venue.id %>" class="venue_check"></td>
-                  <% if !(venue.image.blank?) %>
-                      <td align="left"><a href="<%= venue.website %>" title="<%= venue['name'] %>" target="_blank"><img src="<%= venue.image %>" alt="" height="50" width="150"></a></td>
-                  <% else %>
-                      <td align="left"></td>
-                  <% end %>
-                  <td align="left"><a href="<%= venue.website %>" title="<%= venue['address'] %>" target="_blank"><%= venue.name %></a></td>
-                </tr>
-            <% end %>
-        <% end %>
-      </table>
-
-    </div>
-    </body>
-  </form>
-
-  <form id="show_comments_form" style="display:none">
+  <div id="show_comments_form" style="display:none">
     <body>
     <div id="show_comments_form_head">
       <table>
@@ -227,9 +353,9 @@
       </table>
     </div>
     </body>
-  </form>
+  </div>
 
-  <form id="updateplan_form" style="display:none">
+  <div id="updateplan_form" style="display:none">
     <body>
     <h1>Update plan</h1>
 
@@ -256,16 +382,40 @@
     <input id="closeupdateplan" type="button" value="Close">
 
     </body>
-  </form>
+  </div>
 
-  <form id="errPopup_form" style="display:none">
+  <div id="errPopup_form" style="display:none">
     <body>
     <div id="errPopup_form_head">
       <input id="closeError" type="button" value="Close">
     </div>
     <div id="error_text"></div>
     </body>
-  </form>
+  </div>
+
+  <div id="mapCanvas_form" style="display:none">
+    <body>
+        <div>
+          <input id="closemapcanvas" type="button" value="Close">
+          <br>
+          Search: <input id="searchTextField" type="text" size="50">
+        </div>
+    <div id="map_canvas"></div>
+        <input id="venuegoogleid" value="" type="hidden">
+        <input id="venuename" value="" type="hidden">
+        <input id="venueaddress" value="" type="hidden">
+        <input id="venuecity" value="" type="hidden">
+        <input id="venuestate" value="" type="hidden">
+        <input id="venuecountry" value="" type="hidden">
+        <input id="venuepostal" value="" type="hidden">
+        <input id="venuephone" value="" type="hidden">
+        <input id="venuegoogleurl" value="" type="hidden">
+        <input id="venuewebsite" value="" type="hidden">
+        <input id="venuegeolocation" value="" type="hidden">
+        <input id="venuetypes" value="" type="hidden">
+
+    </body>
+  </div>
 
 </div>
 
