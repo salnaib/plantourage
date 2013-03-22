@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/BG_Ball.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/BG_Black.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/BG_Black2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/BG_Purple.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/BG_Red.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/conference.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/lookoutwindow.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/m-navigation.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/persononphone.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/persononphones.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/persontexting.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/reserved.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/streetsigns.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery-1.8.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery.carouFredSel-5.5.0-packed.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/jquery.touchwipe.1.1.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascripts/modernizr.custom.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/custom/footer.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/custom/footer.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/custom/header.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/custom/header.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/custom/landing.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/custom/landing.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/custom/styles.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/custom/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_footer.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_footer.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_header.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_header.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/plans/show.html.erb" afterPath="$PROJECT_DIR$/app/views/plans/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static/landing.html.erb" afterPath="$PROJECT_DIR$/app/views/static/landing.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
     </list>
     <ignored path="plantourage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,10 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="plans.css.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="plans.css.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="392" column="0" selection-start="7919" selection-end="7919" vertical-scroll-proportion="0.7336956">
+            <state line="392" column="0" selection-start="7919" selection-end="7919" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,22 +51,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="landing.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/static/landing.html.erb">
+      <file leaf-file-name="_header.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="0" selection-end="43" vertical-scroll-proportion="-0.65384614">
-              <folding />
+            <state line="104" column="22" selection-start="3873" selection-end="3877" vertical-scroll-proportion="32.076923">
+              <folding>
+                <marker date="1363890835857" expanded="true" signature="3563:3686" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_header.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.erb">
+      <file leaf-file-name="header.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom/header.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="104" selection-start="190" selection-end="190" vertical-scroll-proportion="-1.3076923">
-              <folding>
-                <marker date="1363890835857" expanded="true" signature="3563:3686" placeholder="..." />
-              </folding>
+            <state line="191" column="14" selection-start="6821" selection-end="6821" vertical-scroll-proportion="4.9583335">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -165,7 +134,6 @@
         <option value="$PROJECT_DIR$/public/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/_footer.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/footer.css" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/header.css" />
         <option value="$PROJECT_DIR$/app/views/static/landing.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/landing.css" />
         <option value="$PROJECT_DIR$/app/views/layouts/_header.html.erb" />
@@ -176,6 +144,7 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/styles.css" />
         <option value="$PROJECT_DIR$/app/views/plans/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/header.css" />
       </list>
     </option>
   </component>
@@ -806,11 +775,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/javascripts/modernizr.custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/functions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="141" column="26" selection-start="3446" selection-end="3446" vertical-scroll-proportion="4.242478" />
@@ -827,22 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="1" selection-start="2133" selection-end="3400" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom/header.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="0" selection-start="3868" selection-end="3868" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="104" selection-start="190" selection-end="190" vertical-scroll-proportion="-1.3076923">
-          <folding>
-            <marker date="1363890835857" expanded="true" signature="3563:3686" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -911,7 +859,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="392" column="0" selection-start="7919" selection-end="7919" vertical-scroll-proportion="0.7336956">
+        <state line="392" column="0" selection-start="7919" selection-end="7919" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom/plan.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="22" selection-start="3873" selection-end="3877" vertical-scroll-proportion="32.076923">
+          <folding>
+            <marker date="1363890835857" expanded="true" signature="3563:3686" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom/header.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="191" column="14" selection-start="6821" selection-end="6821" vertical-scroll-proportion="4.9583335">
           <folding />
         </state>
       </provider>
