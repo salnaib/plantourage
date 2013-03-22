@@ -155,9 +155,4 @@ textarea { overflow: auto; }
 
 @media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)  {
 
-    .popupform {
-        top: 20%;
-        left: 2%;
-        width: 80%;
-    }
 }
