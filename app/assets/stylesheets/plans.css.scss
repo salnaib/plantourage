@@ -283,7 +283,108 @@
 
 /* ipad portrait */
 @media only screen and ( min-width: 768px) and ( max-width: 980px ) {
+  .plan_info_header {
+    display: none;
+  }
 
+  .plan_info_value {
+    font-size: 20px;
+    display: inline-block;
+  }
+
+  #points_left_info {
+    font-size: 12px;
+  }
+
+  #totalpoints {
+    font-size: 20px;
+  }
+
+  #plan_voting_table thead {
+    font-size: 12px;
+  }
+
+  .venue_header, .venue_info {
+    max-width: 20px;
+    min-width: 20px;
+  }
+
+  .total_points_header, .sugg_totpointcount {
+    max-width: 10px;
+    min-width: 10px;
+  }
+
+  .user_header, .sugg_userpointcount {
+    max-width: 20px;
+    min-width: 20px;
+  }
+
+  .sugg_friend_count {
+    max-width: 10px;
+    min-width: 10px;
+  }
+
+  .friends_action_header {
+    max-width: 10px;
+  }
+
+  .friends_header {
+    max-width: 15px;
+    min-width: 15px;
+  }
+
+  .friends_header img {
+    display: none;
+  }
+
+  .venue_info {
+    font-size: 12px;
+  }
+
+  .venue_image, .venue_description {
+    display: none;
+  }
+
+  .sugg_totpointcount, .sugg_userpointcount {
+    font-size: 10px;
+  }
+
+  .sugg_friend_count {
+    font-size: 10px;
+  }
+
+  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
+    font-size: 10px;
+  }
+
+  .addpointto, .removepointfrom {
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  #mapCanvas_form {
+    width: 90%;
+    height: 70%;
+  }
+
+  #mapCanvas_form .popupform_content {
+    height: 80%;
+  }
+
+  #show_comments_form {
+    width: 90%;
+    height: 70%;
+  }
+
+  #show_comments_form .popupform_content {
+    height: 50%;
+  }
+
+  #new_comment {
+    width: 70%;
+    height: 20px;
+  }
 }
 
 
@@ -394,5 +495,108 @@
 }
 
 @media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)  {
+
+  .plan_info_header {
+    display: none;
+  }
+
+  .plan_info_value {
+    font-size: 20px;
+    display: inline-block;
+  }
+
+  #points_left_info {
+    font-size: 12px;
+  }
+
+  #totalpoints {
+    font-size: 20px;
+  }
+
+  #plan_voting_table thead {
+    font-size: 12px;
+  }
+
+  .venue_header, .venue_info {
+    max-width: 20px;
+    min-width: 20px;
+  }
+
+  .total_points_header, .sugg_totpointcount {
+    max-width: 10px;
+    min-width: 10px;
+  }
+
+  .user_header, .sugg_userpointcount {
+    max-width: 20px;
+    min-width: 20px;
+  }
+
+  .sugg_friend_count {
+    max-width: 10px;
+    min-width: 10px;
+  }
+
+  .friends_action_header {
+    max-width: 10px;
+  }
+
+  .friends_header {
+    max-width: 15px;
+    min-width: 15px;
+  }
+
+  .friends_header img {
+    display: none;
+  }
+
+  .venue_info {
+    font-size: 12px;
+  }
+
+  .venue_image, .venue_description {
+    display: none;
+  }
+
+  .sugg_totpointcount, .sugg_userpointcount {
+    font-size: 10px;
+  }
+
+  .sugg_friend_count {
+    font-size: 10px;
+  }
+
+  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
+    font-size: 10px;
+  }
+
+  .addpointto, .removepointfrom {
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  #mapCanvas_form {
+    width: 90%;
+    height: 70%;
+  }
+
+  #mapCanvas_form .popupform_content {
+    height: 80%;
+  }
+
+  #show_comments_form {
+    width: 90%;
+    height: 70%;
+  }
+
+  #show_comments_form .popupform_content {
+    height: 50%;
+  }
+
+  #new_comment {
+    width: 70%;
+    height: 20px;
+  }
 
 }
