@@ -42,7 +42,7 @@ $ ->
 
   $("#changeplan").click ->
     $("#updateplan_form").fadeIn(1000);
-    positionUpdatePlanPopup($(this).offset());
+    $("#plan_name").focus();
 
   $("#closeupdateplan").click ->
     $("#updateplan_form").fadeOut(500);
@@ -78,14 +78,12 @@ $ ->
 
   $("#addvenue").click ->
     $("#mapCanvas_form").fadeIn(1000);
-    positionMapCanvasPopup($(this).offset());
 
   $("#closemapcanvas").click ->
     $("#mapCanvas_form").fadeOut(500);
 
   $("#showcomments").click ->
     $("#show_comments_form").fadeIn(1000);
-    positionCommentsPopup($(this).offset());
 
   $("#closevenue").click ->
     $("#addvenue_form").fadeOut(500);
@@ -152,38 +150,11 @@ $ ->
       data: { comment_id: commentid }
     (window).location = (window).location;
 
-  positionMapCanvasPopup = (offset) ->
-    if (!$("#mapCanvas_form").is(':visible'))
-      return;
-    $("#mapCanvas_form").css({
-    left: offset.left,
-    top: offset.top - 225,
-    position:'absolute'
-    });
-
-  positionCommentsPopup = (offset) ->
-    if (!$("#show_comments_form").is(':visible'))
-      return;
-    $("#show_comments_form").css({
-    left: offset.left,
-    top: offset.top - 225,
-    position:'absolute'
-    });
-
-  positionUpdatePlanPopup = (offset) ->
-    if (!$("#updateplan_form").is(':visible'))
-      return;
-    $("#updateplan_form").css({
-    left: offset.left,
-    top: offset.top - 225,
-    position:'absolute'
-    });
-
   errorPopup = (offset, errorText) ->
-    $("#errPopup_form").fadeIn(1000);
-    $("#errPopup_form").css({
-    left: offset.left,
-    top: offset.top - 225,
-    position:'absolute'
-    });
-    $("#error_text").text(errorText);
+    #$("#errPopup_form").fadeIn(1000);
+    #$("#errPopup_form").css({
+    #left: offset.left,
+    #top: offset.top - 225,
+    #position:'absolute'
+    #});
+    #$("#error_text").text(errorText);

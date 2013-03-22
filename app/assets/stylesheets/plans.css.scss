@@ -2,6 +2,177 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#plan_details {
+  padding: 15px;
+  background-color: #e6e6fa;
+}
+
+#plan_info {
+  width: 100%;
+  border-bottom: 1px solid #7A0109;
+}
+
+.plan_info_header {
+  font-size: 20px;
+  font-family: 'Gabriela', serif;
+  text-shadow: none;
+  color: black;
+  width: 100%;
+}
+
+.plan_info_actions {
+  display: inline;
+}
+
+.plan_info_value {
+  font-size: 40px;
+  font-family: 'Gabriela', serif;
+  text-shadow: none;
+  color: #7A0109;
+  display: inline;
+}
+
+#points_left_info {
+  width: 100%;
+  font-size: 20px;
+  font-family: 'Gabriela', serif;
+  text-shadow: none;
+  color: black;
+  padding-top: 10px;
+  text-align: center;
+}
+
+#totalpoints {
+  font-size: 45px;
+  font-family: 'Gabriela', serif;
+  text-shadow: none;
+  color: #7A0109;
+}
+
+#plan_voting_table {
+  background-color: #e6e6fa;
+  width: 100%;
+  font-family: 'Gabriela', serif;
+  max-height: 700px;
+}
+
+#plan_voting_table thead {
+  background-image: url("/images/BG_Black.jpg");
+  font-size: 20px;
+  color: #FFFF00;
+}
+
+#plan_voting_table thead a {
+  color: #FFFF00;
+  text-align: center;
+}
+
+#plan_voting_table thead a:hover {
+  color: #f5f5f5;
+  text-decoration: none;
+  background: none;
+}
+
+.venue_header, .venue_info {
+  max-width: 100px;
+  min-width: 100px;
+}
+
+.total_points_header, .sugg_totpointcount {
+  max-width: 30px;
+  min-width: 30px;
+}
+
+.user_header, .sugg_userpointcount {
+  max-width: 30px;
+  min-width: 30px;
+}
+
+.sugg_friend_count {
+  max-width: 30px;
+  min-width: 30px;
+}
+
+.friends_action_header {
+  text-align: left;
+  padding: 2px;
+  max-width: 15px;
+}
+
+.friends_header {
+  max-width: 30px;
+  min-width: 30px;
+}
+
+.friends_header, .user_header {
+  vertical-align: bottom;
+}
+
+.venue_info {
+  background-image: url("/images/BG_Black.jpg");
+  font-size: 20px;
+  text-align: left;
+}
+
+.venue_info a {
+  color: #FFFF00;
+}
+
+.venue_info a:hover {
+  color: #f5f5f5;
+  text-decoration: none;
+  background: none;
+}
+
+.venue_info a:visited {
+  color: #FFFF00;
+}
+
+.venue_image {
+  width: 140px;
+  height: 70px;
+}
+
+.venue_description {
+  text-align: left;
+  text-indent: 20px;
+  text-decoration: underline;
+}
+
+.venue_description a {
+  color: #FFFF00;
+  font-size: 10px;
+}
+
+
+.venue_description a:hover {
+  color: #f5f5f5;
+  text-decoration: none;
+  background: none;
+}
+
+.venue_description a:visited {
+  color: #FFFF00;
+}
+
+.sugg_totpointcount, .sugg_userpointcount {
+  background-image: url("/images/BG_Black.jpg");
+  font-size: 17px;
+  color: #FFFF00;
+  text-align: center;
+}
+
+.sugg_user_point, .removepointfrom {
+  display: inline;
+}
+
+.sugg_friend_count {
+  color: #FFFF00;
+  font-size: 17px;
+  text-align: center;
+  background-image: url("/images/BG_Black.jpg");
+}
+
 #errPopup_form {
   position: absolute;
   border: 5px solid gray;
@@ -11,205 +182,41 @@
   height: 100px;
 }
 
-#addvenue_form, #mapCanvas_form {
-  position: absolute;
-  border: 5px solid gray;
+#mapCanvas_form {
+  width: 50%;
+  height: 70%;
+}
+
+#mapCanvas_form .popupform_content {
+  width: 100%;
+  height: 100%;
   padding: 10px;
-  background: black;
-  width: 600px;
-  height: 420px;
+  text-align: center;
 }
 
 #map_canvas {
-  height: 300px;
-  width: 600px;
-  border: 1px solid #333;
+  width: 95%;
+  height: 75%;
+  border: 1px solid white;
   margin-top: 0.6em;
 }
 
-#addvenue_form body {
-  margin: 0px;
-  padding: 100px 0px 0px 0px;
-  overflow: hidden;
-}
-
-#addvenue_form_head {
-  position: absolute;
-  top:0px;
-  left: 0px;
-  width: 100%;
-  height: 80px;
-  background-color: purple;
-  overflow: hidden;
-}
-
-#addvenue_form_content {
-  position: absolute;
-  top: 85px;
-  height: 330px;
-  overflow: auto;
-}
-
 #show_comments_form {
-  position: absolute;
-  border: 5px solid gray;
-  padding: 10px;
-  background: #000000;
-  width: 600px;
-  height: 420px;
+  width: 50%;
+  height: 70%;
 }
 
-#show_comments_form body {
-  margin: 0px;
-  padding: 100px 0px 0px 0px;
-  overflow: hidden;
+#show_comments_form .popupform_content {
+  background-color: #f5f5f5;
+  color: #7A0109;
 }
 
-#show_comments_form_head {
-  position: absolute;
-  top:0px;
-  left: 0px;
-  width: 100%;
-  height: 200px;
-  background-color: purple;
-  overflow: hidden;
+#show_comments_form .popupform_content table {
+  border: 2px solid black;
 }
 
-#show_comments_form_head table {
-  width: 500px;
-}
-
-#show_comments_form_content {
-  position: absolute;
-  top: 205px;
-  height: 210px;
-  width: 97%;
-  overflow: auto;
-}
-
-#show_comments_form_content table {
-  width: 500px;
-}
-
-#updateplan_form {
-  position: absolute;
-  border: 5px solid gray;
-  padding: 10px;
-  background: black;
-  width: 600px;
-  height: 225px;
-  overflow: auto;
-}
-
-#plan_details {
-  position: absolute;
-  width: 98%;
-}
-
-#plan_details_table {
-  padding: 0px;
-}
-
-#plan_details_table td {
-  font-size: 25px;
-}
-
-#points_left_table {
-  width: 99%;
-}
-
-#points_left_table tr {
-  align: center;
-}
-
-#points_left_table td {
-  align: center;
-  font-size: 38px;
-  color: #b7b7b7;
-  padding-top: 10px;
-}
-
-#totalpoints {
-  color: #FDD017;
-}
-
-#plan_voting_table {
-  background-color: #b7b7b7;
-  width: 100%;
-/**-moz-border-radius: 23px;
--webkit-border-radius: 23px;
--khtml-border-radius: 23px;
-border-radius: 23px; */
-}
-
-#plan_voting_table thead {
-  background-color: #2f1d39;
-}
-
-#plan_voting_table thead th {
-  font-size: 18px;
-  padding: 5px;
-}
-
-#plan_voting_table thead td {
-  font-size: 18px;
-  padding: 5px;
-}
-
-#plan_voting_table tbody th {
-  font-size: 15px;
-  padding: 0px;
-  border: 1px solid purple;
-  width: 550px;
-}
-
-#plan_voting_table tbody th table td {
-  padding: 3px;
-  vertical-align: top;
-  text-align: left;
-  border: none;
-  font-size: 17px;
-}
-
-#description {
-  font-size: 13px;
-  font-style: normal;
-  text-indent: 20px;
-  color: white;
-  background-color: #add8e6;
-}
-
-#plan_voting_table tbody td {
-  font-size: 16px;
-  padding: 5px;
-  border: 1px solid purple;
-}
-
-.sugg_totpointcount {
-  background-color: #2f1d39;
-  border: 1px solid black;
-  width: 50px;
-}
-
-.sugg_userpointcount {
-  width: 100px;
-}
-
-.h_text {
-  color: #b7b7b7;
-}
-
-#plans_list h2 {
-  color: #b7b7b7;
-}
-
-#plans_count {
-  color: #FDD017;
-}
-
-#discussion table {
-  background-color: black;
-  width: 150px;
+#new_comment {
+  width: 40%;
 }
 
 #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
@@ -269,4 +276,123 @@ border-radius: 23px; */
 #changeplan:active, #showcomments:active, #addfriend:active, #addvenue:active, #submitvenue:active, #closevenue:active, #add_comment:active, #closecomments:active, #delete_comment:active, #updateplan:active, #closeupdateplan:active, #closeError:active, .addpointto:active, .removepointfrom:active, #selectvenue:active, #closemapcanvas:hover {
   border-top-color: #fdcf17;
   background: #fdcf17;
+}
+
+/* #Media Queries
+================================================== */
+
+/* ipad portrait */
+@media only screen and ( min-width: 768px) and ( max-width: 980px ) {
+
+}
+
+
+@media only screen and ( max-width: 767px) {
+  .plan_info_header {
+    display: none;
+  }
+
+  .plan_info_value {
+    font-size: 20px;
+    display: inline-block;
+  }
+
+  #points_left_info {
+    font-size: 12px;
+  }
+
+  #totalpoints {
+    font-size: 20px;
+  }
+
+  #plan_voting_table thead {
+    font-size: 12px;
+  }
+
+  .venue_header, .venue_info {
+    max-width: 20px;
+    min-width: 20px;
+  }
+
+  .total_points_header, .sugg_totpointcount {
+    max-width: 10px;
+    min-width: 10px;
+  }
+
+  .user_header, .sugg_userpointcount {
+    max-width: 20px;
+    min-width: 20px;
+  }
+
+  .sugg_friend_count {
+    max-width: 10px;
+    min-width: 10px;
+  }
+
+  .friends_action_header {
+    max-width: 10px;
+  }
+
+  .friends_header {
+    max-width: 15px;
+    min-width: 15px;
+  }
+
+  .friends_header img {
+    display: none;
+  }
+
+  .venue_info {
+    font-size: 12px;
+  }
+
+  .venue_image, .venue_description {
+    display: none;
+  }
+
+  .sugg_totpointcount, .sugg_userpointcount {
+    font-size: 10px;
+  }
+
+  .sugg_friend_count {
+    font-size: 10px;
+  }
+
+  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
+    font-size: 10px;
+  }
+
+  .addpointto, .removepointfrom {
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  #mapCanvas_form {
+    width: 90%;
+    height: 70%;
+  }
+
+  #mapCanvas_form .popupform_content {
+    height: 80%;
+  }
+
+  #show_comments_form {
+    width: 90%;
+    height: 70%;
+  }
+
+  #show_comments_form .popupform_content {
+    height: 50%;
+  }
+
+  #new_comment {
+    width: 70%;
+    height: 20px;
+  }
+
+}
+
+@media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)  {
+
 }

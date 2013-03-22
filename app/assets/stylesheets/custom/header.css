@@ -1,49 +1,49 @@
 @charset "utf-8";
 /* CSS Document */
 
+/* temp
 #header {
-	color: #FDD017;
-	position: absolute;
-	padding-top: 10px;
+    color: #FFFF00;
+    position: absolute;
+    padding-top: 10px;
     width: 100%;
-    height: 80px;
+    height: 65px;
     top: 0;
-    background-color: #4c2d5e;
-    border-bottom: 7px solid #b7b7b7;
+    background-color: #300204;
+    border-bottom: 4px solid #b7b7b7;
 }
 
-#header h1 img {
-	position: absolute;
-	bottom: 5px;
+#logo {
+    position: absolute;
+    bottom: 0px;
     left: 420px;
     width: 500px;
     height: 75px;
 }
 
 #header #menu {
-	position: absolute;
-	bottom: 0px;
+    list-style: none;
+    position: absolute;
+    bottom: 0px;
     margin-top: 10px;
-	left: 1000px;
+    left: 1000px;
 }
 
-#header #menu table tr {
-    vertical-align: bottom;
-}
-
-#header #menu table td {
-    padding-left: 10px;
-    vertical-align: bottom;
+#log_in {
+    height: 60px;
+    width: 220px;
+    position: absolute;
+    bottom: -5px;
 }
 
 #myplans {
-    border-top: 1px solid #fdcf17;
-    background: #fdcf17;
-    background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
-    background: -webkit-linear-gradient(top, #fdcf17, #fdcf17);
-    background: -moz-linear-gradient(top, #fdcf17, #fdcf17);
-    background: -ms-linear-gradient(top, #fdcf17, #fdcf17);
-    background: -o-linear-gradient(top, #fdcf17, #fdcf17);
+    border-top: 1px solid #FFFF00;
+    background: #FFFF00;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFF00), to(#FFFF00));
+    background: -webkit-linear-gradient(top, #FFFF00, #FFFF00);
+    background: -moz-linear-gradient(top, #FFFF00, #FFFF00);
+    background: -ms-linear-gradient(top, #FFFF00, #FFFF00);
+    background: -o-linear-gradient(top, #FFFF00, #FFFF00);
     padding: 5px 10px;
     -webkit-border-radius: 23px;
     -moz-border-radius: 23px;
@@ -59,11 +59,137 @@
     vertical-align: middle;
 }
 #myplans:hover {
-    border-top-color: #fdcf17;
-    background: #fdcf17;
+    border-top-color: #FFFF00;
+    background: #FFFF00;
     color: #2d2d6b;
 }
 #myplans:active {
-    border-top-color: #fdcf17;
-    background: #fdcf17;
+    border-top-color: #FFFF00;
+    background: #FFFF00;
+}
+
+#howwework_form {
+    position: absolute;
+    border: 5px solid gray;
+    padding: 10px;
+    background: #2d2d6b;
+    width: 300px;
+    height: 500px;
+    display: inline-block;
+}
+
+#aboutus_text {
+    color: #fff;
+    text-shadow: 0 0 5px #FFFF00, 0 0 10px #FFFF00, 0 0 15px #FFFF00, 0 0 20px #FFFF00, 0 0 30px #2d2d6b, 0 0 40px #2d2d6b, 0 0 50px #2d2d6b, 0 0 75px #2d2d6b;
+    letter-spacing: 5px;
+    font: 'MisoRegular';
+}
+
+#aboutus_form {
+    position: absolute;
+    border: 2px solid #FFFF00;
+    padding: 10px;
+    background: #2d2d6b;
+    width: 300px;
+    height: 205px;
+}
+
+#about_us_image {
+    width: 125px;
+    position: absolute;
+    left: -840px;
+    bottom: -50px;
+}
+
+#how_we_work_image {
+    width: 125px;
+    position: absolute;
+    left: -720px;
+    bottom: -55px;
+}
+
+#closehowwework, #closeaboutus {
+    border-top: 1px solid #FFFF00;
+    background: #FFFF00;
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFF00), to(#FFFF00));
+    background: -webkit-linear-gradient(top, #FFFF00, #FFFF00);
+    background: -moz-linear-gradient(top, #FFFF00, #FFFF00);
+    background: -ms-linear-gradient(top, #FFFF00, #FFFF00);
+    background: -o-linear-gradient(top, #FFFF00, #FFFF00);
+    padding: 5px 10px;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 23px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: #2d2d6b;
+    font-size: 14px;
+    font-family: Georgia, Serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+#closehowwework:hover, #closeaboutus:hover {
+    border-top-color: #FFFF00;
+    background: #FFFF00;
+    color: #2d2d6b;
+}
+#closehowwework:active, #closeaboutus:active {
+    border-top-color: #FFFF00;
+    background: #FFFF00;
+}
+
+*/
+
+.header { background: url(/images/BG_Black2.jpg) repeat 0 0; }
+.header .shell { padding: 21px 32px 0; width: 918px; background: url(/images/BG_Black.jpg) repeat 0 0; box-shadow: 0px -10px 9px rgba(0,0,0,0.7); -moz-box-shadow: 0px -10px 9px rgba(0,0,0,0.7); -webkit-box-shadow: 0px -10px 9px rgba(0,0,0,0.7); -o-box-shadow: 0px -3px 10px 9rgba(0,0,0,0.7) }
+.header-top { height: 65px;  }
+
+#logo { width: 250px; font-size: 0; line-height: 0; float: left; }
+#logo a { height: 57px; display: block;  background: url(/images/plantourage_logo.png) no-repeat 0 0; background-size: 100%; text-indent: -4000px; }
+
+#navigation { float: right; padding-top: 13px; }
+#navigation ul { list-style: none; list-style-position: outside; font-size: 17px; font-family: Georgia, Serif; font-weight: 400;  }
+#navigation ul li { display: inline; padding-left: 34px; }
+#navigation ul li a { color: #d5d4d4; }
+#navigation ul li a:hover,
+#navigation ul li.active a { color: #fff; text-decoration: none; }
+#navigation a.nav-btn { display: none;  }
+
+/* #Media Queries
+================================================== */
+
+/* ipad portrait */
+@media only screen and ( min-width: 768px) and ( max-width: 980px ) {
+    #navigation ul li { padding-left: 24px; font-size: 15px; }
+    .header .shell { padding: 21px 0px 0; width: 748px; background: url(/images/BG_Black.jpg) repeat 0 0; }
+    .header-top { padding-left: 20px; padding-right: 20px;  }
+}
+
+
+@media only screen and ( max-width: 767px) {
+    .header .shell { padding: 0 0 0 0; background: url(/images/BG_Black.jpg) repeat 0 0; }
+    .header-top { padding: 12px 0 0px 0; }
+    #logo { margin: 0 auto; float: none; display: block; }
+
+    #navigation { top:-40px; float: none; display: block; position: relative; background: url(/images/m-navigation.png) no-repeat 0 0; z-index: 1000; margin: 20px 10px 0 10px; height: 32px; padding-top: 0;  }
+    #navigation a.nav-btn { display: block; height: 32px; padding-left: 13px; line-height: 32px; width: 286px; margin: 0 auto; background: url(http://preview.chocotemplates.com/digy/html/default/css/images/nav-btn.png) no-repeat right 0;
+        font-size: 15px; color: #fff; font-size: 17px; font-family: Georgia, Serif; font-weight: 400; position: relative; z-index: 100;}
+    #navigation a.nav-btn:hover { text-decoration: none; }
+    #navigation a.nav-btn span { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/nav-arr.png) no-repeat 0 0; width: 10px; height: 7px; position: absolute; top: 13px; right: 13px; }
+    #navigation a.nav-btn span.active { background-position: 0 bottom;  }
+
+    #navigation ul { display: none; position: absolute; width: 298px; background: #100f11; top: 22px; left: 0px; padding-top: 20px; border-radius: 0 0 7px 7px; -moz-border-radius: 0 0 7px 7px; -webkit-border-radius: 0 0 7px 7px; -o-border-radius: 0 0 7px 7px; }
+    #navigation ul li { float: none; display: block; padding-left: 0; padding-bottom: 8px; }
+    #navigation ul li a { display: block; padding-left: 10px; }
+    #navigation ul li.home { display: none;  }
+    #header { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/m-header.png) repeat-x 0 0; height: 218px; width: 100%; }
+}
+
+@media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)  {
+
+    #logo a { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/logo@2x.png) no-repeat 0 0;   -webkit-background-size: 142px 57px; -moz-background-size: 142px 57px; background-size: 142px 57px; }
+    #navigation { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/navigation@2x.png) no-repeat 0 0;  -webkit-background-size: 298px 32px; -moz-background-size: 298px 32px; background-size: 298px 32px;  }
+    #navigation a.nav-btn span { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/nav-arr@2x.png) no-repeat 0 0; -webkit-background-size: 10px 15px; -moz-background-size: 10px 15px; background-size: 10px 15px; }
 }

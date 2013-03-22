@@ -1,73 +1,76 @@
 <%= stylesheet_link_tag "custom/styles" %>
+<link href='http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'>
 
-
-<div id="container">
 
 <%= render :partial => 'layouts/header' %>
 
-<div id="plans_list">
+<div id="plans_list" class="shell">
 
   <input id="userid" value="<%= current_user.id %>" type="hidden">
-  <h2>You have <div id="plans_count" style="display: inline;"><%= pluralize(@upcoming_plans.count, 'plan') %></div> coming up!</h2>
+  <div id="plans_count_text">
+    You have <div id="plans_count" style="display: inline;"><%= pluralize(@upcoming_plans.count, 'plan') %></div> coming up!
+  </div>
   <br>
-  <input id="newplan" type="button" value="Start New Plan">
+  <a href="#" class="green-btn" id="newplan" >Start New Plan</a>
   <br>
 
   <table id="plans_table" >
   <thead>
-    <td><b>Plan Date</b></td>
-    <td><b>Plan Name</b></td>
-    <td><b># of friends</b></td>
-    <td><b>Top Pick</b></td>
-    <td><b>Points left for you to vote</b></td>
-  </thead>
-  <% @upcoming_plans.each do |plan| %>
   <tr>
-    <td>
-      <%= plan.plandate.strftime("%A") %> <%= plan.plandate.strftime("%b") %> <%= plan.plandate.strftime("%d") %>, <%= plan.plandate.strftime("%Y") %>
+    <td width="38%"><b>Date</b></td>
+    <td width="12%"><b>Friends</b></td>
+    <td><b>Top Pick</b></td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @upcoming_plans.each do |plan| %>
+  <tr class="plan_record" id="<%= plan.id %>">
+    <td><a href="/plans/<%= plan.id %>">
+      <%= plan.plandate.strftime("%A") %> <%= plan.plandate.strftime("%b") %> <%= plan.plandate.strftime("%d") %><br> - <%= plan.name %></a>
     </td>
-    <td><%= link_to plan.name, plan %></td>
     <td align="center"><%= plan.invites.count - 1 %></td>
     <td valign="center">
       <% if (!plan.toppick.nil?) %>
           <% if (!plan.toppick.venue.image.blank?) %>
             <a href="<%= plan.toppick.venue.website %>" title="<%= plan.toppick.venue['name'] %>" target="_blank"><img src="<%= plan.toppick.venue.image %>" width="140" height="70"></a>
           <% else %>
-              <a href="<%= plan.toppick.venue.website %>" title="<%= plan.toppick.venue['name'] %>" target="_blank"><%= plan.toppick.venue['name'] %></a>
+              <a href="<%= plan.toppick.venue.website %>" title="<%= plan.toppick.venue['address'] %>" target="_blank"><%= plan.toppick.venue['name'] %></a><br> - <%= plan.toppick.venue['address'] %>
           <% end %>
       <% end %>
     </td>
-    <td align="center"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', plan.id, Invite.find_by_plan_id_and_user_id(plan.id, current_user['id'])]) %></td>
   </tr>
   <% end %>
+  </tbody>
 </table>
 
-  <form id="newplan_form" style="display:none">
+  <form id="newplan_form" style="display:none" class="popupform">
     <body>
-    <h1>New plan</h1>
+    <div class="popupform_header">New plan</div>
+    <div class="popupform_content">
 
-    <table>
-      <tr>
-        <td>
-          Date:
-        </td>
-        <td>
-          <input id="plan_date" type="date" value="<%= Date.today %>">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Name:
-        </td>
-        <td>
-          <input id="plan_name" type="input" maxlength="20">
-        </td>
-      </tr>
-    </table>
-    <br>
-    <input id="submitnewplan" type="button" value="Create">
+        <table>
+          <tr>
+            <td>
+              Name:
+            </td>
+            <td>
+              <input id="plan_name" type="input" maxlength="20">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Date:
+            </td>
+            <td>
+              <input id="plan_date" type="date" value="<%= Date.today %>">
+            </td>
+          </tr>
+        </table>
+        <input id="submitnewplan" type="button" value="Create">
 
-    <input id="closenewplan" type="button" value="Close">
+        <input id="closenewplan" type="button" value="Close">
+    </div>
 
     </body>
   </form>
@@ -81,5 +84,4 @@
     </body>
   </form>
 
-</div>
 </div>

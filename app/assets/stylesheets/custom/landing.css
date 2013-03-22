@@ -1,88 +1,370 @@
 @charset "utf-8";
 /* CSS Document */
 
+/* temp
 #main_text {
-	width: 600px;
+	width: 450px;
 	position: absolute;
-	left: -420px;
-}
-
-#about_us_image {
-    width: 125px;
-    position: absolute;
-    left: -310px;
-    top: -100px;
-}
-
-#how_we_work_image {
-    width: 125px;
-    position: absolute;
-    left: -150px;
-    top: -90px;
+    top: 40px;
+    left: -200px;
 }
 
 #main {
-    appearance: push-button;
-    font-size: 24px;
-    font-style: oblique;
     position: absolute;
-    top: 160px;
-    left: 420px;
+    top: 140px;
+    left: 300px;
+    width: 700px;
+    text-align: center;
 }
 
 #container body {
     background-image: url('/images/BG3.jpg');
     background-size: 100%;
-
 }
 
-#howwework_form {
+#main table tr,td {
+    padding: -5px;
+    margin: -5px;
+}
+
+#top_left {
+    width: 250px;
+    height: 250px;
+    background-image: url('/images/guvfront.jpg');
+    background-size: 100%;
+}
+
+#top_left:hover {
+    background-image: url('/images/guvback.jpg');
+}
+
+#top_middle {
+    width: 250px;
+    height: 250px;
+    background-size: 100%;
+    background-image: url('/images/housepartyfront.jpg');
+}
+
+#top_middle:hover {
+    background-image: url('/images/housepartyback.jpg');
+}
+
+#top_right {
+    width: 250px;
+    height: 250px;
+    background-image: url('/images/kingstfront.jpg');
+    background-size: 100%;
+}
+
+#top_right:hover {
+    background-image: url('/images/kingstback.jpg');
+}
+
+#bottom_left {
+    width: 250px;
+    height: 250px;
+    background-image: url('/images/maizonfront.jpg');
+    background-size: 100%;
+}
+
+#bottom_left:hover {
+    background-image: url('/images/maizonback.jpg');
+}
+
+#bottom_middle {
+    width: 250px;
+    height: 250px;
+    background-image: url('/images/muzikfront.jpg');
+    background-size: 100%;
+}
+
+#bottom_middle:hover {
+    background-image: url('/images/muzikback.jpg');
+}
+
+#bottom_right {
+    width: 250px;
+    height: 250px;
+    background-image: url('/images/pravdafront.jpg');
+    background-size: 100%;
+}
+
+#bottom_right:hover {
+    background-image: url('/images/pravdaback.jpg');
+}
+
+*/
+
+
+.slider { height: 436px;  }
+
+
+.slider, #carousel, #carousel > div {
+    width: 980px;
+    height: 436px;
+}
+
+.slider {
+    margin: 0px 0 0 -495px;
+    overflow: hidden;
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+#carousel {
+    position: relative;
+    z-index: 2;
+    background: url(/images/BG_Red.jpg) no-repeat center 0;
+    background-size: 100%;
+
+}
+#carousel div {
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+#carousel div > * {
     position: absolute;
-    border: 5px solid gray;
-    padding: 10px;
-    background: #2d2d6b;
-    width: 300px;
-    height: 500px;
-    display: inline-block;
+}
+#carousel img.img-front {
+    left: 649px;
+    top: 0;
+    z-index: 4;
 }
 
-#aboutus_form {
-    position: absolute;
-    border: 5px solid gray;
-    padding: 10px;
-    background: #2d2d6b;
-    width: 300px;
-    height: 205px;
+#carousel img.img-mid {
+    left: 572px;
+    top: 46px;
+    z-index: 3;
 }
 
-#closehowwework, #closeaboutus {
-    border-top: 1px solid #fdcf17;
-    background: #fdcf17;
-    background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
-    background: -webkit-linear-gradient(top, #fdcf17, #fdcf17);
-    background: -moz-linear-gradient(top, #fdcf17, #fdcf17);
-    background: -ms-linear-gradient(top, #fdcf17, #fdcf17);
-    background: -o-linear-gradient(top, #fdcf17, #fdcf17);
-    padding: 5px 10px;
-    -webkit-border-radius: 23px;
-    -moz-border-radius: 23px;
-    border-radius: 23px;
-    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    box-shadow: rgba(0,0,0,1) 0 1px 0;
-    text-shadow: rgba(0,0,0,.4) 0 1px 0;
-    color: #2d2d6b;
-    font-size: 14px;
+#carousel img.img-back {
+    left: 498px;
+    top: 80px;
+    z-index: 2;
+}
+
+
+#carousel h3 {
+    font-size: 68px;
+    letter-spacing: -5px;
+    font-weight: normal;
     font-family: Georgia, Serif;
+    color: #f5f5f5;
+    line-height: 70px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5);
+    width: 420px;
+    left: 32px;
+    background: url(http://preview.chocotemplates.com/digy/html/default/css/images/slider-h3-border.png) repeat-x 0 bottom;
+    top: 91px;
+    padding-bottom: 13px;
+    margin: 0 0 18px;
+}
+
+#carousel h5 { font-size: 15px; color: #d3d2d3; font-family: Georgia, Serif; text-transform: uppercase; text-shadow: rgba(0,0,0,0.5) 0px 1px 1px; font-weight: normal; position: absolute; top: 63px; left: 32px; white-space: nowrap; }
+
+#carousel p {
+    color: #959697;
+    font-size: 14px;
+    width: 420px;
+    left: 32px;
+    top: 181px;
+    margin: 0;
+    line-height: 26px;
+}
+#carousel a.green-btn {
+    color: #300204;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
     text-decoration: none;
-    vertical-align: middle;
+    text-align: center;
+    line-height: 52px;
+    outline: none;
+    display: block;
+    background-color: #888;
+    width: 194px;
+    height: 56px;
+    left: 32px;
+    top: 308px;
+    background: url(http://preview.chocotemplates.com/digy/html/default/css/images/green-btn.png) no-repeat 0 0;
+
 }
-#closehowwework:hover, #closeaboutus:hover {
-    border-top-color: #fdcf17;
-    background: #fdcf17;
-    color: #2d2d6b;
+#carousel a:hover {
+    background-position: -1px -54px;
 }
-#closehowwework:active, #closeaboutus:active {
-    border-top-color: #fdcf17;
-    background: #fdcf17;
+
+#logo a { height: 57px; display: block;  background: url(/images/plantourage_logo.png) no-repeat 0 0; background-size: 100%; text-indent: -4000px; }
+#logo a:hover {
+    background-position: 0px 0px;
+}
+
+#prev, #next {
+    background: url(http://preview.chocotemplates.com/digy/html/default/css/images/direction-nav.png) no-repeat 0 0;
+    display: block;
+    width: 17px;
+    height: 22px;
+    position: absolute;
+    bottom: 15px;
+    z-index: 10;
+}
+
+#prev {
+    left: 426px;
+}
+
+#next {
+    right: 434px;
+    background-position: right 0;
+}
+
+.pagination { position: absolute; bottom: 15px; left: 50%; margin-left: -44px; width: 88px; }
+.pagination a { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/pagination.png) no-repeat 0 0; width: 20px; height: 20px; display: inline-block; font-size: 0; line-height: 0; text-indent: -4000px; cursor: default; }
+.pagination a.selected { background-position: 0 -20px; }
+
+.main { padding: 54px 0 20px 0; border-top: 1px solid #fff;  background: url(http://preview.chocotemplates.com/digy/html/default/css/images/main.png) repeat-x 0 0; box-shadow: 0px -4px 10px rgba(0,0,0,0.4); -moz-box-shadow: 0px -4px 10px rgba(0,0,0,0.4); -webkit-box-shadow: 0px -4px 10px rgba(0,0,0,0.4); -o-box-shadow: 0px -4px 10px rgba(0,0,0,0.4);  }
+.main h2 { font-size: 22px; color: #000; font-family: Georgia, Serif; font-weight: 700; padding-bottom: 10px; text-transform: uppercase;  }
+.main p a { text-decoration: underline; }
+.main p a:hover { text-decoration: none; }
+.main section { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/section.png) no-repeat center bottom; padding-bottom: 50px; margin-bottom: 20px;  }
+
+.main .cols { padding-left: 32px; padding-right: 32px;  }
+.main .cols h2 { padding-bottom: 4px; }
+.main .cols .col { width: 277px; float: left; }
+.main .cols .col + .col { padding-left: 40px; }
+.main .cols .col img { float: left; margin-right: 16px; width: 73px; }
+.main .cols .col .col-cnt { height: 100%; overflow: hidden; }
+
+.main .content { padding-left: 32px; padding-right: 32px; }
+.main .content span { text-decoration: underline; }
+
+.slider-arr a.arr-btn { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/slider-b-arr.png) no-repeat 0 0; width: 30px; height: 30px; display: block; position: absolute; top: 10px;}
+.slider-arr a.prev-arr { left: 32px; }
+.slider-arr a.prev-arr:hover { background-position: 0 -31px; }
+.slider-arr a.next-arr { right: 32px; background-position: right 0; }
+.slider-arr a.next-arr:hover { background-position: right -31px; }
+
+
+/* #Media Queries
+================================================== */
+
+/* ipad portrait */
+@media only screen and ( min-width: 768px) and ( max-width: 980px ) {
+    .slider, #carousel, #carousel > div {
+        width: 708px;
+        height: 436px;
+    }
+
+    .slider {
+        width: 708px;
+        margin: 0px 0 0 -354px;
+        overflow: hidden;
+        position: relative;
+        top: 50%;
+        left: 50%;
+    }
+
+    #carousel h3 { font-size: 48px; width: 290px; left: 10px; }
+    #carousel h5 { font-size: 12px; width: 290px; left: 10px; }
+    #carousel p { font-size: 11px;  width: 294px; left: 10px; }
+    #carousel a.green-btn { top: 340px; left: 10px; }
+
+
+    #carousel img.img-front {
+        left: 476px;
+        width: 230px  !important;
+        height: 390px;
+    }
+
+    #carousel img.img-mid {
+        left: 425px;
+        width: 192px  !important;
+        height: 309px;
+    }
+
+    #carousel img.img-back {
+        left: 366px;
+        width: 141px  !important;
+        height: 238px;
+    }
+
+    #prev { left: 290px; }
+    #next { right: 297px; }
+
+    .main section { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/t-section.png) no-repeat center bottom; padding-bottom: 50px; margin-bottom: 20px; }
+    .main .cols { padding-left: 20px; padding-right: 20px; }
+    .main .cols .col { width: 200px; }
+    .main .cols .col img { float: none; display: block; margin: 0 auto; width: 73px;  margin-bottom: 14px; }
+    .main .cols .col .col-cnt { float: none; display: block;  text-align: center; }
+
+    .main .content { padding-left: 20px; padding-right: 20px; }
+
+}
+
+
+@media only screen and ( max-width: 767px) {
+
+    .slider, #carousel, #carousel > div {
+        width: 300px;
+        height: 436px;
+    }
+
+    .slider {
+        width: 300px;
+        margin: 0px 0 0 -150px;
+        overflow: hidden;
+        position: relative;
+        top: 50%;
+        left: 50%;
+    }
+
+    #carousel h3 { font-size: 46px; width: 290px; left: 10px; top: 70px; background: transparent; }
+    #carousel h5 { font-size: 12px; width: 290px; left: 70px; top: 55px; }
+    #carousel p { font-size: 11px;  width: 294px; left: 10px; display: none; }
+    #carousel a.green-btn { top: 365px; left: 0px; width: 100%; text-align: center; background: url(http://preview.chocotemplates.com/digy/html/default/css/images/green-btn@2x.png) repeat-x 0 0; height: 35px; line-height: 35px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px;}
+    #carousel a.green-btn:hover { background-position: 0 bottom; }
+
+    #carousel img.img-front {
+        top: 120px;
+        left: 120px;
+        width: 140px  !important;
+        height: 240px;
+    }
+
+    #carousel img.img-mid {
+        top : 140px;
+        left: 80px;
+        width: 110px  !important;
+        height: 198px;
+    }
+
+    #carousel img.img-back {
+        top: 160px;
+        left: 40px;
+        width: 90px  !important;
+        height: 155px;
+    }
+
+    .pagination { bottom: 8px; left: 155px; }
+
+
+    .main section { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/m-section.png) no-repeat center bottom; padding-bottom: 30px; margin-bottom: 20px; }
+    .main .cols { padding-left: 10px; padding-right: 10px; }
+    .main .cols .col { width: 100%; }
+    .main .cols .col + .col { padding: 20px 0 0;  }
+    .main .cols .col img { float: none; display: block; margin: 0 auto; width: 73px;  margin-bottom: 14px; }
+    .main .cols .col .col-cnt { float: none; display: block;  text-align: center; }
+
+    .main .content { padding-left: 20px; padding-right: 20px; }
+
+    .slider-arr a.prev-arr { left: 10px; }
+    .slider-arr a.next-arr { right: 10px; background-position: right 0; }
+
+}
+
+@media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)  {
+
+    .pagination a { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/pagination@2x.png) no-repeat 0 1px; -webkit-background-size: 18px 40px; -moz-background-size: 18px 40px; background-size: 18px 40px; }
+    .main section { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/section@2x.png) no-repeat center bottom; -webkit-background-size: 300px 10px; -moz-background-size: 300px 10px; background-size: 300px 10px;  }
 }

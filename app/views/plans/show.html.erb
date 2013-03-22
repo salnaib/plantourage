@@ -1,10 +1,9 @@
 <%= stylesheet_link_tag "custom/styles" %>
 
-<div id="container">
-
 <%= render :partial => 'layouts/header' %>
 
-<div id="plan_details">
+
+<div id="plan_details" class="shell">
   <div id="fb-root"></div>
 
   <script src="http://connect.facebook.net/en_US/all.js"></script>
@@ -202,8 +201,14 @@
 
   </script>
 
-  <table id="plan_details_table">
-<!--    <tr>
+  <div id="plan_info" class="shell">
+    <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></div>
+    <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%= @plan.name %></div>
+    <div class="plan_info_actions">
+      <input id="changeplan" type="button" value="Change Details"><input type="hidden" id="planid" value="<%= @plan.id %>"><input id="plandate" value="<%= @plan.plandate %>" type="hidden">
+      <input id="showcomments" type="button" value='View Discussion (<%= pluralize(@plan.microposts.count, "comment")%>)'>
+    </div>
+    <!--    <tr>
       <td>
         <% #if (@plan.fbevent_id.blank?) %>
             <input id="createfbevent" type="button" value="Create Private Event Page on Facebook">
@@ -212,123 +217,90 @@
         <% #end %>
       </td>
     </tr> -->
-    <tr>
-      <td align="left" class="h_text"><b>Plan Date:</b></td>
-      <td align="left"><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %> </td>
-      <td align="left" valign="top">
-        <input id="changeplan" type="button" value="Change Details"><input type="hidden" id="planid" value="<%= @plan.id %>"><input id="plandate" value="<%= @plan.plandate %>" type="hidden">
-        <input id="showcomments" type="button" value='View Discussion (<%= pluralize(@plan.microposts.count, "comment")%>)'
-      </td>
-    </tr>
-    <tr>
-      <td align="left" class="h_text"><b>Plan Name:</b></td>
-      <td align="left" colspan="100%"><%= @plan.name %></td>
-    </tr>
-  </table>
-  <table id="points_left_table">
-    <tr>
-      <td>
-        <b>You have <div id="totalpoints" style="display:inline"><%= pluralize(10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Point') %> </div> left to vote with</b>
-      </td>
-    </tr>
-  </table>
-  <table id="plan_voting_table">
-    <thead>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th colspan="100%" align="left">
-          <input id="addfriend" type="button" value="Add Friends" onclick="sendRequestViaMultiFriendSelector(); return false;">
-          <input type="hidden" id="invited_user_id"/>
-          <input type="hidden" id="friend_user_id"/>
-          <input type="hidden" id="invited_user_name"/>
-          <br>
-          <b>Friends (<%= @invites.count - 1 %>)</b>
-        </th>
-    </thead>
-    <thead>
-    <th>
-      <br>
-      <input id="addvenue" type="button" value="Add Venues">
-      <br>
-      <b>Venues</b>
-    </th>
-    <th>Total</th>
-    <th><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
-      <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> Points </div> Left
-    </th>
 
-    <% @invites.each do |invite| %>
-        <% if invite.user.id != current_user.id %>
-            <th>
-              <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>" width="50" height="50"><br><b><%= invite.user.name %></b></a>
-              <br> (<%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, invite.id]) %>)
-            </th>
-        <% end %>
-    <% end %>
-    </thead>
+  </div>
 
-    <tbody>
-    <% @suggestions.each do |suggestion| %>
-    <tr>
-      <th>
-        <table>
-          <tr>
-          <% if (!suggestion.venue.image.blank?) %>
-                <td><a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank"><img src="<%= suggestion.venue.image %>" width="140" height="70"></a></td>
-          <% end %>
-            <td>
-            <% if (!suggestion.venue.website.blank?) %>
-                  <a href="<%= suggestion.venue.website %>" target="_blank"><%= suggestion.venue.name %></a>
-            <% else %>
-                  <%= suggestion.venue.name %>
-            <% end %>
-              <br><div id="description"><u><a href="<%= suggestion.venue.googleurl %>" target="_blank"><%= suggestion.venue['address'] %></a></u></div>
-            </td>
-            </tr>
-        </table>
-      </th>
-      <td class="sugg_totpointcount"><font id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </font></td>
-      <% if (Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) > 0) %>
-        <td bgcolor="#2f1d39" class="sugg_userpointcount">
-      <% else %>
-        <td class="sugg_userpointcount">
-      <% end %>
-            <input id="<%= suggestion.id %>" type="button" value="+" class="addpointto">
-            <font id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> </font>
-            <input id="<%= suggestion.id %>" type="button" value="-" class="removepointfrom">
-      </td>
+  <div id="points_left_info">
+    You have <div id="totalpoints" style="display:inline"><%= pluralize(10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Point') %> </div> left to vote with
+  </div>
 
-      <% @invites.each do |invite| %>
-        <% if invite.user.id != current_user.id %>
-            <% if (Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) > 0) %>
-              <td bgcolor="#2f1d39"><%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) %> </td>
-            <% else %>
-              <td><%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) %> </td>
-            <% end %>
-        <% end %>
-    <% end %>
-    </tr>
-    <% end %>
-    </tbody>
-
-  </table>
-
-  <div id="show_comments_form" style="display:none">
-    <body>
-    <div id="show_comments_form_head">
-      <table>
-        <tr><td align=center><h3>Showing discussion for <%= @plan['name'] %><br> (<%= pluralize(@plan.microposts.count, 'comment') %>)</h3></td></tr>
+  <div id="voting_info" class="shell">
+    <table id="plan_voting_table">
+      <thead>
         <tr>
-          <td align=center>
-            <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment"><input id="closecomments" type="button" value="Close">
-            <input type="hidden" id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
-          </td>
+          <th></th>
+          <th></th>
+          <th class="friends_action_header" colspan="100%">
+            <input id="addfriend" type="button" value="Add Friends" onclick="sendRequestViaMultiFriendSelector(); return false;">
+            <input type="hidden" id="invited_user_id"/>
+            <input type="hidden" id="friend_user_id"/>
+            <input type="hidden" id="invited_user_name"/>
+            <br>
+            <b>Friends (<%= @invites.count - 1 %>)</b>
+          </th>
         </tr>
-      </table>
+        <tr>
+          <th class="venue_header">
+            <input id="addvenue" type="button" value="Add Venues">
+            <br>
+            <b>Venues</b>
+          </th>
+          <th class="total_points_header">Total</th>
+          <th class="user_header"><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
+            <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> Points </div> Left
+          </th>
+
+          <% @invites.each do |invite| %>
+              <% if invite.user.id != current_user.id %>
+                  <th class="friends_header">
+                    <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>" width="50" height="50"><br><b><%= invite.user.name %></b></a>
+                    <br> (<%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, invite.id]) %>)
+                  </th>
+              <% end %>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+      <% @suggestions.each do |suggestion| %>
+        <tr>
+            <th class="venue_info">
+                <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank">
+                    <% if (!suggestion.venue.image.blank?) %>
+                        <div class="venue_image"><img src="<%= suggestion.venue.image %>"></div>
+                    <% end %>
+                    <div class="venue_name"><%= suggestion.venue.name %></div>
+                </a>
+                <div class="venue_description"><a href="<%= suggestion.venue.googleurl %>" target="_blank"><%= suggestion.venue['address'] %></a></div>
+            </th>
+          <td class="sugg_totpointcount">
+            <div id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </div>
+          </td>
+          <td class="sugg_userpointcount">
+            <input id="<%= suggestion.id %>" type="button" value="+" class="addpointto">
+            <div class="sugg_user_point" id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> </div>
+            <input id="<%= suggestion.id %>" type="button" value="-" class="removepointfrom">
+          </td>
+          <% @invites.each do |invite| %>
+              <% if invite.user.id != current_user.id %>
+                  <td class="sugg_friend_count"><%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) %> </td>
+              <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+  </table>
+
+  </div>
+
+  <div id="show_comments_form" style="display:none" class="popupform">
+    <body>
+    <div class="popupform_header">
+      Showing discussion for <%= @plan['name'] %><br> (<%= pluralize(@plan.microposts.count, 'comment') %>)<br>
+      <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment"><input id="closecomments" type="button" value="Close">
+      <input type="hidden" id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
     </div>
-    <div id="show_comments_form_content">
-      <table>
+    <div class="popupform_content">
+    <table>
         <% @microposts.each do |micropost| %>
             <tr>
               <td valign="top" align="left">
@@ -357,31 +329,31 @@
     </body>
   </div>
 
-  <div id="updateplan_form" style="display:none">
+  <div id="updateplan_form" style="display:none" class="popupform">
     <body>
-    <h1>Update plan</h1>
-
-    <table>
-      <tr>
-        <td>
-          Date:
-        </td>
-        <td>
-          <input id="plan_date" type="date" value="<%= @plan.plandate %>">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Name:
-        </td>
-        <td>
-          <input id="plan_name" type="input" maxlength="20" value="<%= @plan.name %>">
-        </td>
-      </tr>
-    </table>
-    <br>
-    <input id="updateplan" type="button" value="Save">
-    <input id="closeupdateplan" type="button" value="Close">
+    <div class="popupform_header">Update plan</div>
+    <div class="popupform_content">
+        <table>
+          <tr>
+            <td>
+              Name:
+            </td>
+            <td>
+              <input id="plan_name" type="input" maxlength="20" value="<%= @plan.name %>">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Date:
+            </td>
+            <td>
+              <input id="plan_date" type="date" value="<%= @plan.plandate %>">
+            </td>
+          </tr>
+        </table>
+        <input id="updateplan" type="button" value="Save">
+        <input id="closeupdateplan" type="button" value="Close">
+    </div>
 
     </body>
   </div>
@@ -395,30 +367,30 @@
     </body>
   </div>
 
-  <div id="mapCanvas_form" style="display:none">
+  <div id="mapCanvas_form" style="display:none" class="popupform">
     <body>
-        <div>
-          <input id="closemapcanvas" type="button" value="Close">
-          <br>
-          Search: <input id="searchTextField" type="text" size="50">
-        </div>
-    <div id="map_canvas"></div>
-        <input id="venuegoogleid" value="" type="hidden">
-        <input id="venuename" value="" type="hidden">
-        <input id="venueaddress" value="" type="hidden">
-        <input id="venuecity" value="" type="hidden">
-        <input id="venuestate" value="" type="hidden">
-        <input id="venuecountry" value="" type="hidden">
-        <input id="venuepostal" value="" type="hidden">
-        <input id="venuephone" value="" type="hidden">
-        <input id="venuegoogleurl" value="" type="hidden">
-        <input id="venuewebsite" value="" type="hidden">
-        <input id="venuegeolocation" value="" type="hidden">
-        <input id="venuetypes" value="" type="hidden">
+    <div class="popupform_header">
+      Add Venue
+      <br>Search: <input id="searchTextField" type="text" size="50">
+      <input id="closemapcanvas" type="button" value="Close">
+    </div>
+    <div class="popupform_content">
+      <div id="map_canvas"></div>
+      <input id="venuegoogleid" value="" type="hidden">
+      <input id="venuename" value="" type="hidden">
+      <input id="venueaddress" value="" type="hidden">
+      <input id="venuecity" value="" type="hidden">
+      <input id="venuestate" value="" type="hidden">
+      <input id="venuecountry" value="" type="hidden">
+      <input id="venuepostal" value="" type="hidden">
+      <input id="venuephone" value="" type="hidden">
+      <input id="venuegoogleurl" value="" type="hidden">
+      <input id="venuewebsite" value="" type="hidden">
+      <input id="venuegeolocation" value="" type="hidden">
+      <input id="venuetypes" value="" type="hidden">
+    </div>
 
     </body>
   </div>
-
-</div>
 
 </div>

@@ -1,72 +1,106 @@
 <%= stylesheet_link_tag "custom/styles" %>
 <%= stylesheet_link_tag "custom/landing" %>
 
-<div id="container">
-
 <%= render :partial => 'layouts/header' %>
 
-<body>
+<div class="shell">
+    <div class="slider">
+      <div id="bg"></div>
+      <div id="carousel">
+        <div>
+          <h5>It all starts with the</h5>
+          <h3>Urge to go out</h3>
+          <p>So you and your entourage are going out.... but WHERE to?</p>
+          <% if !(current_user) %>
+              <a href="/auth/facebook" class="green-btn">Get Started!</a>
+          <% else %>
+              <%= link_to "Get Started!", current_user, :id => "myplans", :method => :get, :class => "green-btn" %>
+          <% end %>
+          <img class="img-back" src="/images/nightlife.jpg" alt="dot1" width="400" height="300" />
+        </div>
 
-<div id="main" style="display: inline;">
-    <img src="images/TEXT9.png" id="main_text">
-    <img src="images/ABOUTUS2.png" id="about_us_image">
-    <img src="images/HOWWEWORK2.png" id="how_we_work_image">
-  <table>
-      <tr>
-        <td><img src="images/guvfront.jpg" width="300" height="220" onmouseover="this.src='images/guvback.jpg'" onmouseout="this.src='images/guvfront.jpg'"></td>
-        <td><img src="images/housepartyfront.jpg" width="300" height="220" onmouseover="this.src='images/housepartyback.jpg'" onmouseout="this.src='images/housepartyfront.jpg'"></td>
-        <td><img src="images/kingstfront.jpg" width="300" height="220" onmouseover="this.src='images/kingstback.jpg'" onmouseout="this.src='images/kingstfront.jpg'"></td>
-      </tr>
-      <tr>
-        <td><img src="images/maizonfront.jpg" width="300" height="220" onmouseover="this.src='images/maizonback.jpg'" onmouseout="this.src='images/maizonfront.jpg'"></td>
-        <td><img src="images/muzikfront.jpg" width="300" height="220" onmouseover="this.src='images/muzikback.jpg'" onmouseout="this.src='images/muzikfront.jpg'"></td>
-        <td><img src="images/pravdafront.jpg" width="300" height="220" onmouseover="this.src='images/pravdaback.jpg'" onmouseout="this.src='images/pravdafront.jpg'"></td>
-      </tr>
-    </table>
+        <div>
+          <h5>The chain of phone calls begin to</h5>
+          <h3>Decide Where</h3>
+          <p>Who wants to go where?</p>
+          <% if !(current_user) %>
+              <a href="/auth/facebook" class="green-btn">Get Started!</a>
+          <% else %>
+              <%= link_to "Get Started!", current_user, :id => "myplans", :method => :get, :class => "green-btn" %>
+          <% end %>
+          <img class="img-mid" src="/images/persononphone.jpg" alt="dot2" width="300" height="300" />
+        </div>
+
+        <div>
+          <h5>Then it gets</h5>
+          <h3>Frustrating</h3>
+          <p>Everyone has a preference! How do you decide <span>before</span> the best places get fully booked!</p>
+          <% if !(current_user) %>
+              <a href="/auth/facebook" class="green-btn">Get Started!</a>
+          <% else %>
+              <%= link_to "Get Started!", current_user, :id => "myplans", :method => :get, :class => "green-btn" %>
+          <% end %>
+          <img class="img-back" src="/images/streetsigns.jpg" alt="dot2" width="200" height="270" />
+        </div>
+
+        <div>
+          <h5>Theres a better way</h5>
+          <h3 id="logo"><a href="/">Plantourage</a></h3>
+          <p>Plantourage is social event planning app. Once you create a plan, you can invite your friends, discuss, add a few possible venues and vote. Everyone gets 10 points to vote on any of the venues in the list and only people added to the plan can access it.</p>
+          <% if !(current_user) %>
+              <a href="/auth/facebook" class="green-btn">Get Started!</a>
+          <% else %>
+              <%= link_to "Get Started!", current_user, :id => "myplans", :method => :get, :class => "green-btn" %>
+          <% end %>
+          <img class="img-mid" src="/images/reserved.jpg" alt="dot2" width="250" height="300" />
+        </div>
+
+      </div>
+      <div class="pagination"></div>
+      <a id="prev" href="#"></a>
+      <a id="next" href="#"></a>
+    </div>
+  </div>
+<!-- shell -->
+<div class="shell">
+  <!-- main -->
+  <div class="main">
+    <!-- cols -->
+    <section class="cols" id="howitworks">
+
+      <h2>HOW PLANTOURAGE WORKS</h2><br>
+      <div class="col">
+        <img src="http://preview.chocotemplates.com/digy/html/default/css/images/col-img1.png" alt="" />
+        <div class="col-cnt">
+          <h2>CREATE A PLAN</h2>
+          <p>Pick a date and invite your entourage. The plan is totally private so only the friends added to the plan can access it.</p>
+        </div>
+      </div>
+      <div class="col">
+        <img src="http://preview.chocotemplates.com/digy/html/default/css/images/col-img2.png" alt="" />
+        <div class="col-cnt">
+          <h2>ADD LOCATIONS</h2>
+          <p>Add a shortlist of possible locations for your outing.</p>
+        </div>
+      </div>
+      <div class="col">
+        <img src="http://preview.chocotemplates.com/digy/html/default/css/images/col-img3.png" alt="" />
+        <div class="col-cnt">
+          <h2>VOTE</h2>
+          <p>Vote on your preferred location. Everyone gets 10 points to vote on the location(s) they prefer.</p>
+        </div>
+      </div>
+      <div class="cl">&nbsp;</div>
+
+    </section>
+    <!-- end of cols -->
+    <section class="content" id="whoweare">
+      <h2>WHO WE ARE</h2>
+      <p>Plantourage is a social event planning app that makes it easy for you and your friends to discuss and pick a venue for your outing. We are continuously working on improving the app so if you like it, have feedback or just plain want to give us a shout out, email us at plantourage@gmail.com</p>
+    </section>
 
   </div>
-
-<form id="howwework_form" style="display:none">
-  <body>
-  <input id="closehowwework" type="button" value="Close">
-  <div id="howwework_text">
-    <h2><u>How we work</u></h2>
-    So you and your friends are going out this weekend.... SICK!... but WHERE to?
-    <br>
-    <br>
-    If you're anything like me and my friends, it would go something like this...
-    <br>
-    <i>"Well Ata prefers going to his favorite spot... Faisal, Amir and Rabie want to go somewhere on King Street.. and Mousa, Adool and Musty are in the mood to go to ..."</i>
-    <br>
-    <br>
-    Ahhhh!! Everyone has a preference!... but dont worry... Plantourage is here to make your lives much easier!
-    <br>
-    <br>
-    Plantourage is social group event planning app. Once you create a plan, you can invite your friends, discuss, add a few possible venues and bid on where you want to go. Everyone gets 10 points to bid on any of the venues in the list.
-    <br>
-    <br>
-    No more last minute decisions!
-    No more waiting in lines!
-    No more paying full price!
-    <br>
-    Start a plan and let the bidding begin!
-  </div>
-  </body>
-</form>
-
-<form id="aboutus_form" style="display:none">
-  <body>
-  <input id="closeaboutus" type="button" value="Close">
-  <div id="aboutus_text">
-    <h2><u>About us</u></h2>
-    This site was developed by Saif Al-Naib with design help from his good friend Faisal Khalil.
-    <br>
-    <br>
-    We launched the site fairly recently and are working on making it better so if you like it, have feedback or just plain want to give us a shout out, email us at saif_t@hotmail.com.
-  </div>
-  </body>
-</form>
-
-</body>
-
+  <!-- end of main -->
 </div>
+<!-- end of shell -->
+<%= render :partial => 'layouts/footer' %>

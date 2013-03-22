@@ -3,66 +3,86 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #errPopup_form {
-  position: absolute;
-  border: 5px solid gray;
+  position:fixed;
+  top: 25px;
+  left: 20px;
   padding: 10px;
-  background: #2d2d6b;
-  width: 300px;
-  height: 100px;
-}
-
-#newplan_form {
-  position: absolute;
-  border: 5px solid gray;
-  padding: 10px;
-  background: #2d2d6b;
-  width: 300px;
-  height: 200px;
-  overflow: auto;
+  width: 200px;
+  border: 1px solid #000;
+  border-right: none;
+  background-image: url("/images/BG_Black.jpg");
+  margin: -1px 0;
+  color: #FFFF00;
 }
 
 #plans_list {
-  position: absolute;
-  margin: 15px;
-  top: 100px;
+  padding: 15px;
+  background-color: #e6e6fa;
 }
 
-#plans_list h2 {
+#plans_count_text {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Gabriela', serif;
+  text-shadow: none;
+  color: black;
+}
+
+#plans_count {
   font-size: 45px;
-  color: #b7b7b7;
+  font-family: 'Gabriela', serif;
+  text-shadow: none;
+  color: #7A0109;
 }
 
 #plans_table {
-  background-color: #b7b7b7;
-  width:100%;
-  color: #2d2d6b;
+  background-color: #f5f5f5;
 }
 
-#plans_table thead {
-  background-color: #2f1d39;
+
+#plans_table thead tr {
+  background-image: url("/images/BG_Black.jpg");
 }
 
-#plans_table thead td {
-  font-size: 22px;
-  padding: 15px;
-  border: 1px solid #2d2d6b;
-  color: #FDD017;
+#plans_table tbody td {
+  font-size: 17px;
+  padding: 10px;
+  font-family: 'Gabriela', serif;
+  color: #300204;
+  border-bottom: thin double #300204;
 }
 
-#plans_table tr td {
+#plans_table tbody tr {
+  border-style:solid;
+}
+
+#plans_table thead tr td {
   font-size: 20px;
-  padding: 15px;
-  border: 1px solid #2d2d6b;
+  padding: 10px;
+  color: #FFFF00;
+  text-shadow: none;
+  font-family: 'Gabriela', serif;
 }
+
+.plan_record a {
+  color: #7A0109;
+  text-decoration: none;
+}
+
+.plan_record a:hover {
+  color: black;
+  text-decoration: none;
+}
+
 
 #newplan, #submitnewplan, #closenewplan {
-  border-top: 1px solid #fdcf17;
-  background: #fdcf17;
+  border-top: 1px solid #FFFF00;
+  background: #FFFF00;
   background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
-  background: -webkit-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -moz-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -ms-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -o-linear-gradient(top, #fdcf17, #fdcf17);
+  background: -webkit-linear-gradient(top, #FFFF00, #FFFF00);
+  background: -moz-linear-gradient(top, #FFFF00, #FFFF00);
+  background: -ms-linear-gradient(top, #FFFF00, #FFFF00);
+  background: -o-linear-gradient(top, #FFFF00, #FFFF00);
   padding: 5px 10px;
   -webkit-border-radius: 23px;
   -moz-border-radius: 23px;
@@ -71,18 +91,112 @@
   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
   box-shadow: rgba(0,0,0,1) 0 1px 0;
   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-  color: #2d2d6b;
-  font-size: 14px;
-  font-family: Georgia, Serif;
+  color: #300204;
+  font-size: 20px;
+  font-family: 'Gabriela', serif;
   text-decoration: none;
   vertical-align: middle;
 }
 #newplan:hover, #submitnewplan:hover, #closenewplan:hover {
-  border-top-color: #fdcf17;
-  background: #fdcf17;
-  color: #2d2d6b;
+  border-top-color: #FFFF00;
+  background: #FFFF00;
+  color: #300204;
 }
 #newplan:active, #submitnewplan:active, #closenewplan:active {
-  border-top-color: #fdcf17;
-  background: #fdcf17;
+  border-top-color: #FFFF00;
+  background: #FFFF00;
+}
+
+
+/* #Media Queries
+================================================== */
+
+/* ipad portrait */
+@media only screen and ( min-width: 768px) and ( max-width: 980px ) {
+
+  #plans_list {
+    padding: 5px;
+  }
+
+  #plans_count_text {
+    font-size: 12px;
+  }
+
+  #plans_count {
+    font-size: 20px;
+  }
+
+  #plans_table tbody td {
+    font-size: 10px;
+    padding: 3px;
+  }
+
+  #plans_table thead tr td {
+    font-size: 12px;
+    padding: 3px;
+  }
+
+  #newplan, #submitnewplan, #closenewplan {
+    font-size: 12px;
+  }
+
+}
+
+
+@media only screen and ( max-width: 767px) {
+  #plans_list {
+    padding: 5px;
+  }
+
+  #plans_count_text {
+    font-size: 12px;
+  }
+
+  #plans_count {
+    font-size: 20px;
+  }
+
+  #plans_table tbody td {
+    font-size: 10px;
+    padding: 3px;
+  }
+
+  #plans_table thead tr td {
+    font-size: 12px;
+    padding: 3px;
+  }
+
+  #newplan, #submitnewplan, #closenewplan {
+    font-size: 12px;
+  }
+
+}
+
+@media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)  {
+  #plans_list {
+    padding: 5px;
+  }
+
+  #plans_count_text {
+    font-size: 12px;
+  }
+
+  #plans_count {
+    font-size: 20px;
+  }
+
+  #plans_table tbody td {
+    font-size: 10px;
+    padding: 3px;
+  }
+
+  #plans_table thead tr td {
+    font-size: 12px;
+    padding: 3px;
+  }
+
+  #newplan, #submitnewplan, #closenewplan {
+    font-size: 12px;
+  }
+
 }
