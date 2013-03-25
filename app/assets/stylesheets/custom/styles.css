@@ -112,11 +112,12 @@ textarea { overflow: auto; }
     padding: 10px;
     text-align: center;
     font-size: 20px;
+    height: 15%;
 }
 
 .popupform .popupform_content {
     width: 95%;
-    height: 60%;
+    height: 80%;
     padding: 10px;
     overflow: auto;
 }

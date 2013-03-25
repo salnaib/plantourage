@@ -3,9 +3,16 @@ $ ->
   $("#newplan").click ->
     $("#newplan_form").fadeIn(1000);
     $("#plan_name").focus();
+    $(".shell").css({
+      opacity: 0.5,
+      });
 
   $("#closenewplan").click ->
     $("#newplan_form").fadeOut(500);
+    $(".shell").css({
+    opacity: 1,
+    });
+
 
   $("#submitnewplan").click ->
     planname = $("#plan_name").attr('value')

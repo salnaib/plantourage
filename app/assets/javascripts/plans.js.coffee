@@ -43,9 +43,17 @@ $ ->
   $("#changeplan").click ->
     $("#updateplan_form").fadeIn(1000);
     $("#plan_name").focus();
+    $(".shell").css({
+    opacity: 0.5,
+    });
+
 
   $("#closeupdateplan").click ->
     $("#updateplan_form").fadeOut(500);
+    $(".shell").css({
+    opacity: 1,
+    });
+
 
   $("#updateplan").click ->
     planid = $("#planid").attr('value');
@@ -78,21 +86,36 @@ $ ->
 
   $("#addvenue").click ->
     $("#mapCanvas_form").fadeIn(1000);
+    $(".shell").css({
+    opacity: 0.5,
+    });
 
   $("#closemapcanvas").click ->
     $("#mapCanvas_form").fadeOut(500);
-
-  $("#showcomments").click ->
-    $("#show_comments_form").fadeIn(1000);
+    $(".shell").css({
+    opacity: 1,
+    });
 
   $("#closevenue").click ->
     $("#addvenue_form").fadeOut(500);
+    $(".shell").css({
+    opacity: 1,
+    });
 
   $("#closeError").click ->
     $("#errPopup_form").fadeOut(500);
 
+  $("#showcomments").click ->
+    $("#show_comments_form").fadeIn(1000);
+    $(".shell").css({
+    opacity: 0.5,
+    });
+
   $("#closecomments").click ->
     $("#show_comments_form").fadeOut(500);
+    $(".shell").css({
+    opacity: 1,
+    });
 
   $("#selectvenue").live( "click", ->
     planid = $("#planid").attr('value');

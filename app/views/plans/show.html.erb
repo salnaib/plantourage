@@ -202,11 +202,11 @@
   </script>
 
   <div id="plan_info" class="shell">
-    <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></div>
     <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%= @plan.name %></div>
+    <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></div>
     <div class="plan_info_actions">
       <input id="changeplan" type="button" value="Change Details"><input type="hidden" id="planid" value="<%= @plan.id %>"><input id="plandate" value="<%= @plan.plandate %>" type="hidden">
-      <input id="showcomments" type="button" value='View Discussion (<%= pluralize(@plan.microposts.count, "comment")%>)'>
+      <input id="showcomments" type="button" value='Comments (<%= @plan.microposts.count %>)'>
     </div>
     <!--    <tr>
       <td>
@@ -291,12 +291,13 @@
   </table>
 
   </div>
+</div>
 
   <div id="show_comments_form" style="display:none" class="popupform">
     <body>
     <div class="popupform_header">
-      Showing discussion for <%= @plan['name'] %><br> (<%= pluralize(@plan.microposts.count, 'comment') %>)<br>
       <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment"><input id="closecomments" type="button" value="Close">
+      <br><%= pluralize(@plan.microposts.count, 'comment') %>
       <input type="hidden" id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
     </div>
     <div class="popupform_content">
@@ -392,5 +393,3 @@
 
     </body>
   </div>
-
-</div>

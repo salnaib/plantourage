@@ -161,14 +161,14 @@
 ================================================== */
 
 /* ipad portrait */
-@media only screen and ( min-width: 768px) and ( max-width: 980px ) {
+@media only screen and ( min-width: 801px) and ( max-width: 980px ) {
     #navigation ul li { padding-left: 24px; font-size: 15px; }
     .header .shell { padding: 21px 0px 0; width: 748px; background: url(/images/BG_Black.jpg) repeat 0 0; }
     .header-top { padding-left: 20px; padding-right: 20px;  }
 }
 
 
-@media only screen and ( max-width: 767px) {
+@media only screen and ( max-width: 800px) {
     .header .shell { padding: 0 0 0 0; background: url(/images/BG_Black.jpg) repeat 0 0; }
     .header-top { padding: 12px 0 0px 0; }
     #logo { margin: 0 auto; float: none; display: block; }
@@ -187,7 +187,7 @@
     #header { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/m-header.png) repeat-x 0 0; height: 218px; width: 100%; }
 }
 
-@media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)  {
+@media only screen and ( max-width: 800px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)  {
 
     #navigation { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/navigation@2x.png) no-repeat 0 0;  -webkit-background-size: 298px 32px; -moz-background-size: 298px 32px; background-size: 298px 32px;  }
     #navigation a.nav-btn span { background: url(http://preview.chocotemplates.com/digy/html/default/css/images/nav-arr@2x.png) no-repeat 0 0; -webkit-background-size: 10px 15px; -moz-background-size: 10px 15px; background-size: 10px 15px; }
