@@ -187,7 +187,7 @@
     width: 194px;
     height: 56px;
     left: 32px;
-    top: 308px;
+    top: 330px;
     background: url(http://preview.chocotemplates.com/digy/html/default/css/images/green-btn.png) no-repeat 0 0;
 
 }
@@ -268,25 +268,25 @@
     #carousel h3 { font-size: 48px; width: 290px; left: 10px; }
     #carousel h5 { font-size: 12px; width: 290px; left: 10px; }
     #carousel p { font-size: 11px;  width: 294px; left: 10px; }
-    #carousel a.green-btn { top: 340px; left: 10px; }
+    #carousel a.green-btn { top: 325px; left: 10px; }
 
 
     #carousel img.img-front {
-        left: 476px;
-        width: 230px  !important;
-        height: 390px;
+        top: 120px;
+        left: 120px;
+        width: 85%  !important;
     }
 
     #carousel img.img-mid {
-        left: 425px;
-        width: 192px  !important;
-        height: 309px;
+        top : 140px;
+        left: 80px;
+        width: 85%  !important;
     }
 
     #carousel img.img-back {
-        left: 366px;
-        width: 141px  !important;
-        height: 238px;
+        top: 160px;
+        left: 40px;
+        width: 85%  !important;
     }
 
     #prev { left: 290px; }
@@ -322,28 +322,25 @@
     #carousel h3 { font-size: 46px; width: 290px; left: 10px; top: 70px; background: transparent; }
     #carousel h5 { font-size: 12px; width: 290px; left: 70px; top: 55px; }
     #carousel p { font-size: 11px;  width: 294px; left: 10px; display: none; }
-    #carousel a.green-btn { top: 365px; left: 0px; width: 100%; text-align: center; background: url(http://preview.chocotemplates.com/digy/html/default/css/images/green-btn@2x.png) repeat-x 0 0; height: 35px; line-height: 35px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px;}
+    #carousel a.green-btn { top: 345px; left: 0px; width: 100%; text-align: center; background: url(http://preview.chocotemplates.com/digy/html/default/css/images/green-btn@2x.png) repeat-x 0 0; height: 35px; line-height: 35px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px;}
     #carousel a.green-btn:hover { background-position: 0 bottom; }
 
     #carousel img.img-front {
         top: 120px;
         left: 120px;
-        width: 140px  !important;
-        height: 240px;
+        width: 85%  !important;
     }
 
     #carousel img.img-mid {
         top : 140px;
         left: 80px;
-        width: 110px  !important;
-        height: 198px;
+        width: 85%  !important;
     }
 
     #carousel img.img-back {
         top: 160px;
         left: 40px;
-        width: 90px  !important;
-        height: 155px;
+        width: 85%  !important;
     }
 
     .pagination { bottom: 8px; left: 155px; }

@@ -12,23 +12,23 @@
           <h3>Urge to go out</h3>
           <p>So you and your entourage are going out.... but WHERE to?</p>
           <% if !(current_user) %>
-              <a href="/auth/facebook" class="green-btn">Get Started!</a>
+              <a href="/auth/facebook" class="green-btn"><img src="/images/FB.jpg" width="100%" height="100%"></a>
           <% else %>
               <%= link_to "Get Started!", current_user, :id => "myplans", :method => :get, :class => "green-btn" %>
           <% end %>
-          <img class="img-back" src="/images/nightlife.jpg" alt="dot1" width="400" height="300" />
+          <img class="img-back" src="/images/nightlife.jpg" alt="dot1"/>
         </div>
 
         <div>
-          <h5>The chain of phone calls begin to</h5>
+          <h5>The chain of phone calls begins to</h5>
           <h3>Decide Where</h3>
           <p>Who wants to go where?</p>
           <% if !(current_user) %>
-              <a href="/auth/facebook" class="green-btn">Get Started!</a>
-          <% else %>
+              <a href="/auth/facebook" class="green-btn"><img src="/images/FB.jpg" width="100%" height="100%"></a>
+        <% else %>
               <%= link_to "Get Started!", current_user, :id => "myplans", :method => :get, :class => "green-btn" %>
           <% end %>
-          <img class="img-mid" src="/images/persononphone.jpg" alt="dot2" width="300" height="300" />
+          <img class="img-back" src="/images/persononphone.jpg" alt="dot2" />
         </div>
 
         <div>
@@ -36,23 +36,23 @@
           <h3>Frustrating</h3>
           <p>Everyone has a preference! How do you decide <span>before</span> the best places get fully booked!</p>
           <% if !(current_user) %>
-              <a href="/auth/facebook" class="green-btn">Get Started!</a>
-          <% else %>
+              <a href="/auth/facebook" class="green-btn"><img src="/images/FB.jpg" width="100%" height="100%"></a>
+        <% else %>
               <%= link_to "Get Started!", current_user, :id => "myplans", :method => :get, :class => "green-btn" %>
           <% end %>
-          <img class="img-back" src="/images/streetsigns.jpg" alt="dot2" width="200" height="270" />
+          <img class="img-back" src="/images/streetsigns.jpg" alt="dot2" />
         </div>
 
         <div>
-          <h5>Theres a better way</h5>
+          <h5>Theres a better way...</h5>
           <h3 id="logo"><a href="/">Plantourage</a></h3>
           <p>Plantourage is social event planning app. Once you create a plan, you can invite your friends, discuss, add a few possible venues and vote. Everyone gets 10 points to vote on any of the venues in the list and only people added to the plan can access it.</p>
           <% if !(current_user) %>
-              <a href="/auth/facebook" class="green-btn">Get Started!</a>
-          <% else %>
+              <a href="/auth/facebook" class="green-btn"><img src="/images/FB.jpg" width="100%" height="100%"></a>
+        <% else %>
               <%= link_to "Get Started!", current_user, :id => "myplans", :method => :get, :class => "green-btn" %>
           <% end %>
-          <img class="img-mid" src="/images/reserved.jpg" alt="dot2" width="250" height="300" />
+          <img class="img-back" src="/images/reserved.jpg" alt="dot2" />
         </div>
 
       </div>
