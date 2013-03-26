@@ -1,5 +1,7 @@
 $ ->
 
+  currentScroll=0;
+
   $(".addpointto").click ->
     if (parseInt($("#totalpoints").text()) > 0)
       suggestionid = ($(this).attr('id'));
@@ -41,19 +43,11 @@ $ ->
       errorPopup($(this).offset(), 'You have no points to remove from this venue.');
 
   $("#changeplan").click ->
-    $("#updateplan_form").fadeIn(1000);
+    popupFunction("#updateplan_form");
     $("#plan_name").focus();
-    $(".shell").css({
-    opacity: 0.5,
-    });
-
 
   $("#closeupdateplan").click ->
-    $("#updateplan_form").fadeOut(500);
-    $(".shell").css({
-    opacity: 1,
-    });
-
+    popupCloseFunction("#updateplan_form");
 
   $("#updateplan").click ->
     planid = $("#planid").attr('value');
@@ -85,37 +79,22 @@ $ ->
       $("#plan_date").val("");
 
   $("#addvenue").click ->
-    $("#mapCanvas_form").fadeIn(1000);
-    $(".shell").css({
-    opacity: 0.5,
-    });
+    popupFunction("#mapCanvas_form");
 
   $("#closemapcanvas").click ->
-    $("#mapCanvas_form").fadeOut(500);
-    $(".shell").css({
-    opacity: 1,
-    });
+    popupCloseFunction("#mapCanvas_form");
 
   $("#closevenue").click ->
-    $("#addvenue_form").fadeOut(500);
-    $(".shell").css({
-    opacity: 1,
-    });
+    popupCloseFunction("#addvenue_form");
 
   $("#closeError").click ->
-    $("#errPopup_form").fadeOut(500);
+    popupCloseFunction("#errPopup_form");
 
   $("#showcomments").click ->
-    $("#show_comments_form").fadeIn(1000);
-    $(".shell").css({
-    opacity: 0.5,
-    });
+    popupFunction("#show_comments_form");
 
   $("#closecomments").click ->
-    $("#show_comments_form").fadeOut(500);
-    $(".shell").css({
-    opacity: 1,
-    });
+    popupCloseFunction("#show_comments_form");
 
   $("#selectvenue").live( "click", ->
     planid = $("#planid").attr('value');
@@ -172,6 +151,24 @@ $ ->
       remote: true
       data: { comment_id: commentid }
     (window).location = (window).location;
+
+  popupFunction = (form) ->
+    $(form).fadeIn(1000);
+    $(".shell").css({
+    opacity: 0.5,
+    });
+    currentScroll=$(window).scrollTop();
+    $(window).bind('scroll',lockscroll);
+
+  lockscroll = () ->
+    $(window).scrollTop(currentScroll);
+
+  popupCloseFunction = (form) ->
+    $(form).fadeOut(500);
+    $(".shell").css({
+    opacity: 1,
+    });
+    $(window).unbind();
 
   errorPopup = (offset, errorText) ->
     #$("#errPopup_form").fadeIn(1000);

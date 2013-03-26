@@ -1,18 +1,13 @@
 $ ->
 
+  currentScroll=0;
+
   $("#newplan").click ->
-    $("#newplan_form").fadeIn(1000);
+    popupFunction("#newplan_form");
     $("#plan_name").focus();
-    $(".shell").css({
-      opacity: 0.5,
-      });
 
   $("#closenewplan").click ->
-    $("#newplan_form").fadeOut(500);
-    $(".shell").css({
-    opacity: 1,
-    });
-
+    popupCloseFunction("#newplan_form");
 
   $("#submitnewplan").click ->
     planname = $("#plan_name").attr('value')
@@ -33,6 +28,24 @@ $ ->
     if (newdate < today)
       errorPopup($(this).offset(), 'Date cannot be earlier than today.');
       $("#plan_date").val("");
+
+  popupFunction = (form) ->
+    $(".shell").css({
+      opacity: 0.5,
+    });
+    $(form).fadeIn(1000);
+    currentScroll=$(window).scrollTop();
+    $(window).bind('scroll',lockscroll);
+
+  lockscroll = () ->
+    $(window).scrollTop(currentScroll);
+
+  popupCloseFunction = (form) ->
+    $(form).fadeOut(500);
+    $(".shell").css({
+      opacity: 1,
+    });
+    $(window).unbind();
 
   errorPopup = (offset, errorText) ->
     #$("#errPopup_form").fadeIn(1000);

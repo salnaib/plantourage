@@ -139,7 +139,7 @@ $(function() {
     })
 
     // homepage carousel auto time
-    var carousel_auto = 10000;
+    var carousel_auto = 7000;
 
     function carouselInit(){
         var isScrolling = false;
