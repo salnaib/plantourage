@@ -75,39 +75,6 @@
 }
 
 
-#newplan, #submitnewplan, #closenewplan {
-  border-top: 1px solid #FFFF00;
-  background: #FFFF00;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
-  background: -webkit-linear-gradient(top, #FFFF00, #FFFF00);
-  background: -moz-linear-gradient(top, #FFFF00, #FFFF00);
-  background: -ms-linear-gradient(top, #FFFF00, #FFFF00);
-  background: -o-linear-gradient(top, #FFFF00, #FFFF00);
-  padding: 5px 10px;
-  -webkit-border-radius: 23px;
-  -moz-border-radius: 23px;
-  border-radius: 23px;
-  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  box-shadow: rgba(0,0,0,1) 0 1px 0;
-  text-shadow: rgba(0,0,0,.4) 0 1px 0;
-  color: #300204;
-  font-size: 20px;
-  font-family: 'Gabriela', serif;
-  text-decoration: none;
-  vertical-align: middle;
-}
-#newplan:hover, #submitnewplan:hover, #closenewplan:hover {
-  border-top-color: #FFFF00;
-  background: #FFFF00;
-  color: #300204;
-}
-#newplan:active, #submitnewplan:active, #closenewplan:active {
-  border-top-color: #FFFF00;
-  background: #FFFF00;
-}
-
-
 /* #Media Queries
 ================================================== */
 
@@ -136,9 +103,6 @@
     padding: 3px;
   }
 
-  #newplan, #submitnewplan, #closenewplan {
-    font-size: 12px;
-  }
 
 }
 

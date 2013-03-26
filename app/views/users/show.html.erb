@@ -12,7 +12,7 @@
     You have <div id="plans_count" style="display: inline;"><%= pluralize(@upcoming_plans.count, 'plan') %></div> coming up!
   </div>
   <br>
-  <a href="#" class="green-btn" id="newplan" >Start New Plan</a>
+  <a class="gold-btn" id="newplan" >Start New Plan</a>
   <br>
 
   <table id="plans_table" >
@@ -70,9 +70,8 @@
             </td>
           </tr>
         </table>
-        <input id="submitnewplan" type="button" value="Create">
-
-        <input id="closenewplan" type="button" value="Close">
+        <a id="submitnewplan" class="gold-btn">Create</a>
+        <a id="closenewplan" class="gold-btn">Close</a>
     </div>
 
     </body>

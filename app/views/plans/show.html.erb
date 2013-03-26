@@ -126,7 +126,7 @@
                   content = content + " <img height='15' width='15' src='" + place.icon + "'>";
               }
               content = content + " - <i>" + address + "</i>";
-              content = content + '<br><input id="selectvenue" type="button" value="Add to Plan" >';
+              content = content + '<br><a class="gold-btn" id="selectvenue">Add to Plan</a>';
 
               content = content + '</div>';
 
@@ -205,8 +205,10 @@
     <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%= @plan.name %></div>
     <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></div>
     <div class="plan_info_actions">
-      <input id="changeplan" type="button" value="Change Details"><input type="hidden" id="planid" value="<%= @plan.id %>"><input id="plandate" value="<%= @plan.plandate %>" type="hidden">
-      <input id="showcomments" type="button" value='Comments (<%= @plan.microposts.count %>)'>
+      <a class="gold-btn" id="changeplan" >Change</a>
+      <input type="hidden" id="planid" value="<%= @plan.id %>">
+      <input id="plandate" value="<%= @plan.plandate %>" type="hidden">
+      <a class="gold-btn" id="showcomments" >Comments (<%= @plan.microposts.count %>)</a>
     </div>
     <!--    <tr>
       <td>
@@ -231,7 +233,7 @@
           <th></th>
           <th></th>
           <th class="friends_action_header" colspan="100%">
-            <input id="addfriend" type="button" value="Add Friends" onclick="sendRequestViaMultiFriendSelector(); return false;">
+            <a href="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add</a>
             <input type="hidden" id="invited_user_id"/>
             <input type="hidden" id="friend_user_id"/>
             <input type="hidden" id="invited_user_name"/>
@@ -241,9 +243,9 @@
         </tr>
         <tr>
           <th class="venue_header">
-            <input id="addvenue" type="button" value="Add Venues">
+            <a class="gold-btn" id="addvenue" >Add</a>
             <br>
-            <b>Venues</b>
+            <b>Locations</b>
           </th>
           <th class="total_points_header">Total</th>
           <th class="user_header"><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
@@ -276,9 +278,9 @@
             <div id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </div>
           </td>
           <td class="sugg_userpointcount">
-            <input id="<%= suggestion.id %>" type="button" value="+" class="addpointto">
+            <a class="addpointto" id="<%= suggestion.id %>" >+</a>
             <div class="sugg_user_point" id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> </div>
-            <input id="<%= suggestion.id %>" type="button" value="-" class="removepointfrom">
+            <a class="removepointfrom" id="<%= suggestion.id %>" >-</a>
           </td>
           <% @invites.each do |invite| %>
               <% if invite.user.id != current_user.id %>
@@ -296,11 +298,13 @@
   <div id="show_comments_form" style="display:none" class="popupform">
     <body>
     <div class="popupform_header">
-      <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br><input type="button" id="add_comment" value="Add Comment"><input id="closecomments" type="button" value="Close">
-      <br><%= pluralize(@plan.microposts.count, 'comment') %>
+      <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br>
+      <a class="gold-btn" id="add_comment" >Add Comment</a>
+      <a class="gold-btn" id="closecomments" >Close</a>
       <input type="hidden" id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
     </div>
     <div class="popupform_content">
+      <%= pluralize(@plan.microposts.count, 'comment') %>
     <table>
         <% @microposts.each do |micropost| %>
             <tr>
@@ -316,8 +320,8 @@
                       <%= micropost.content %>
                     </td>
                     <% if (micropost.invite.user.id == current_user.id) %>
-                        <td width="100%" valign="middle" align="right">
-                          <input id="delete_comment" type="button" value="Delete" alt="<%= micropost.id %>">
+                        <td width="100%" valign="top" align="right">
+                          <a class="gold-btn" id="delete_comment" alt="<%= micropost.id %>" >Delete</a>
                         </td>
                     <% end %>
                   </tr>
@@ -352,8 +356,8 @@
             </td>
           </tr>
         </table>
-        <input id="updateplan" type="button" value="Save">
-        <input id="closeupdateplan" type="button" value="Close">
+        <a class="gold-btn" id="updateplan">Save</a>
+        <a class="gold-btn" id="closeupdateplan">Close</a>
     </div>
 
     </body>
@@ -372,8 +376,8 @@
     <body>
     <div class="popupform_header">
       Add Venue
-      <br>Search: <input id="searchTextField" type="text" size="50">
-      <input id="closemapcanvas" type="button" value="Close">
+      <br><input id="searchTextField" type="text" size="50">
+      <a class="gold-btn" id="closemapcanvas">Close</a>
     </div>
     <div class="popupform_content">
       <div id="map_canvas"></div>

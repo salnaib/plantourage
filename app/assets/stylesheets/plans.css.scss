@@ -20,10 +20,6 @@
   width: 100%;
 }
 
-.plan_info_actions {
-  display: inline;
-}
-
 .plan_info_value {
   font-size: 40px;
   font-family: 'Gabriela', serif;
@@ -60,17 +56,6 @@
   background-image: url("/images/BG_Black.jpg");
   font-size: 20px;
   color: #FFFF00;
-}
-
-#plan_voting_table thead a {
-  color: #FFFF00;
-  text-align: center;
-}
-
-#plan_voting_table thead a:hover {
-  color: #f5f5f5;
-  text-decoration: none;
-  background: none;
 }
 
 .venue_header, .venue_info {
@@ -207,81 +192,78 @@
 }
 
 #show_comments_form .popupform_header {
-  height: 25%;
+  height: 23%;
 }
 
 #show_comments_form .popupform_content {
-  background-color: #f5f5f5;
-  color: #7A0109;
+  color: #FFFF00;
   max-height: 65%;
 }
 
 #show_comments_form .popupform_content table {
   border: 2px solid black;
+  background-color: #f5f5f5;
+  color: #7A0109;
 }
 
 #new_comment {
   width: 40%;
 }
 
-#changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
-  border-top: 1px solid #fdcf17;
-  background: #fdcf17;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
-  background: -webkit-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -moz-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -ms-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -o-linear-gradient(top, #fdcf17, #fdcf17);
-  padding: 5px 10px;
-  -webkit-border-radius: 23px;
-  -moz-border-radius: 23px;
-  border-radius: 23px;
-  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  box-shadow: rgba(0,0,0,1) 0 1px 0;
-  text-shadow: rgba(0,0,0,.4) 0 1px 0;
-  color: #2d2d6b;
-  font-size: 14px;
-  font-family: Georgia, Serif;
-  text-decoration: none;
-  vertical-align: middle;
+.addpointto {
+  -moz-box-shadow:inset 0px 0px 0px 0px #f9eca0;
+  -webkit-box-shadow:inset 0px 0px 0px 0px #f9eca0;
+  box-shadow:inset 0px 0px 0px 0px #f9eca0;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0c911), color-stop(1, #f2ab1e) );
+  background:-moz-linear-gradient( center top, #f0c911 5%, #f2ab1e 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0c911', endColorstr='#f2ab1e');
+  background-color:#f0c911;
+  -moz-border-radius:42px;
+  -webkit-border-radius:42px;
+  border-radius:42px;
+  display:inline-block;
+  color:#300204;
+  font-family:arial;
+  font-size:28px;
+  font-weight:bold;
+  padding:8px 10px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #ded17c;
 }
 
-.addpointto, .removepointfrom {
-  border-top: 1px solid #fdcf17;
-  background: #fdcf17;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fdcf17), to(#fdcf17));
-  background: -webkit-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -moz-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -ms-linear-gradient(top, #fdcf17, #fdcf17);
-  background: -o-linear-gradient(top, #fdcf17, #fdcf17);
-  padding: 2px 5px;
-  -webkit-border-radius: 23px;
-  -moz-border-radius: 23px;
-  border-radius: 23px;
-  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-  box-shadow: rgba(0,0,0,1) 0 1px 0;
-  text-shadow: rgba(0,0,0,.4) 0 1px 0;
-  color: #2d2d6b;
-  font-size: 18px;
-  font-family: Georgia, Serif;
-  text-decoration: none;
-  vertical-align: middle;
-  width: 30px;
-  height: 30px;
+.removepointfrom {
+  -moz-box-shadow:inset 0px 0px 0px 0px #f9eca0;
+  -webkit-box-shadow:inset 0px 0px 0px 0px #f9eca0;
+  box-shadow:inset 0px 0px 0px 0px #f9eca0;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0c911), color-stop(1, #f2ab1e) );
+  background:-moz-linear-gradient( center top, #f0c911 5%, #f2ab1e 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0c911', endColorstr='#f2ab1e');
+  background-color:#f0c911;
+  -moz-border-radius:42px;
+  -webkit-border-radius:42px;
+  border-radius:42px;
+  display:inline-block;
+  color:#300204;
+  font-family:arial;
+  font-size:28px;
+  font-weight:bold;
+  padding:8px 12px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #ded17c;
 }
 
-#changeplan:hover, #showcomments:hover, #addfriend:hover, #addvenue:hover, #submitvenue:hover, #closevenue:hover, #add_comment:hover, #closecomments:hover, #delete_comment:hover, #updateplan:hover, #closeupdateplan:hover, #closeError:hover, .addpointto:hover, .removepointfrom:hover, #selectvenue:hover, #closemapcanvas:hover {
-  border-top-color: #fdcf17;
-  background: #fdcf17;
-  color: #2d2d6b;
-}
+.addpointto:hover, .removepointfrom:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f2ab1e), color-stop(1, #f0c911) );
+  background:-moz-linear-gradient( center top, #f2ab1e 5%, #f0c911 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2ab1e', endColorstr='#f0c911');
+  background-color:#f2ab1e;
+  text-decoration:none;
+ }
 
-#changeplan:active, #showcomments:active, #addfriend:active, #addvenue:active, #submitvenue:active, #closevenue:active, #add_comment:active, #closecomments:active, #delete_comment:active, #updateplan:active, #closeupdateplan:active, #closeError:active, .addpointto:active, .removepointfrom:active, #selectvenue:active, #closemapcanvas:hover {
-  border-top-color: #fdcf17;
-  background: #fdcf17;
-}
+.addpointto:active, .removepointfrom:active {
+    position:relative;
+    top:1px;
+  }
 
 /* #Media Queries
 ================================================== */
@@ -357,14 +339,13 @@
     font-size: 10px;
   }
 
-  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
+  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, #selectvenue, #closemapcanvas {
     font-size: 10px;
   }
 
   .addpointto, .removepointfrom {
     font-size: 10px;
-    width: 20px;
-    height: 20px;
+    padding: 1px 8px;
   }
 
   #mapCanvas_form {
@@ -384,8 +365,10 @@
   }
 
   #new_comment {
-    height: 20%;
+    width: 100%;
+    height: 45%;
   }
+
 }
 
 
@@ -460,34 +443,50 @@
     font-size: 10px;
   }
 
-  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
+  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, #selectvenue, #closemapcanvas {
     font-size: 10px;
   }
 
   .addpointto, .removepointfrom {
     font-size: 10px;
-    width: 20px;
-    height: 20px;
+    padding: 1px 8px;
   }
 
   #mapCanvas_form {
     width: 90%;
+    height: 100%;
+    bottom: 3%;
+    left: 2%;
+  }
+
+  #mapCanvas_form .popupform_header {
+    height: 18%;
+    padding: 2px;
   }
 
   #mapCanvas_form .popupform_content {
-    height: 80%;
+    height: 70%;
   }
 
   #show_comments_form {
     width: 90%;
+    height: 100%;
+    bottom: 3%;
+    left: 2%;
+  }
+
+  #show_comments_form .popupform_header {
+    height: 18%;
+    padding: 2px;
   }
 
   #show_comments_form .popupform_content {
-    height: 50%;
+    height: 55%;
   }
 
   #new_comment {
-    height: 20%;
+    width: 100%;
+    height: 45%;
   }
 
 }
@@ -564,14 +563,13 @@
     font-size: 10px;
   }
 
-  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, .addpointto, .removepointfrom, #selectvenue, #closemapcanvas {
+  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, #selectvenue, #closemapcanvas {
     font-size: 10px;
   }
 
   .addpointto, .removepointfrom {
     font-size: 10px;
-    width: 20px;
-    height: 20px;
+    padding: 1px 8px;
   }
 
   #mapCanvas_form {
@@ -591,6 +589,8 @@
   }
 
   #new_comment {
-    height: 20%;
+    width: 100%;
+    height: 45%;
   }
+
 }
