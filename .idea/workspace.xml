@@ -4,7 +4,6 @@
     <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/functions.js" afterPath="$PROJECT_DIR$/public/javascripts/functions.js" />
     </list>
     <ignored path="plantourage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,7 +91,7 @@
       <file leaf-file-name="plans.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="46" selection-start="3814" selection-end="3814" vertical-scroll-proportion="0.0">
+            <state line="169" column="0" selection-start="5955" selection-end="6359" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,7 +100,7 @@
       <file leaf-file-name="users.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.5996377">
+            <state line="48" column="0" selection-start="1328" selection-end="1328" vertical-scroll-proportion="0.7844203">
               <folding />
             </state>
           </provider>
@@ -881,14 +880,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="46" selection-start="3814" selection-end="3814" vertical-scroll-proportion="0.0">
+        <state line="169" column="0" selection-start="5955" selection-end="6359" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.5996377">
+        <state line="48" column="0" selection-start="1328" selection-end="1328" vertical-scroll-proportion="0.7844203">
           <folding />
         </state>
       </provider>

@@ -1,7 +1,5 @@
 $ ->
 
-  currentScroll=0;
-
   $(".addpointto").click ->
     if (parseInt($("#totalpoints").text()) > 0)
       suggestionid = ($(this).attr('id'));
@@ -152,18 +150,18 @@ $ ->
       data: { comment_id: commentid }
     (window).location = (window).location;
 
+  previousOverflow = 'auto';
+
   popupFunction = (form) ->
+    previousOverflow = $("body").css('overflow');
+    $("body").css("overflow", "hidden");
     $(form).fadeIn(1000);
     $(".shell").css({
-    opacity: 0.5,
+      opacity: 0.5,
     });
-    currentScroll=$(window).scrollTop();
-    $(window).bind('scroll',lockscroll);
-
-  lockscroll = () ->
-    $(window).scrollTop(currentScroll);
 
   popupCloseFunction = (form) ->
+    $("body").css("overflow", previousOverflow);
     $(form).fadeOut(500);
     $(".shell").css({
     opacity: 1,

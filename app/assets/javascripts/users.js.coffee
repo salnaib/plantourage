@@ -29,21 +29,21 @@ $ ->
       errorPopup($(this).offset(), 'Date cannot be earlier than today.');
       $("#plan_date").val("");
 
-  popupFunction = (form) ->
-    $(".shell").css({
-      opacity: 0.5,
-    });
-    $(form).fadeIn(1000);
-    currentScroll=$(window).scrollTop();
-    $(window).bind('scroll',lockscroll);
+  previousOverflow = 'auto';
 
-  lockscroll = () ->
-    $(window).scrollTop(currentScroll);
+  popupFunction = (form) ->
+    previousOverflow = $("body").css('overflow');
+    $("body").css("overflow", "hidden");
+    $(form).fadeIn(1000);
+    $(".shell").css({
+    opacity: 0.5,
+    });
 
   popupCloseFunction = (form) ->
+    $("body").css("overflow", previousOverflow);
     $(form).fadeOut(500);
     $(".shell").css({
-      opacity: 1,
+    opacity: 1,
     });
     $(window).unbind();
 
