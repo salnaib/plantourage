@@ -101,7 +101,7 @@
 
 .slider, #carousel, #carousel > div {
     width: 980px;
-    height: 436px;
+    height: 335px;
 }
 
 .slider {
@@ -157,19 +157,19 @@
     width: 420px;
     left: 32px;
     background: url(http://preview.chocotemplates.com/digy/html/default/css/images/slider-h3-border.png) repeat-x 0 bottom;
-    top: 91px;
+    top: 68px;
     padding-bottom: 13px;
     margin: 0 0 18px;
 }
 
-#carousel h5 { font-size: 15px; color: #d3d2d3; font-family: Georgia, Serif; text-transform: uppercase; text-shadow: rgba(0,0,0,0.5) 0px 1px 1px; font-weight: normal; position: absolute; top: 63px; left: 32px; white-space: nowrap; }
+#carousel h5 { font-size: 15px; color: #d3d2d3; font-family: Georgia, Serif; text-transform: uppercase; text-shadow: rgba(0,0,0,0.5) 0px 1px 1px; font-weight: normal; position: absolute; top: 40px; left: 32px; white-space: nowrap; }
 
 #carousel p {
     color: #959697;
     font-size: 14px;
     width: 420px;
     left: 32px;
-    top: 181px;
+    top: 148px;
     margin: 0;
     line-height: 26px;
 }
@@ -187,7 +187,7 @@
     width: 194px;
     height: 56px;
     left: 32px;
-    top: 300px;
+    top: 280px;
     background: url(http://preview.chocotemplates.com/digy/html/default/css/images/green-btn.png) no-repeat 0 0;
 
 }

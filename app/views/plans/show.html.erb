@@ -223,6 +223,9 @@
   </div>
 
   <div id="points_left_info">
+    <% if (!@plan.toppick.nil?) %>
+        <a id="toppick" href="<%= @plan.toppick.venue.website %>" target="_blank"><%= @plan.toppick.venue.name %></a> is the top choice so far<br>
+    <% end %>
     You have <div id="totalpoints" style="display:inline"><%= pluralize(10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Point') %> </div> left to vote with
   </div>
 
@@ -233,23 +236,19 @@
           <th></th>
           <th></th>
           <th class="friends_action_header" colspan="100%">
-            <a href="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add</a>
+            <a onclick="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add Friends (<%= @invites.count - 1 %>)</a>
             <input type="hidden" id="invited_user_id"/>
             <input type="hidden" id="friend_user_id"/>
             <input type="hidden" id="invited_user_name"/>
-            <br>
-            <b>Friends (<%= @invites.count - 1 %>)</b>
           </th>
         </tr>
         <tr>
           <th class="venue_header">
-            <a class="gold-btn" id="addvenue" >Add</a>
-            <br>
-            <b>Locations</b>
+            <a class="gold-btn" id="addvenue" >Add Locations</a>
           </th>
           <th class="total_points_header">Total</th>
           <th class="user_header"><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
-            <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> Points </div> Left
+            <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> Points </div>
           </th>
 
           <% @invites.each do |invite| %>
@@ -266,11 +265,12 @@
       <% @suggestions.each do |suggestion| %>
         <tr>
             <th class="venue_info">
-                <a href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank">
+                <a class="venue_link" href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank">
                     <% if (!suggestion.venue.image.blank?) %>
                         <div class="venue_image"><img src="<%= suggestion.venue.image %>"></div>
+                    <% else %>
+                      <div class="venue_name"><%= suggestion.venue.name %></div>
                     <% end %>
-                    <div class="venue_name"><%= suggestion.venue.name %></div>
                 </a>
                 <div class="venue_description"><a href="<%= suggestion.venue.googleurl %>" target="_blank"><%= suggestion.venue['address'] %></a></div>
             </th>
