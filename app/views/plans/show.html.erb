@@ -226,7 +226,7 @@
 
     <div class="plan_info_actions">
       <br>
-      <a class="gold-btn" id="changeplan" >Change</a>
+      <a class="gold-btn" id="changeplan" >Edit Plan</a>
       <input type="hidden" id="planid" value="<%= @plan.id %>">
       <input id="plandate" value="<%= @plan.plandate %>" type="hidden">
       <a class="gold-btn" id="showcomments" >Comments (<%= @plan.microposts.count %>)</a>
@@ -237,7 +237,7 @@
       <input type="hidden" id="invited_user_name"/>
       <% if (@invites.count > 1) %>
           <!--<a class="gold-btn" id="planentourage" ><%#= @invites.count - 1 %> people</a> have been selected to vote on where to go for this plan.-->
-          <a class="gold-btn" id="planvoters" ><%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) %> voted</a>
+          <a class="gold-btn" id="planvoters" ><%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> voted</a>
           <a class="gold-btn" id="plannonvoters" ><%= @invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) %> not voted</a><br>
       <% end %>
     </div>
@@ -443,14 +443,16 @@
 <div class="popupform" id="planvoters_form" style="display:none">
   <body>
   <div class="popupform_header">
-    <%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) %> voted
+    <%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> voted
     <br>
     <a class="gold-btn" id="closepvpopup">Close</a>
   </div>
   <div class="popupform_content">
     <% @invites.each do |invite| %>
-        <% if !(Point.find_by_invite_id(invite.id).nil?) %>
-            <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
+        <% if invite.user.id != current_user.id %>
+            <% if !(Point.find_by_invite_id(invite.id).nil?) %>
+                <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
+            <% end %>
         <% end %>
     <% end %>
   </div>
@@ -466,8 +468,10 @@
   </div>
   <div class="popupform_content">
     <% @invites.each do |invite| %>
-        <% if (Point.find_by_invite_id(invite.id).nil?) %>
-            <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
+        <% if invite.user.id != current_user.id %>
+            <% if (Point.find_by_invite_id(invite.id).nil?) %>
+                <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
+            <% end %>
         <% end %>
     <% end %>
   </div>
