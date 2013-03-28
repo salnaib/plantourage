@@ -17,6 +17,7 @@ $ ->
       else
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) - 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) - 1) + " Points");
+      (window).location = (window).location;
     else
       errorPopup($(this).offset(), 'You have no more points to vote with. Remove points from another venue to be able to add to this venue');
 
@@ -37,6 +38,7 @@ $ ->
       else
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) + 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) + 1) + " Points");
+      (window).location = (window).location;
     else
       errorPopup($(this).offset(), 'You have no points to remove from this venue.');
 
@@ -149,6 +151,31 @@ $ ->
       remote: true
       data: { comment_id: commentid }
     (window).location = (window).location;
+
+  $(".suggcount").click ->
+    suggestionid = ($(this).attr('id'));
+    popupFunction("#sugg" + suggestionid + "votedusers");
+
+  $(".closevupopup").click ->
+    popupCloseFunction(".suggvotedusers_form");
+
+  $("#planentourage").click ->
+    popupFunction("#planentourage_form");
+
+  $("#closepepopup").click ->
+    popupCloseFunction("#planentourage_form");
+
+  $("#planvoters").click ->
+    popupFunction("#planvoters_form");
+
+  $("#closepvpopup").click ->
+    popupCloseFunction("#planvoters_form");
+
+  $("#plannonvoters").click ->
+    popupFunction("#plannonvoters_form");
+
+  $("#closepnpopup").click ->
+    popupCloseFunction("#plannonvoters_form");
 
   previousOverflow = 'auto';
 

@@ -29,12 +29,12 @@
 }
 
 #points_left_info {
-  width: 100%;
+  width: 90%;
   font-size: 20px;
   font-family: 'Gabriela', serif;
   text-shadow: none;
   color: black;
-  padding-top: 10px;
+  padding: 10px;
   text-align: center;
 }
 
@@ -45,7 +45,7 @@
   color: #7A0109;
 }
 
-#toppick {
+#toppick, #mypick {
   font-size: 30px;
   font-family: 'Gabriela', serif;
   text-shadow: none;
@@ -53,7 +53,7 @@
   text-decoration: underline;
 }
 
-#toppick:hover {
+#toppick:hover, #mypick:hover {
   color: #ffffff;
 }
 
@@ -184,6 +184,16 @@
   height: 100px;
 }
 
+#updateplan_form {
+  width: 20%;
+  height: 20%;
+}
+
+.suggvotedusers_form {
+  max-width: 20%;
+  max-height: 70%;
+}
+
 #mapCanvas_form {
   width: 50%;
   height: 70%;
@@ -308,8 +318,8 @@
   }
 
   .venue_header, .venue_info {
-    max-width: 20px;
-    min-width: 20px;
+    max-width: 50px;
+    min-width: 50px;
   }
 
   .total_points_header, .sugg_totpointcount {
@@ -412,18 +422,8 @@
   }
 
   .venue_header, .venue_info {
-    max-width: 20px;
-    min-width: 20px;
-  }
-
-  .total_points_header, .sugg_totpointcount {
-    max-width: 10px;
-    min-width: 10px;
-  }
-
-  .user_header, .sugg_userpointcount {
-    max-width: 20px;
-    min-width: 20px;
+    max-width: 100px;
+    min-width: 100px;
   }
 
   .sugg_friend_count {

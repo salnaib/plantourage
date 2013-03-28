@@ -204,11 +204,42 @@
   <div id="plan_info" class="shell">
     <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%= @plan.name %></div>
     <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></div>
+
+    <div id="points_left_info">
+      <% if (@invites.count == 1) %>
+          No people have been added to this plan.
+      <% end %>
+      <% if (!@plan.toppick.nil?) %>
+          <br><a id="toppick" href="<%= @plan.toppick.venue.website %>" target="_blank"><%= @plan.toppick.venue.name %></a> is the top choice so far
+      <% end %>
+      <% if (Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) > 0) %>
+          <br>You voted for <a id="mypick" href="<%= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.website %>" target="_blank"><%= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.name %></a>
+      <% else %>
+          <% if (@suggestions.count > 0) %>
+              <br>Please vote below.
+          <% else %>
+              <br>Where do you want to go? Add possible locations below.
+          <% end %>
+      <% end %>
+      <br><div id="totalpoints" style="display: none;"><%= pluralize(1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Vote') %> </div>
+    </div>
+
     <div class="plan_info_actions">
+      <br>
       <a class="gold-btn" id="changeplan" >Change</a>
       <input type="hidden" id="planid" value="<%= @plan.id %>">
       <input id="plandate" value="<%= @plan.plandate %>" type="hidden">
       <a class="gold-btn" id="showcomments" >Comments (<%= @plan.microposts.count %>)</a>
+      <a class="gold-btn" id="addvenue" >Add Locations</a>
+      <a onclick="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add Friends (<%= @invites.count - 1 %>)</a>
+      <input type="hidden" id="invited_user_id"/>
+      <input type="hidden" id="friend_user_id"/>
+      <input type="hidden" id="invited_user_name"/>
+      <% if (@invites.count > 1) %>
+          <!--<a class="gold-btn" id="planentourage" ><%#= @invites.count - 1 %> people</a> have been selected to vote on where to go for this plan.-->
+          <a class="gold-btn" id="planvoters" ><%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) %> voted</a>
+          <a class="gold-btn" id="plannonvoters" ><%= @invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) %> not voted</a><br>
+      <% end %>
     </div>
     <!--    <tr>
       <td>
@@ -222,49 +253,48 @@
 
   </div>
 
-  <div id="points_left_info">
-    <% if (!@plan.toppick.nil?) %>
-        <a id="toppick" href="<%= @plan.toppick.venue.website %>" target="_blank"><%= @plan.toppick.venue.name %></a> is the top choice so far<br>
-    <% end %>
-    You have <div id="totalpoints" style="display:inline"><%= pluralize(10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Point') %> </div> left to vote with
-  </div>
-
   <div id="voting_info" class="shell">
     <table id="plan_voting_table">
       <thead>
         <tr>
-          <th></th>
-          <th></th>
-          <th class="friends_action_header" colspan="100%">
-            <a onclick="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add Friends (<%= @invites.count - 1 %>)</a>
-            <input type="hidden" id="invited_user_id"/>
-            <input type="hidden" id="friend_user_id"/>
-            <input type="hidden" id="invited_user_name"/>
-          </th>
-        </tr>
-        <tr>
-          <th class="venue_header">
-            <a class="gold-btn" id="addvenue" >Add Locations</a>
-          </th>
-          <th class="total_points_header">Total</th>
           <th class="user_header"><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
-            <br> <div id="totalpoints2"><%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> Points </div>
+            <br> Me<div id="totalpoints2" style="display: none"><%= 1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> Points </div>
           </th>
-
-          <% @invites.each do |invite| %>
-              <% if invite.user.id != current_user.id %>
+          <th class="venue_header">
+            Locations
+          </th>
+          <th class="total_points_header">Votes</th>
+<!--
+          <%# @invites.each do |invite| %>
+              <%# if invite.user.id != current_user.id %>
                   <th class="friends_header">
-                    <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>" width="50" height="50"><br><b><%= invite.user.name %></b></a>
-                    <br> (<%= 10 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, invite.id]) %>)
+                    <a href="http://www.facebook.com/<%#= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%#= invite.user.uid %>/picture?type=square" alt="<%#= invite.user.name %>" width="50" height="50"><br><b><%#= invite.user.name %></b></a>
+                    <br> (<%#= 1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, invite.id]) %>)
                   </th>
-              <% end %>
-          <% end %>
+              <%# end %>
+          <%# end %>
+          -->
         </tr>
       </thead>
       <tbody>
       <% @suggestions.each do |suggestion| %>
         <tr>
-            <th class="venue_info">
+          <td class="sugg_userpointcount">
+            <% if (Point.find_by_invite_id(Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).nil?) %>
+                <a class="addpointto" id="<%= suggestion.id %>" >Vote</a>
+            <% elsif !(Point.find_by_suggestion_id_and_invite_id(suggestion.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).nil?) %>
+                <a class="removepointfrom" id="<%= suggestion.id %>" >Unvote</a>
+            <% else %>
+                <a class="addpointto" id="<%= suggestion.id %>" style="display:none" >Vote</a>
+            <% end %>
+            <div style="display: none" class="sugg_user_point" id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> </div>
+            <!--
+            <a class="addpointto" id="<%#= suggestion.id %>" >+</a>
+            <div class="sugg_user_point" id="sugg<%#= suggestion.id %>pointcount"> <%#= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> </div>
+            <a class="removepointfrom" id="<%#= suggestion.id %>" >-</a>
+            -->
+          </td>
+          <th class="venue_info">
                 <a class="venue_link" href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank">
                     <% if (!suggestion.venue.image.blank?) %>
                         <div class="venue_image"><img src="<%= suggestion.venue.image %>"></div>
@@ -275,18 +305,15 @@
                 <div class="venue_description"><a href="<%= suggestion.venue.googleurl %>" target="_blank"><%= suggestion.venue['address'] %></a></div>
             </th>
           <td class="sugg_totpointcount">
-            <div id="sugg<%= suggestion.id %>totpointcount"> <%= suggestion.pointcount %> </div>
+            <div id="sugg<%= suggestion.id %>totpointcount"> <a class="gold-btn suggcount" id="<%= suggestion.id %>" ><%= suggestion.pointcount %></a> </div>
           </td>
-          <td class="sugg_userpointcount">
-            <a class="addpointto" id="<%= suggestion.id %>" >+</a>
-            <div class="sugg_user_point" id="sugg<%= suggestion.id %>pointcount"> <%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> </div>
-            <a class="removepointfrom" id="<%= suggestion.id %>" >-</a>
-          </td>
-          <% @invites.each do |invite| %>
-              <% if invite.user.id != current_user.id %>
-                  <td class="sugg_friend_count"><%= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) %> </td>
-              <% end %>
-          <% end %>
+          <!--
+          <%# @invites.each do |invite| %>
+              <%# if invite.user.id != current_user.id %>
+                  <td class="sugg_friend_count"><%#= Point.sum(:count, :conditions => ['suggestion_id = ? AND invite_id = ?', suggestion.id, invite.id]) %> </td>
+              <%# end %>
+          <%# end %>
+          -->
         </tr>
       <% end %>
       </tbody>
@@ -397,3 +424,73 @@
 
     </body>
   </div>
+
+<div class="popupform" id="planentourage_form" style="display:none">
+  <body>
+  <div class="popupform_header">
+    <a class="gold-btn" id="closepepopup">Close</a>
+  </div>
+  <div class="popupform_content">
+    <% @invites.each do |invite| %>
+        <% if invite.user.id != current_user.id %>        
+            <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
+        <% end %>
+    <% end %>
+  </div>
+  </body>
+</div>
+
+<div class="popupform" id="planvoters_form" style="display:none">
+  <body>
+  <div class="popupform_header">
+    <%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) %> voted
+    <br>
+    <a class="gold-btn" id="closepvpopup">Close</a>
+  </div>
+  <div class="popupform_content">
+    <% @invites.each do |invite| %>
+        <% if !(Point.find_by_invite_id(invite.id).nil?) %>
+            <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
+        <% end %>
+    <% end %>
+  </div>
+  </body>
+</div>
+
+<div class="popupform" id="plannonvoters_form" style="display:none">
+  <body>
+  <div class="popupform_header">
+    <%= @invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) %> not voted
+    <br>
+    <a class="gold-btn" id="closepnpopup">Close</a>
+  </div>
+  <div class="popupform_content">
+    <% @invites.each do |invite| %>
+        <% if (Point.find_by_invite_id(invite.id).nil?) %>
+            <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
+        <% end %>
+    <% end %>
+  </div>
+  </body>
+</div>
+
+<% @suggestions.each do |suggestion| %>
+
+    <div class="popupform suggvotedusers_form" id="sugg<%= suggestion.id %>votedusers" style="display:none">
+      <body>
+      <div class="popupform_header">
+        <%= suggestion.pointcount %> voted for <%= suggestion.venue['name'] %>
+        <br>
+        <a class="gold-btn closevupopup">Close</a>
+      </div>
+      <div class="popupform_content">
+        <% @invites.each do |invite| %>
+            <% if !(Point.find_by_suggestion_id_and_invite_id(suggestion.id,invite.id).nil?) %>
+                <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
+            <% end %>
+        <% end %>
+      </div>
+      </body>
+    </div>
+
+<% end %>
