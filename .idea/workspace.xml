@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/plans/show.html.erb" afterPath="$PROJECT_DIR$/app/views/plans/show.html.erb" />
     </list>
     <ignored path="plantourage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +27,7 @@
       <file leaf-file-name="plans.css.scss" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="514" column="0" selection-start="9116" selection-end="9116" vertical-scroll-proportion="0.7536232">
+            <state line="478" column="2" selection-start="8386" selection-end="8386" vertical-scroll-proportion="0.47644928">
               <folding />
             </state>
           </provider>
@@ -46,7 +45,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/plans/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="407" column="49" selection-start="20318" selection-end="20318" vertical-scroll-proportion="-7.1923075">
+            <state line="309" column="89" selection-start="16885" selection-end="16894" vertical-scroll-proportion="-13.730769">
               <folding />
             </state>
           </provider>
@@ -850,14 +849,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/plans/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="407" column="49" selection-start="20318" selection-end="20318" vertical-scroll-proportion="-7.1923075">
+        <state line="309" column="89" selection-start="16885" selection-end="16894" vertical-scroll-proportion="-13.730769">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="514" column="0" selection-start="9116" selection-end="9116" vertical-scroll-proportion="0.7536232">
+        <state line="478" column="2" selection-start="8386" selection-end="8386" vertical-scroll-proportion="0.47644928">
           <folding />
         </state>
       </provider>
