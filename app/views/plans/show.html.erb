@@ -202,7 +202,7 @@
   </script>
 
   <div id="plan_info" class="shell">
-    <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%= @plan.name %></div>
+    <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%= @plan.name %></div><br class="mobile-break">
     <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></div>
 
     <div id="points_left_info">
@@ -230,6 +230,7 @@
       <input type="hidden" id="planid" value="<%= @plan.id %>">
       <input id="plandate" value="<%= @plan.plandate %>" type="hidden">
       <a class="gold-btn" id="showcomments" >Comments (<%= @plan.microposts.count %>)</a>
+      <br class="mobile-break">
       <a class="gold-btn" id="addvenue" >Add Locations</a>
       <a onclick="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add Friends (<%= @invites.count - 1 %>)</a>
       <input type="hidden" id="invited_user_id"/>

@@ -292,6 +292,10 @@
     top:1px;
   }
 
+.mobile-break {
+  display: none;
+}
+
 /* #Media Queries
 ================================================== */
 
@@ -303,10 +307,15 @@
 
   .plan_info_value {
     font-size: 20px;
+    float: left;
   }
 
   #points_left_info {
     font-size: 12px;
+  }
+
+  #points_left_info a {
+    font-size: 20px;
   }
 
   #totalpoints {
@@ -406,11 +415,18 @@
 
   .plan_info_value {
     font-size: 20px;
-    display: inline-block;
   }
 
   #points_left_info {
     font-size: 12px;
+  }
+
+  #points_left_info a {
+    font-size: 20px;
+  }
+
+  .mobile-break {
+    display: inline;
   }
 
   #totalpoints {
@@ -460,7 +476,7 @@
     font-size: 10px;
   }
 
-  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, #selectvenue, #closemapcanvas {
+  #changeplan, #showcomments, #addfriend, #addvenue, #submitvenue, #closevenue, #add_comment, #closecomments, #delete_comment, #updateplan, #closeupdateplan, #closeError, #selectvenue, #closemapcanvas, #planvoters, #plannonvoters {
     font-size: 10px;
   }
 
@@ -469,11 +485,22 @@
     padding: 1px 8px;
   }
 
+  #updateplan_form {
+    width: 70%;
+    height: 30%;
+  }
+
+  .suggvotedusers_form, #planvoters_form, #plannonvoters_form  {
+    max-width: 70%;
+    max-height: 80%;
+  }
+
   #mapCanvas_form {
     width: 90%;
     height: 100%;
     bottom: 3%;
     left: 2%;
+    top: 3%;
   }
 
   #mapCanvas_form .popupform_header {
@@ -490,6 +517,7 @@
     height: 100%;
     bottom: 3%;
     left: 2%;
+    top: 3%;
   }
 
   #show_comments_form .popupform_header {
@@ -516,11 +544,15 @@
 
   .plan_info_value {
     font-size: 20px;
-    display: inline-block;
+    float: left;
   }
 
   #points_left_info {
     font-size: 12px;
+  }
+
+  #points_left_info a {
+    font-size: 20px;
   }
 
   #totalpoints {
