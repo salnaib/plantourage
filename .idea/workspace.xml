@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32abfc2c-5cf9-440b-b654-00523a55c240" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/plans/show.html.erb" afterPath="$PROJECT_DIR$/app/views/plans/show.html.erb" />
     </list>
     <ignored path="plantourage.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,7 +46,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/plans/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="309" column="89" selection-start="16885" selection-end="16894" vertical-scroll-proportion="-13.730769">
+            <state line="227" column="0" selection-start="11467" selection-end="11467" vertical-scroll-proportion="-0.65384614">
               <folding />
             </state>
           </provider>
@@ -54,7 +55,7 @@
       <file leaf-file-name="points_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/points_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="89" selection-start="2743" selection-end="2819" vertical-scroll-proportion="0.0">
+            <state line="90" column="28" selection-start="2122" selection-end="2122" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,8 +142,8 @@
         <option value="$PROJECT_DIR$/app/views/static/landing.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/plans.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/custom/styles.css" />
-        <option value="$PROJECT_DIR$/app/views/plans/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/plans.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/plans/show.html.erb" />
       </list>
     </option>
   </component>
@@ -803,11 +804,6 @@
         <state line="140" column="28" selection-start="3413" selection-end="3413" vertical-scroll-proportion="0.3380531" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/points_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="89" selection-start="2743" selection-end="2819" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="105" column="0" selection-start="1749" selection-end="1749" vertical-scroll-proportion="0.0" />
@@ -847,9 +843,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/points_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="28" selection-start="2122" selection-end="2122" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/plans/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="309" column="89" selection-start="16885" selection-end="16894" vertical-scroll-proportion="-13.730769">
+        <state line="227" column="0" selection-start="11467" selection-end="11467" vertical-scroll-proportion="-0.65384614">
           <folding />
         </state>
       </provider>
