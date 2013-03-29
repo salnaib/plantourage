@@ -487,7 +487,7 @@
 
   #updateplan_form {
     width: 70%;
-    height: 30%;
+    height: 35%;
   }
 
   .suggvotedusers_form, #planvoters_form, #plannonvoters_form  {
@@ -506,6 +506,10 @@
   #mapCanvas_form .popupform_header {
     height: 18%;
     padding: 2px;
+  }
+
+  #searchTextField {
+    width: 85%;
   }
 
   #mapCanvas_form .popupform_content {

@@ -238,6 +238,7 @@
       <input type="hidden" id="invited_user_name"/>
       <% if (@invites.count > 1) %>
           <!--<a class="gold-btn" id="planentourage" ><%#= @invites.count - 1 %> people</a> have been selected to vote on where to go for this plan.-->
+          <br class="mobile-break">
           <a class="gold-btn" id="planvoters" ><%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> voted</a>
           <a class="gold-btn" id="plannonvoters" ><%= @invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) + Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> not voted</a><br>
       <% end %>
@@ -404,7 +405,7 @@
     <body>
     <div class="popupform_header">
       Add Venue
-      <br><input id="searchTextField" type="text" size="50">
+      <br><input id="searchTextField" type="text">
       <a class="gold-btn" id="closemapcanvas">Close</a>
     </div>
     <div class="popupform_content">
