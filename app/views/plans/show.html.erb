@@ -1,4 +1,6 @@
 <%= stylesheet_link_tag "custom/styles" %>
+<link href='http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'>
 
 <%= render :partial => 'layouts/header' %>
 
@@ -202,59 +204,106 @@
   </script>
 
   <div id="plan_info" class="shell">
-    <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%= @plan.name %></div><br class="mobile-break">
-    <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></div>
-
-    <div id="points_left_info">
-      <% if (@invites.count == 1) %>
-          No people have been added to this plan.
-      <% end %>
-      <% if (!@plan.toppick.nil?) %>
-          <br><a id="toppick" href="<%= @plan.toppick.venue.website %>" target="_blank"><%= @plan.toppick.venue.name %></a> is the top choice so far
-      <% end %>
-      <% if (Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) > 0) %>
-          <br>You voted for <a id="mypick" href="<%= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.website %>" target="_blank"><%= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.name %></a>
-      <% else %>
-          <% if (@suggestions.count > 0) %>
-              <br>Please vote below.
-          <% else %>
-              <br>Where do you want to go? Add possible locations below.
-          <% end %>
-      <% end %>
-      <br><div id="totalpoints" style="display: none;"><%= pluralize(1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Vote') %> </div>
+    <div id="plantourage_presents">
+      <h1 id="plantourage_presents_logo"><a href="/">Plantourage</a></h1>
+      <div id="presents_text">EXCLUSIVELY PRESENTS</div>
     </div>
-
-    <div class="plan_info_actions">
-      <a class="gold-btn" id="changeplan" >Edit Plan</a>
-      <input type="hidden" id="planid" value="<%= @plan.id %>">
-      <input id="plandate" value="<%= @plan.plandate %>" type="hidden">
-      <a class="gold-btn" id="showcomments" >Comments (<%= @plan.microposts.count %>)</a>
-      <br class="mobile-break">
-      <a class="gold-btn" id="addvenue" >Add Locations</a>
-      <a onclick="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add Friends (<%= @invites.count - 1 %>)</a>
+    <div id="plan_info_name"><%= @plan.name %></div>
+    <div id="plan_info_date"><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %></div>
+    <div id="guestlist">There are <a id="planentourage" ><%= pluralize(@invites.count - 1, 'Person') %></a> on the guestlist</div>
+    <div id="guestlist_add">
+      Click <a onclick="sendRequestViaMultiFriendSelector(); return false;" id="addfriend" >here</a> invite more
       <input type="hidden" id="invited_user_id"/>
       <input type="hidden" id="friend_user_id"/>
       <input type="hidden" id="invited_user_name"/>
-      <% if (@invites.count > 1) %>
-          <!--<a class="gold-btn" id="planentourage" ><%#= @invites.count - 1 %> people</a> have been selected to vote on where to go for this plan.-->
-          <br class="mobile-break">
-          <a class="gold-btn" id="planvoters" ><%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> voted</a>
-          <a class="gold-btn" id="plannonvoters" ><%= @invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) + Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> not voted</a><br>
-      <% end %>
     </div>
+    <div id="location_tbd">Location: TBD*</div>
+    <div id="location_count">(<%= pluralize(@suggestions.count, 'location') %> suggested. Click <a id="addvenue" >here</a> to add more.)</div>
+    <div id="voting_explanation">*Voting booth is now open below</div>
+    <% if (!@plan.toppick.nil?) %>
+        <div id="toppick_explanation"><a id="toppick" href="<%= @plan.toppick.venue.website %>" target="_blank"><%= @plan.toppick.venue.name %></a> is the top choice so far</div>
+    <% end %>
+    <% if (@invites.count > 1) %>
+        <div id="voters_count"><a id="planvoters" ><%= pluralize(Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Person') %></a> voted</div>
+        <div id="nonvoters_count">Waiting on <a id="plannonvoters" ><%= pluralize(@invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) + Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Person') %></a></div>
+    <% end %>
+    <div id="comments_and_edit">
+      To view and make comments click <a id="showcomments" >here</a>.
+      To edit the plan details click <a id="changeplan" >here</a>
+      <input type="hidden" id="planid" value="<%= @plan.id %>">
+      <input id="plandate" value="<%= @plan.plandate %>" type="hidden">.
+    </div>
+
+    <!--
+
+    <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%#= @plan.name %></div><br class="mobile-break">
+    <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%#= @plan.plandate.strftime("%A") %> <%#= @plan.plandate.strftime("%B") %> <%#= @plan.plandate.strftime("%d") %>, <%#= @plan.plandate.strftime("%Y") %></div>
+
+    <div id="points_left_info">
+      <%# if (@invites.count == 1) %>
+          No people have been added to this plan.
+      <%# end %>
+      <!--
+      <%# if (!@plan.toppick.nil?) %>
+          <br><a id="toppick" href="<%#= @plan.toppick.venue.website %>" target="_blank"><%#= @plan.toppick.venue.name %></a> is the top choice so far
+      <%# end %>
+      -->
+    <!--
+      <%# if (Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) > 0) %>
+          <br>You voted for <a id="mypick" href="<%#= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.website %>" target="_blank"><%#= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.name %></a>
+      <%# else %>
+          <%# if (@suggestions.count > 0) %>
+              <br>Please vote below.
+          <%# else %>
+              <br>Where do you want to go? Add possible locations below.
+          <%# end %>
+      <%# end %>
+      <br><div id="totalpoints" style="display: none;"><%#= pluralize(1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Vote') %> </div>
+    </div>
+    -->
+
+    <!--<div class="plan_info_actions">
+      <!--
+      <a class="gold-btn" id="changeplan" >Edit Plan</a>
+      <input type="hidden" id="planid" value="<%#= @plan.id %>">
+      <input id="plandate" value="<%#= @plan.plandate %>" type="hidden">
+      <a class="gold-btn" id="showcomments" >Comments (<%#= @plan.microposts.count %>)</a>
+      <br class="mobile-break">
+      -->
+      <!--
+      <a class="gold-btn" id="addvenue" >Add Locations</a>
+      -->
+      <!--
+      <a onclick="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add Friends (<%#= @invites.count - 1 %>)</a>
+      <input type="hidden" id="invited_user_id"/>
+      <input type="hidden" id="friend_user_id"/>
+      <input type="hidden" id="invited_user_name"/>
+       -->
+      <%# if (@invites.count > 1) %>
+          <!--<a class="gold-btn" id="planentourage" ><%#= @invites.count - 1 %> people</a> have been selected to vote on where to go for this plan.-->
+      <!--<br class="mobile-break">-->
+          <!--
+          <a class="gold-btn" id="planvoters" ><%#= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> voted</a>
+          -->
+          <!--
+          <a class="gold-btn" id="plannonvoters" ><%#= @invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) + Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> not voted</a><br>
+          -->
+      <%# end %>
+    <!--</div>
     <!--    <tr>
       <td>
-        <% #if (@plan.fbevent_id.blank?) %>
+        <%# if (@plan.fbevent_id.blank?) %>
             <input id="createfbevent" type="button" value="Create Private Event Page on Facebook">
-        <% #else %>
+        <%# else %>
             <a href="www.facbook.com/<%#= @plan.fbevent_id %>" title="<%#= @plan.name %> Facebook Event" target="_blank"><img src="images/learnmore.jpg" alt="" height="50" width="150"></a>
-        <% #end %>
+        <%# end %>
       </td>
     </tr> -->
 
-  </div>
+    <!--</div>-->
 
   <div id="voting_info" class="shell">
+    <div id="voting_booth_text">* Voting Booth</div>
     <table id="plan_voting_table">
       <thead>
         <tr>

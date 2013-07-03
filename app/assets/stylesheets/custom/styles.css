@@ -64,8 +64,8 @@ body {
     line-height: 22px;
     font-family: Georgia, Serif;
     color: #828282;
-    background: url(http://preview.chocotemplates.com/digy/html/default/css/images/body.png) repeat 0 0;
-    min-width: 100%;
+    background: url(/images/BG_Black.jpg) repeat 0 0;
+    max-width: 100%;
 }
 
 a { color: #72ae13; text-decoration: none; cursor: pointer; }
