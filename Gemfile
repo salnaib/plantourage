@@ -34,3 +34,4 @@ gem 'httparty'
 gem 'thin'
 gem 'omniauth-facebook'
 gem 'heroku'
+gem "actionmailer", "~> 3.2.11"

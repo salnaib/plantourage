@@ -17,7 +17,7 @@ $ ->
       else
         $("#totalpoints").text(" " + (parseInt($("#totalpoints").text()) - 1) + " Points");
         $("#totalpoints2").text(" " + (parseInt($("#totalpoints2").text()) - 1) + " Points");
-      (window).location = (window).location;
+      (window).location.reload(false);
     else
       errorPopup($(this).offset(), 'You have no more points to vote with. Remove points from another venue to be able to add to this venue');
 

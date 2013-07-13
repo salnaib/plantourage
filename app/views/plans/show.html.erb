@@ -1,320 +1,271 @@
 <%= stylesheet_link_tag "custom/styles" %>
-<link href='http://fonts.googleapis.com/css?family=Just+Me+Again+Down+Here' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'>
 
 <%= render :partial => 'layouts/header' %>
 
 
 <div id="plan_details" class="shell">
-  <div id="fb-root"></div>
+<div id="fb-root"></div>
 
-  <script src="http://connect.facebook.net/en_US/all.js"></script>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
 
-  <script>
-      FB.init({
-          appId  : '<%= ENV["FACEBOOK_APP_ID"] %>',
-          frictionlessRequests: true
-      });
+<script>
+    FB.init({
+        appId  : '<%= ENV["FACEBOOK_APP_ID"] %>',
+        frictionlessRequests: true
+    });
 
-      function sendRequestViaMultiFriendSelector() {
-          FB.ui({method: 'apprequests',
-              display: 'iframe',
-              from: '<%= current_user.uid %>',
-              <% if !(@invites.empty?) %>
-              exclude_ids: '<% @invites.each do |invite| %><%= invite.user.uid %>,<% end %>',
-              <% end %>
-              title: 'Log onto Plantourage and help us decide!',
-              message: 'Where should we go on <%= @plan.plandate.strftime("%a") %> <%= @plan.plandate.strftime("%b") %> <%= @plan.plandate.strftime("%d") %> for <%= @plan.name %>?'
-          }, requestCallback);
-      }
+    function sendRequestViaMultiFriendSelector() {
+        FB.ui({method: 'apprequests',
+            display: 'iframe',
+            from: '<%= current_user.uid %>',
+            <% if !(@invites.empty?) %>
+            exclude_ids: '<% @invites.each do |invite| %><%= invite.user.uid %>,<% end %>',
+            <% end %>
+            title: 'Log onto Plantourage and help us decide!',
+            message: 'Where should we go on <%= @plan.plandate.strftime("%a") %> <%= @plan.plandate.strftime("%b") %> <%= @plan.plandate.strftime("%d") %> for <%= @plan.name %>?'
+        }, requestCallback);
+    }
 
-      function requestCallback(response) {
-          if (response && response.request && response.to) {
-              FB.api('/me/friends/', function(res) {
-                  var planid = document.getElementById('planid').value;
-                  for (var i = 0; i < response.to.length; ++i)
-                  {
-                      //"ids[i]" is what you want.
-                      document.getElementById("invited_user_id").value = response.to[i];
-                      for(var j = 0; j < res.data.length; j++) {
-                          document.getElementById("friend_user_id").value = res.data[j].id;
-                          if (document.getElementById("invited_user_id").value == document.getElementById("friend_user_id").value) {
-                              document.getElementById("invited_user_name").value = res.data[j].name;
-                              document.getElementById("invited_user_id").click();
-                          }
-                      }
-                  }
-                  (window).location = (window).location;
-              });
-          }
-      }
+    function requestCallback(response) {
+        if (response && response.request && response.to) {
+            FB.api('/me/friends/', function(res) {
+                var planid = document.getElementById('planid').value;
+                for (var i = 0; i < response.to.length; ++i)
+                {
+                    //"ids[i]" is what you want.
+                    document.getElementById("invited_user_id").value = response.to[i];
+                    for(var j = 0; j < res.data.length; j++) {
+                        document.getElementById("friend_user_id").value = res.data[j].id;
+                        if (document.getElementById("invited_user_id").value == document.getElementById("friend_user_id").value) {
+                            document.getElementById("invited_user_name").value = res.data[j].name;
+                            document.getElementById("invited_user_id").click();
+                        }
+                    }
+                }
+                (window).location = (window).location;
+            });
+        }
+    }
 
-  </script>
+</script>
 
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
-  <script>
-      function initialize() {
-          var mapOptions = {
-              center: new google.maps.LatLng(43.6481, -79.4042),
-              zoom: 13,
-              disableDefaultUI: true,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-          var map = new google.maps.Map(document.getElementById('map_canvas'),
-                  mapOptions);
+<script>
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng(43.6481, -79.4042),
+            zoom: 13,
+            disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'),
+                mapOptions);
 
-          $(document.getElementById('mapCanvas_form')).fadeIn(function () {
-              google.maps.event.trigger(map, 'resize');
-          });
+        $(document.getElementById('mapCanvas_form')).fadeIn(function () {
+            google.maps.event.trigger(map, 'resize');
+        });
 
-          $(document.getElementById('mapCanvas_form')).fadeOut(500);
+        $(document.getElementById('mapCanvas_form')).fadeOut(500);
 
-          var input = document.getElementById('searchTextField');
-          var autocomplete = new google.maps.places.Autocomplete(input);
+        var input = document.getElementById('searchTextField');
+        var autocomplete = new google.maps.places.Autocomplete(input);
 
-          autocomplete.bindTo('bounds', map);
+        autocomplete.bindTo('bounds', map);
 
-          var infowindow = new google.maps.InfoWindow();
-          var marker = new google.maps.Marker({
-              map: map
-          });
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map
+        });
 
-          google.maps.event.addListener(autocomplete, 'place_changed', function() {
-              infowindow.close();
-              marker.setVisible(false);
-              input.className = '';
-              var place = autocomplete.getPlace();
-              if (!place.geometry) {
-                  // Inform the user that the place was not found and return.
-                  input.className = 'notfound';
-                  return;
-              }
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            infowindow.close();
+            marker.setVisible(false);
+            input.className = '';
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                // Inform the user that the place was not found and return.
+                input.className = 'notfound';
+                return;
+            }
 
-              // If the place has a geometry, then present it on a map.
-              if (place.geometry.viewport) {
-                  map.fitBounds(place.geometry.viewport);
-              } else {
-                  map.setCenter(place.geometry.location);
-                  map.setZoom(17);  // Why 17? Because it looks good.
-              }
-              var image = {
-                  url: place.icon,
-                  size: new google.maps.Size(71, 71),
-                  origin: new google.maps.Point(0, 0),
-                  anchor: new google.maps.Point(17, 34),
-                  scaledSize: new google.maps.Size(35, 35)
-              };
-              marker.setIcon(image);
-              marker.setPosition(place.geometry.location);
-              marker.setVisible(true);
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);  // Why 17? Because it looks good.
+            }
+            var image = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(35, 35)
+            };
+            marker.setIcon(image);
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
 
-              var address = '';
-              if (place.address_components) {
-                  address = [
-                      (place.address_components[0] && place.address_components[0].short_name || ''),
-                      (place.address_components[1] && place.address_components[1].short_name || ''),
-                      (place.address_components[2] && place.address_components[2].short_name || '')
-                  ].join(' ');
-              }
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
 
-              var content = '<div>';
-              if (place.website) {
-                  content = content + "<b><u><a href='" + place.website + "' target='_blank'>" + place.name + "</b></u></a>";
-              } else {
-                  content = content + "<b>" + place.name + "</b>";
-              }
-              if (place.icon) {
-                  content = content + " <img height='15' width='15' src='" + place.icon + "'>";
-              }
-              content = content + " - <i>" + address + "</i>";
-              content = content + '<br><a class="gold-btn" id="selectvenue">Add to Plan</a>';
+            var content = '<div>';
+            if (place.website) {
+                content = content + "<b><u><a href='" + place.website + "' target='_blank'>" + place.name + "</b></u></a>";
+            } else {
+                content = content + "<b>" + place.name + "</b>";
+            }
+            if (place.icon) {
+                content = content + " <img height='15' width='15' src='" + place.icon + "'>";
+            }
+            content = content + " - <i>" + address + "</i>";
+            content = content + '<br><a class="gold-btn" id="selectvenue">Add to Plan</a>';
 
-              content = content + '</div>';
+            content = content + '</div>';
 
-              infowindow.setContent(content);
+            infowindow.setContent(content);
 
-              document.getElementById("venuegoogleid").value = place.id;
-              document.getElementById("venuename").value = place.name;
-              document.getElementById("venueaddress").value = place.formatted_address // [(place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || '')].join(' ');
+            document.getElementById("venuegoogleid").value = place.id;
+            document.getElementById("venuename").value = place.name;
+            document.getElementById("venueaddress").value = place.formatted_address // [(place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || '')].join(' ');
 
-              document.getElementById("venuecity").value = extractFromAddress(place.address_components, "locality");
-              document.getElementById("venuestate").value = extractFromAddress(place.address_components, "administrative_area_level_1");
-              document.getElementById("venuecountry").value = extractFromAddress(place.address_components, "country");
-              document.getElementById("venuepostal").value = extractFromAddress(place.address_components, "postal_code");
+            document.getElementById("venuecity").value = extractFromAddress(place.address_components, "locality");
+            document.getElementById("venuestate").value = extractFromAddress(place.address_components, "administrative_area_level_1");
+            document.getElementById("venuecountry").value = extractFromAddress(place.address_components, "country");
+            document.getElementById("venuepostal").value = extractFromAddress(place.address_components, "postal_code");
 
-              document.getElementById("venuephone").value = place.formatted_phone_number;
-              document.getElementById("venuegoogleurl").value = place.url;
-              document.getElementById("venuewebsite").value = place.website;
-              document.getElementById("venuegeolocation").value = place.geometry.location;
-              document.getElementById("venuetypes").value = place.types;
+            document.getElementById("venuephone").value = place.formatted_phone_number;
+            document.getElementById("venuegoogleurl").value = place.url;
+            document.getElementById("venuewebsite").value = place.website;
+            document.getElementById("venuegeolocation").value = place.geometry.location;
+            document.getElementById("venuetypes").value = place.types;
 
-              infowindow.open(map, marker);
+            infowindow.open(map, marker);
 
-              google.maps.event.addListener(marker, 'click', function() {
-                  document.getElementById("venuegoogleid").value = place.id;
-                  document.getElementById("venuename").value = place.name;
-                  document.getElementById("venueaddress").value = place.formatted_address // [(place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || '')].join(' ');
+            google.maps.event.addListener(marker, 'click', function() {
+                document.getElementById("venuegoogleid").value = place.id;
+                document.getElementById("venuename").value = place.name;
+                document.getElementById("venueaddress").value = place.formatted_address // [(place.address_components[0] && place.address_components[0].short_name || ''), (place.address_components[1] && place.address_components[1].short_name || '')].join(' ');
 
-                  document.getElementById("venuecity").value = extractFromAddress(place.address_components, "locality");
-                  document.getElementById("venuestate").value = extractFromAddress(place.address_components, "administrative_area_level_1");
-                  document.getElementById("venuecountry").value = extractFromAddress(place.address_components, "country");
-                  document.getElementById("venuepostal").value = extractFromAddress(place.address_components, "postal_code");
+                document.getElementById("venuecity").value = extractFromAddress(place.address_components, "locality");
+                document.getElementById("venuestate").value = extractFromAddress(place.address_components, "administrative_area_level_1");
+                document.getElementById("venuecountry").value = extractFromAddress(place.address_components, "country");
+                document.getElementById("venuepostal").value = extractFromAddress(place.address_components, "postal_code");
 
-                  document.getElementById("venuephone").value = place.formatted_phone_number;
-                  document.getElementById("venuegoogleurl").value = place.url;
-                  document.getElementById("venuewebsite").value = place.website;
-                  document.getElementById("venuegeolocation").value = place.geometry.location;
-                  document.getElementById("venuetypes").value = place.types;
+                document.getElementById("venuephone").value = place.formatted_phone_number;
+                document.getElementById("venuegoogleurl").value = place.url;
+                document.getElementById("venuewebsite").value = place.website;
+                document.getElementById("venuegeolocation").value = place.geometry.location;
+                document.getElementById("venuetypes").value = place.types;
 
-                  infowindow.open(map, marker);
-              });
+                infowindow.open(map, marker);
+            });
 
-              google.maps.event.addListener(infowindow, 'closeclick', function() {
-                  document.getElementById("venuegoogleid").value = "";
-                  document.getElementById("venuename").value = "";
-                  document.getElementById("venueaddress").value = "";
+            google.maps.event.addListener(infowindow, 'closeclick', function() {
+                document.getElementById("venuegoogleid").value = "";
+                document.getElementById("venuename").value = "";
+                document.getElementById("venueaddress").value = "";
 
-                  document.getElementById("venuecity").value = "";
-                  document.getElementById("venuestate").value = "";
-                  document.getElementById("venuecountry").value = "";
-                  document.getElementById("venuepostal").value = "";
+                document.getElementById("venuecity").value = "";
+                document.getElementById("venuestate").value = "";
+                document.getElementById("venuecountry").value = "";
+                document.getElementById("venuepostal").value = "";
 
-                  document.getElementById("venuephone").value = "";
-                  document.getElementById("venuegoogleurl").value = "";
-                  document.getElementById("venuewebsite").value = "";
-                  document.getElementById("venuegeolocation").value = "";
-                  document.getElementById("venuetypes").value = "";
+                document.getElementById("venuephone").value = "";
+                document.getElementById("venuegoogleurl").value = "";
+                document.getElementById("venuewebsite").value = "";
+                document.getElementById("venuegeolocation").value = "";
+                document.getElementById("venuetypes").value = "";
 
-              });
+            });
 
-          });
+        });
 
-      }
+    }
 
-      function extractFromAddress(components, type){
-          for (var i=0; i<components.length; i++)
-              for (var j=0; j<components[i].types.length; j++)
-                  if (components[i].types[j]==type) return components[i].long_name;
-          return "";
-      }
+    function extractFromAddress(components, type){
+        for (var i=0; i<components.length; i++)
+            for (var j=0; j<components[i].types.length; j++)
+                if (components[i].types[j]==type) return components[i].long_name;
+        return "";
+    }
 
-      google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initialize);
 
-  </script>
+</script>
 
-  <div id="plan_info" class="shell">
-    <div id="plantourage_presents">
-      <h1 id="plantourage_presents_logo"><a href="/">Plantourage</a></h1>
-      <div id="presents_text">EXCLUSIVELY PRESENTS</div>
-    </div>
-    <div id="plan_info_name"><%= @plan.name %></div>
-    <div id="plan_info_date"><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %></div>
-    <div id="guestlist">There are <a id="planentourage" ><%= pluralize(@invites.count - 1, 'Person') %></a> on the guestlist</div>
-    <div id="guestlist_add">
-      Click <a onclick="sendRequestViaMultiFriendSelector(); return false;" id="addfriend" >here</a> invite more
-      <input type="hidden" id="invited_user_id"/>
-      <input type="hidden" id="friend_user_id"/>
-      <input type="hidden" id="invited_user_name"/>
-    </div>
-    <div id="location_tbd">Location: TBD*</div>
-    <div id="location_count">(<%= pluralize(@suggestions.count, 'location') %> suggested. Click <a id="addvenue" >here</a> to add more.)</div>
-    <div id="voting_explanation">*Voting booth is now open below</div>
+<div id="plan_info" class="shell">
+  <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%= @plan.name %></div><br class="mobile-break">
+  <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%= @plan.plandate.strftime("%A") %> <%= @plan.plandate.strftime("%B") %> <%= @plan.plandate.strftime("%d") %>, <%= @plan.plandate.strftime("%Y") %></div>
+
+  <div id="points_left_info">
+    <% if (@invites.count == 1) %>
+        No people have been added to this plan.
+    <% end %>
     <% if (!@plan.toppick.nil?) %>
-        <div id="toppick_explanation"><a id="toppick" href="<%= @plan.toppick.venue.website %>" target="_blank"><%= @plan.toppick.venue.name %></a> is the top choice so far</div>
+        <br><a id="toppick" href="<%= @plan.toppick.venue.website %>" target="_blank"><%= @plan.toppick.venue.name %></a> is the top choice so far
     <% end %>
+    <% if (Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) > 0) %>
+        <br>You voted for <a id="mypick" href="<%= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.website %>" target="_blank"><%= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.name %></a>
+    <% else %>
+        <% if (@suggestions.count > 0) %>
+            <br>Please vote below.
+        <% else %>
+            <br>Where do you want to go? Add possible locations below.
+        <% end %>
+    <% end %>
+    <br><div id="totalpoints" style="display: none;"><%= pluralize(1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Vote') %> </div>
+  </div>
+
+  <div class="plan_info_actions">
+    <a class="gold-btn" id="changeplan" >Edit Plan</a>
+    <input type="hidden" id="planid" value="<%= @plan.id %>">
+    <input id="plandate" value="<%= @plan.plandate %>" type="hidden">
+    <a class="gold-btn" id="showcomments" >Comments (<%= @plan.microposts.count %>)</a>
+    <br class="mobile-break">
+    <a class="gold-btn" id="addvenue" >Add Locations</a>
+    <a onclick="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add Friends (<%= @invites.count - 1 %>)</a>
+    <input type="hidden" id="invited_user_id"/>
+    <input type="hidden" id="friend_user_id"/>
+    <input type="hidden" id="invited_user_name"/>
     <% if (@invites.count > 1) %>
-        <div id="voters_count"><a id="planvoters" ><%= pluralize(Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Person') %></a> voted</div>
-        <div id="nonvoters_count">Waiting on <a id="plannonvoters" ><%= pluralize(@invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) + Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Person') %></a></div>
+        <!--<a class="gold-btn" id="planentourage" ><%#= @invites.count - 1 %> people</a> have been selected to vote on where to go for this plan.-->
+        <br class="mobile-break">
+        <a class="gold-btn" id="planvoters" ><%= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> voted</a>
+        <a class="gold-btn" id="plannonvoters" ><%= @invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) + Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> not voted</a><br>
     <% end %>
-    <div id="comments_and_edit">
-      To view and make comments click <a id="showcomments" >here</a>.
-      To edit the plan details click <a id="changeplan" >here</a>
-      <input type="hidden" id="planid" value="<%= @plan.id %>">
-      <input id="plandate" value="<%= @plan.plandate %>" type="hidden">.
-    </div>
-
-    <!--
-
-    <div class="plan_info_header">Name:</div><div class="plan_info_value" ><%#= @plan.name %></div><br class="mobile-break">
-    <div class="plan_info_header">Date:</div><div class="plan_info_value" ><%#= @plan.plandate.strftime("%A") %> <%#= @plan.plandate.strftime("%B") %> <%#= @plan.plandate.strftime("%d") %>, <%#= @plan.plandate.strftime("%Y") %></div>
-
-    <div id="points_left_info">
-      <%# if (@invites.count == 1) %>
-          No people have been added to this plan.
-      <%# end %>
-      <!--
-      <%# if (!@plan.toppick.nil?) %>
-          <br><a id="toppick" href="<%#= @plan.toppick.venue.website %>" target="_blank"><%#= @plan.toppick.venue.name %></a> is the top choice so far
-      <%# end %>
-      -->
-    <!--
-      <%# if (Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) > 0) %>
-          <br>You voted for <a id="mypick" href="<%#= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.website %>" target="_blank"><%#= Suggestion.find(Point.find_by_plan_id_and_invite_id(@plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).suggestion_id).venue.name %></a>
-      <%# else %>
-          <%# if (@suggestions.count > 0) %>
-              <br>Please vote below.
-          <%# else %>
-              <br>Where do you want to go? Add possible locations below.
-          <%# end %>
-      <%# end %>
-      <br><div id="totalpoints" style="display: none;"><%#= pluralize(1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]), 'Vote') %> </div>
-    </div>
-    -->
-
-    <!--<div class="plan_info_actions">
-      <!--
-      <a class="gold-btn" id="changeplan" >Edit Plan</a>
-      <input type="hidden" id="planid" value="<%#= @plan.id %>">
-      <input id="plandate" value="<%#= @plan.plandate %>" type="hidden">
-      <a class="gold-btn" id="showcomments" >Comments (<%#= @plan.microposts.count %>)</a>
-      <br class="mobile-break">
-      -->
-      <!--
-      <a class="gold-btn" id="addvenue" >Add Locations</a>
-      -->
-      <!--
-      <a onclick="sendRequestViaMultiFriendSelector(); return false;" class="gold-btn" id="addfriend" >Add Friends (<%#= @invites.count - 1 %>)</a>
-      <input type="hidden" id="invited_user_id"/>
-      <input type="hidden" id="friend_user_id"/>
-      <input type="hidden" id="invited_user_name"/>
-       -->
-      <%# if (@invites.count > 1) %>
-          <!--<a class="gold-btn" id="planentourage" ><%#= @invites.count - 1 %> people</a> have been selected to vote on where to go for this plan.-->
-      <!--<br class="mobile-break">-->
-          <!--
-          <a class="gold-btn" id="planvoters" ><%#= Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> voted</a>
-          -->
-          <!--
-          <a class="gold-btn" id="plannonvoters" ><%#= @invites.count - 1 - Point.sum(:count, :conditions => ['plan_id = ?', @plan.id]) + Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> not voted</a><br>
-          -->
-      <%# end %>
-    <!--</div>
-    <!--    <tr>
+  </div>
+  <!--    <tr>
       <td>
-        <%# if (@plan.fbevent_id.blank?) %>
+        <% #if (@plan.fbevent_id.blank?) %>
             <input id="createfbevent" type="button" value="Create Private Event Page on Facebook">
-        <%# else %>
+        <% #else %>
             <a href="www.facbook.com/<%#= @plan.fbevent_id %>" title="<%#= @plan.name %> Facebook Event" target="_blank"><img src="images/learnmore.jpg" alt="" height="50" width="150"></a>
-        <%# end %>
+        <% #end %>
       </td>
     </tr> -->
 
-    <!--</div>-->
+</div>
 
-  <div id="voting_info" class="shell">
-    <div id="voting_booth_text">* Voting Booth</div>
-    <table id="plan_voting_table">
-      <thead>
-        <tr>
-          <th class="user_header"><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
-            <br> Me<div id="totalpoints2" style="display: none"><%= 1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> Points </div>
-          </th>
-          <th class="venue_header">
-            Locations
-          </th>
-          <th class="total_points_header">Votes</th>
-<!--
+<div id="voting_info" class="shell">
+  <table id="plan_voting_table">
+    <thead>
+    <tr>
+      <th class="user_header"><img src="https://graph.facebook.com/<%= current_user['uid'] %>/picture?type=square" alt="<%= current_user['name'] %>">
+        <br> Me<div id="totalpoints2" style="display: none"><%= 1 - Point.sum(:count, :conditions => ['plan_id = ? AND invite_id = ?', @plan.id, Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])]) %> Points </div>
+      </th>
+      <th class="venue_header">
+        Locations
+      </th>
+      <th class="total_points_header">Votes</th>
+      <!--
           <%# @invites.each do |invite| %>
               <%# if invite.user.id != current_user.id %>
                   <th class="friends_header">
@@ -324,10 +275,10 @@
               <%# end %>
           <%# end %>
           -->
-        </tr>
-      </thead>
-      <tbody>
-      <% @suggestions.each do |suggestion| %>
+    </tr>
+    </thead>
+    <tbody>
+    <% @suggestions.each do |suggestion| %>
         <tr>
           <td class="sugg_userpointcount">
             <% if (Point.find_by_invite_id(Invite.find_by_plan_id_and_user_id(@plan.id, current_user['id'])).nil?) %>
@@ -345,15 +296,15 @@
             -->
           </td>
           <th class="venue_info">
-                <a class="venue_link" href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank">
-                    <% if (!suggestion.venue.image.blank?) %>
-                        <div class="venue_image"><img src="<%= suggestion.venue.image %>"></div>
-                    <% else %>
-                      <div class="venue_name"><%= suggestion.venue.name %></div>
-                    <% end %>
-                </a>
-                <div class="venue_description"><a href="<%= suggestion.venue.googleurl %>" target="_blank"><%= suggestion.venue['address'] %></a></div>
-            </th>
+            <a class="venue_link" href="<%= suggestion.venue.website %>" title="<%= suggestion.venue['name'] %>" target="_blank">
+              <% if (!suggestion.venue.image.blank?) %>
+                  <div class="venue_image"><img src="<%= suggestion.venue.image %>"></div>
+              <% else %>
+                  <div class="venue_name"><%= suggestion.venue.name %></div>
+              <% end %>
+            </a>
+            <div class="venue_description"><a href="<%= suggestion.venue.googleurl %>" target="_blank"><%= suggestion.venue['address'] %></a></div>
+          </th>
           <td class="sugg_totpointcount">
             <div id="sugg<%= suggestion.id %>totpointcount"> <a class="gold-btn suggcount" id="<%= suggestion.id %>" ><%= suggestion.pointcount %></a> </div>
           </td>
@@ -365,115 +316,115 @@
           <%# end %>
           -->
         </tr>
-      <% end %>
-      </tbody>
+    <% end %>
+    </tbody>
   </table>
 
-  </div>
+</div>
 </div>
 
-  <div id="show_comments_form" style="display:none" class="popupform">
-    <body>
-    <div class="popupform_header">
-      <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br>
-      <a class="gold-btn" id="add_comment" >Add Comment</a>
-      <a class="gold-btn" id="closecomments" >Close</a>
-      <input type="hidden" id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
-    </div>
-    <div class="popupform_content">
-      <%= pluralize(@plan.microposts.count, 'comment') %>
+<div id="show_comments_form" style="display:none" class="popupform">
+  <body>
+  <div class="popupform_header">
+    <textarea rows="4" id="new_comment" maxlength="255" placeholder="Add comment.."></textarea><br>
+    <a class="gold-btn" id="add_comment" >Add Comment</a>
+    <a class="gold-btn" id="closecomments" >Close</a>
+    <input type="hidden" id="invite_id" value="<%= Invite.find_by_facebookid_and_plan_id(current_user.uid, @plan.id).id %>">
+  </div>
+  <div class="popupform_content">
+    <%= pluralize(@plan.microposts.count, 'comment') %>
     <table>
-        <% @microposts.each do |micropost| %>
-            <tr>
-              <td valign="top" align="left">
-                <table>
-                  <tr padding="2">
-                    <td valign="top" align="left">
-                      <a href="http://www.facebook.com/<%= micropost.invite.user.uid %>" target="_blank" title="<%= micropost.invite.user.name %>">
-                        <img src="https://graph.facebook.com/<%= micropost.invite.user.uid %>/picture?type=normal" alt="<%= micropost.invite.user.name %>" width="45" height="45">
-                      </a>
-                    </td>
-                    <td width="100%" valign="top" align="left">
-                      <%= micropost.content %>
-                    </td>
-                    <% if (micropost.invite.user.id == current_user.id) %>
-                        <td width="100%" valign="top" align="right">
-                          <a class="gold-btn" id="delete_comment" alt="<%= micropost.id %>" >Delete</a>
-                        </td>
-                    <% end %>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-        <% end %>
-      </table>
-    </div>
-    </body>
-  </div>
-
-  <div id="updateplan_form" style="display:none" class="popupform">
-    <body>
-    <div class="popupform_header">Update plan</div>
-    <div class="popupform_content">
-        <table>
+      <% @microposts.each do |micropost| %>
           <tr>
-            <td>
-              Name:
-            </td>
-            <td>
-              <input id="plan_name" type="input" maxlength="20" value="<%= @plan.name %>">
+            <td valign="top" align="left">
+              <table>
+                <tr padding="2">
+                  <td valign="top" align="left">
+                    <a href="http://www.facebook.com/<%= micropost.invite.user.uid %>" target="_blank" title="<%= micropost.invite.user.name %>">
+                      <img src="https://graph.facebook.com/<%= micropost.invite.user.uid %>/picture?type=normal" alt="<%= micropost.invite.user.name %>" width="45" height="45">
+                    </a>
+                  </td>
+                  <td width="100%" valign="top" align="left">
+                    <%= micropost.content %>
+                  </td>
+                  <% if (micropost.invite.user.id == current_user.id) %>
+                      <td width="100%" valign="top" align="right">
+                        <a class="gold-btn" id="delete_comment" alt="<%= micropost.id %>" >Delete</a>
+                      </td>
+                  <% end %>
+                </tr>
+              </table>
             </td>
           </tr>
-          <tr>
-            <td>
-              Date:
-            </td>
-            <td>
-              <input id="plan_date" type="date" value="<%= @plan.plandate %>">
-            </td>
-          </tr>
-        </table>
-        <a class="gold-btn" id="updateplan">Save</a>
-        <a class="gold-btn" id="closeupdateplan">Close</a>
-    </div>
+      <% end %>
+    </table>
+  </div>
+  </body>
+</div>
 
-    </body>
+<div id="updateplan_form" style="display:none" class="popupform">
+  <body>
+  <div class="popupform_header">Update plan</div>
+  <div class="popupform_content">
+    <table>
+      <tr>
+        <td>
+          Name:
+        </td>
+        <td>
+          <input id="plan_name" type="input" maxlength="20" value="<%= @plan.name %>">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Date:
+        </td>
+        <td>
+          <input id="plan_date" type="date" value="<%= @plan.plandate %>">
+        </td>
+      </tr>
+    </table>
+    <a class="gold-btn" id="updateplan">Save</a>
+    <a class="gold-btn" id="closeupdateplan">Close</a>
   </div>
 
-  <div id="errPopup_form" style="display:none">
-    <body>
-    <div id="errPopup_form_head">
-      <input id="closeError" type="button" value="Close">
-    </div>
-    <div id="error_text"></div>
-    </body>
+  </body>
+</div>
+
+<div id="errPopup_form" style="display:none">
+  <body>
+  <div id="errPopup_form_head">
+    <input id="closeError" type="button" value="Close">
+  </div>
+  <div id="error_text"></div>
+  </body>
+</div>
+
+<div id="mapCanvas_form" style="display:none" class="popupform">
+  <body>
+  <div class="popupform_header">
+    Add Venue
+    <br><input id="searchTextField" type="text">
+    <a class="gold-btn" id="closemapcanvas">Close</a>
+  </div>
+  <div class="popupform_content">
+    <div id="map_canvas"></div>
+    <input id="venuegoogleid" value="" type="hidden">
+    <input id="venuename" value="" type="hidden">
+    <input id="venueaddress" value="" type="hidden">
+    <input id="venuecity" value="" type="hidden">
+    <input id="venuestate" value="" type="hidden">
+    <input id="venuecountry" value="" type="hidden">
+    <input id="venuepostal" value="" type="hidden">
+    <input id="venuephone" value="" type="hidden">
+    <input id="venuegoogleurl" value="" type="hidden">
+    <input id="venuewebsite" value="" type="hidden">
+    <input id="venuegeolocation" value="" type="hidden">
+    <input id="venuetypes" value="" type="hidden">
   </div>
 
-  <div id="mapCanvas_form" style="display:none" class="popupform">
-    <body>
-    <div class="popupform_header">
-      Add Venue
-      <br><input id="searchTextField" type="text">
-      <a class="gold-btn" id="closemapcanvas">Close</a>
-    </div>
-    <div class="popupform_content">
-      <div id="map_canvas"></div>
-      <input id="venuegoogleid" value="" type="hidden">
-      <input id="venuename" value="" type="hidden">
-      <input id="venueaddress" value="" type="hidden">
-      <input id="venuecity" value="" type="hidden">
-      <input id="venuestate" value="" type="hidden">
-      <input id="venuecountry" value="" type="hidden">
-      <input id="venuepostal" value="" type="hidden">
-      <input id="venuephone" value="" type="hidden">
-      <input id="venuegoogleurl" value="" type="hidden">
-      <input id="venuewebsite" value="" type="hidden">
-      <input id="venuegeolocation" value="" type="hidden">
-      <input id="venuetypes" value="" type="hidden">
-    </div>
-
-    </body>
-  </div>
+  </body>
+</div>
 
 <div class="popupform" id="planentourage_form" style="display:none">
   <body>
@@ -482,7 +433,7 @@
   </div>
   <div class="popupform_content">
     <% @invites.each do |invite| %>
-        <% if invite.user.id != current_user.id %>        
+        <% if invite.user.id != current_user.id %>
             <a href="http://www.facebook.com/<%= invite.user.uid %>" target="_blank"><img src="https://graph.facebook.com/<%= invite.user.uid %>/picture?type=square" alt="<%= invite.user.name %>"> <b><%= invite.user.name %></b></a><br>
         <% end %>
     <% end %>

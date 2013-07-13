@@ -73,6 +73,8 @@ class PlansController < ApplicationController
 
     @invite.save
 
+    UserMailer.plan_created(@plan, @user).deliver
+
   end
 
   def createEvent
