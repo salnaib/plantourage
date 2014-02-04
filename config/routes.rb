@@ -28,6 +28,10 @@ Plantourage::Application.routes.draw do
 
   resources :plans
 
+  resources :users do
+    resources :plans
+  end
+
   root :to => 'static#landing'
 
   # The priority is based upon order of creation:
